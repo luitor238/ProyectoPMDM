@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Proyecto PMDM</string>
+    <string name="crearPersonaje">CREA TU PERSONAJE</string>
+    <string name="nombre">Nickname: </string>
+    <string name="clase">Clase: </string>
+    <string name="raza">Raza: </string>
+    <string name="estadoVital">Estado vital: </string>
+    <string name="crear">CREAR </string>
+</resources>
