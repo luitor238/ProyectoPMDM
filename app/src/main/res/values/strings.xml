@@ -5,7 +5,8 @@
     <string name="clase">Clase: </string>
     <string name="raza">Raza: </string>
     <string name="estadoVital">Estado vital: </string>
-    <string name="crear">CREAR </string>
+    <string name="crear">CREAR</string>
+    <string name="aplicar">APLICAR</string>
 
 
     #Spinners

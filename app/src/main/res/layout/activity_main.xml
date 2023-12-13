@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_dynamic_neutral10"
+    android:background="@color/material_dynamic_neutral100"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/crearPersonaje"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/secundario"
         android:textSize="28dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="24dp"
         android:text="@string/nombre"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -50,7 +50,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/bntCrear"
+        android:id="@+id/btnAplicar"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="65dp"
+        android:backgroundTint="@color/secundario"
+        android:elevation="2dp"
+        android:shadowColor="#5C5C5C"
+        android:text="@string/aplicar"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:rippleColor="#A11818"
+        app:strokeColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnCrear"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -64,8 +86,10 @@
         android:textColor="#FFFFFF"
         android:textSize="16dp"
         android:textStyle="bold"
+        android:visibility="gone"
         app:cornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:rippleColor="#A11818"
@@ -78,7 +102,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="32dp"
         android:text="@string/clase"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -91,7 +115,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="26dp"
         android:text="@string/raza"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -103,7 +127,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="26dp"
         android:text="@string/estadoVital"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -116,7 +140,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="65dp"
-        android:backgroundTint="@color/material_dynamic_neutral20"
+        android:backgroundTint="@color/secundario"
         android:backgroundTintMode="screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -130,7 +154,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="65dp"
-        android:backgroundTint="@color/material_dynamic_neutral20"
+        android:backgroundTint="@color/secundario"
         android:backgroundTintMode="screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -143,7 +167,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="65dp"
-        android:backgroundTint="@color/material_dynamic_neutral20"
+        android:backgroundTint="@color/secundario"
         android:backgroundTintMode="screen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -160,5 +184,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre"
         tools:srcCompat="@drawable/personaje_en_blanco" />
+
+    <TextView
+        android:id="@+id/textViewError"
+        android:layout_width="0dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAplicar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
