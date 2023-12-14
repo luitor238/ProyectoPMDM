@@ -52,7 +52,8 @@
         android:layout_height="693dp"
         android:background="@drawable/carta_avatar"
         tools:layout_editor_absoluteX="-98dp"
-        tools:layout_editor_absoluteY="-23dp" />
+        tools:layout_editor_absoluteY="-23dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView2"
