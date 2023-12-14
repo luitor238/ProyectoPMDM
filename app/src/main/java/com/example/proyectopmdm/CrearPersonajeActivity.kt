@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,7 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 
 
-class MainActivity : AppCompatActivity() {
+class CrearPersonajeActivity : AppCompatActivity() {
 
     private lateinit var spnClase: Spinner
     private lateinit var spnRaza: Spinner
@@ -19,12 +20,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nombre: EditText
     private lateinit var btnAplicar: Button
     private lateinit var btnCrear: Button
+    private lateinit var btnVolver: Button
     lateinit var textViewError: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_crear_personaje)
 
         // Espiner desplegables
 
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         nombre = findViewById(R.id.editTextNombre)
         btnAplicar = findViewById(R.id.btnAplicar)
         btnCrear = findViewById(R.id.btnCrear)
+        btnVolver = findViewById(R.id.btnVolver)
         textViewError = findViewById(R.id.textViewError)
 
         btnAplicar.setOnClickListener {
@@ -63,13 +66,21 @@ class MainActivity : AppCompatActivity() {
             // Si el nombre está relleno, oculta el botón "Aplicar" muestra el botón "Crear"
             btnAplicar.visibility = View.GONE
             btnCrear.visibility = View.VISIBLE
+            btnVolver.visibility = View.VISIBLE
             textViewError.text = ""
 
             // Crear personaje
 
             // Funcion del boton crear
             btnCrear.setOnClickListener {
-                // Falta poner codigo para crear personaje y cambiar de activity
+                val intent = Intent(this@CrearPersonajeActivity, ComenzarAventuraActivity::class.java)
+                startActivity(intent)
+            }
+            btnVolver.setOnClickListener{
+                btnAplicar.visibility = View.VISIBLE
+                btnCrear.visibility = View.GONE
+                btnVolver.visibility = View.GONE
+                textViewError.text = ""
             }
         } else {
             textViewError.text = "Error: No puede haber campos vacíos."

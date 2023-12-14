@@ -1,13 +1,23 @@
 <resources>
     <string name="app_name">Proyecto PMDM</string>
+
+    #Titulos
     <string name="crearPersonaje">CREA TU PERSONAJE</string>
+
+    #Botones
+    <string name="crear">CREAR</string>
+    <string name="aplicar">APLICAR</string>
+    <string name="jugar">JUGAR</string>
+
+    #Variables
     <string name="nombre">Nickname: </string>
     <string name="clase">Clase: </string>
     <string name="raza">Raza: </string>
     <string name="estadoVital">Estado vital: </string>
-    <string name="crear">CREAR</string>
-    <string name="aplicar">APLICAR</string>
-
+    <string name="ataque">Ataque:</string>
+    <string name="defensa">Defensa:</string>
+    <string name="suerte">Suerte:</string>
+    <string name="salud">Salud:</string>
 
     #Spinners
     <string-array name="Clase">

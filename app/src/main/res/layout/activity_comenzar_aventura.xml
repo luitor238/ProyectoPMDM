@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D4DADA"
+    tools:context=".ComenzarAventuraActivity">
+
+    <Button
+        android:id="@+id/btnCrear"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="64dp"
+        android:backgroundTint="#2196F3"
+        android:elevation="2dp"
+        android:shadowColor="#5C5C5C"
+        android:text="@string/jugar"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#A11818"
+        app:strokeColor="#FFFFFF"
+        tools:layout_editor_absoluteY="642dp" />
+
+    <Button
+        android:id="@+id/btnVolver"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="65dp"
+        android:backgroundTint="#2196F3"
+        android:elevation="2dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/ic_volver"
+        app:layout_constraintEnd_toStartOf="@+id/btnCrear"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#FFFFFF"
+        tools:layout_editor_absoluteY="642dp" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="611dp"
+        android:layout_height="693dp"
+        android:background="@drawable/carta_avatar"
+        tools:layout_editor_absoluteX="-98dp"
+        tools:layout_editor_absoluteY="-23dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="250dp"
+        android:layout_height="215dp"
+        app:srcCompat="@drawable/personaje_en_blanco"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/nombre"
+        android:layout_width="118dp"
+        android:layout_height="24dp"
+        android:text="Nickname"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="65dp" />
+
+    <TextView
+        android:id="@+id/expNivel"
+        android:layout_width="54dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="90dp"
+        android:text="100/1"
+        android:textAlignment="viewEnd"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clase"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="clase"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/raza"
+        app:layout_constraintTop_toTopOf="@+id/raza" />
+
+    <TextView
+        android:id="@+id/raza"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="raza"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:layout_editor_absoluteX="157dp" />
+
+    <TextView
+        android:id="@+id/estadoVital"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="estado vital"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/raza"
+        app:layout_constraintTop_toTopOf="@+id/raza" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="159dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="69dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raza">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                android:text="@string/salud" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/material_dynamic_neutral70" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/ataque" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="@string/defensa" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/material_dynamic_neutral70" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/suerte" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
