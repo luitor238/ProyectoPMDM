@@ -8,6 +8,7 @@
     <string name="crear">CREAR</string>
     <string name="aplicar">APLICAR</string>
     <string name="jugar">JUGAR</string>
+    <string name="volver">VOLVER</string>
 
     #Variables
     <string name="nombre">Nickname: </string>

@@ -75,6 +75,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
             btnCrear.setOnClickListener {
                 val intent = Intent(this@CrearPersonajeActivity, ComenzarAventuraActivity::class.java)
                 startActivity(intent)
+
             }
             btnVolver.setOnClickListener{
                 btnAplicar.visibility = View.VISIBLE
