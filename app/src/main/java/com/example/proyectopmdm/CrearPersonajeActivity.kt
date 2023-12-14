@@ -21,6 +21,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var btnAplicar: Button
     private lateinit var btnCrear: Button
     private lateinit var btnVolver: Button
+    private lateinit var
     lateinit var textViewError: TextView
 
 
@@ -75,6 +76,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
             btnCrear.setOnClickListener {
                 val intent = Intent(this@CrearPersonajeActivity, ComenzarAventuraActivity::class.java)
                 startActivity(intent)
+
             }
             btnVolver.setOnClickListener{
                 btnAplicar.visibility = View.VISIBLE
