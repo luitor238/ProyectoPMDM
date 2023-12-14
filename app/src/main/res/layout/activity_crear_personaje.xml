@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_neutral100"
-    tools:context=".MainActivity">
+    tools:context=".CrearPersonajeActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -74,10 +74,10 @@
     <Button
         android:id="@+id/btnCrear"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginEnd="60dp"
         android:backgroundTint="#2196F3"
         android:elevation="2dp"
         android:shadowColor="#5C5C5C"
@@ -95,23 +95,24 @@
     <Button
         android:id="@+id/btnVolver"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="0dp"
+        android:layout_width="110dp"
         android:layout_height="50dp"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="10dp"
         android:backgroundTint="#2196F3"
         android:elevation="2dp"
+        android:text="@string/volver"
         android:textColor="#FFFFFF"
         android:textSize="16dp"
         android:textStyle="bold"
         app:cornerRadius="5dp"
-        app:icon="@drawable/ic_volver"
         app:layout_constraintEnd_toStartOf="@+id/btnCrear"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:strokeColor="#FFFFFF"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/textView3"
