@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-class MainActivity : AppCompatActivity() {
+class CrearPersonajeActivity : AppCompatActivity() {
 
     private lateinit var spnClase: Spinner
     private lateinit var spnRaza: Spinner
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_crear_personaje)
 
         // Asignacion del nickname a la variable nombre
 
@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
 
             btnCrear.setOnClickListener {
                 personaje = Personaje(nombre,Personaje.Raza.valueOf(raza.toUpperCase()),Personaje.Clase.valueOf(clase.toUpperCase()),Personaje.EstadoVital.valueOf(estadoVital.toUpperCase()))
-                val intent = Intent(this@MainActivity, ComenzarAventuraActivity::class.java)
+                val intent = Intent(this@CrearPersonajeActivity, VerPersonajeActivity::class.java)
                 intent.putExtra("Personaje",personaje)
                 startActivity(intent)
 

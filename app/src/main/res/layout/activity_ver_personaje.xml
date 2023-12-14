@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D4DADA"
-    tools:context=".ComenzarAventuraActivity">
+    tools:context=".VerPersonajeActivity">
 
     <Button
         android:id="@+id/btnJugar"

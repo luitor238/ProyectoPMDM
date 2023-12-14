@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.widget.ImageView
 import java.io.Serializable
 
 /**
@@ -451,6 +452,109 @@ class Personaje(
     }
     fun getMochila(): Mochila {
         return this.mochila
+    }
+
+    fun getImage(): ImageView {
+        lateinit var imagen :ImageView
+        when(clase){
+            Clase.Brujo -> {
+                when(getRaza().toString()){
+                    "HUMANO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
+                        }
+                    }
+                    "ELFO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
+                        }
+                    }
+                    "ENANO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
+                        }
+                    }
+                    "MALDITO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
+                        }
+                    }
+                }
+            }
+            Clase.Mago -> {
+                when(getRaza().toString()){
+                    "HUMANO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.humano_mago_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
+                        }
+                    }
+                    "ELFO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
+                        }
+                    }
+                    "ENANO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.enano_mago_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
+                        }
+                    }
+                    "MALDITO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
+                        }
+                    }
+                }
+            }
+            Clase.Guerrero -> {
+                when(getRaza().toString()){
+                    "HUMANO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
+                        }
+                    }
+                    "ELFO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
+                        }
+                    }
+                    "ENANO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
+                        }
+                    }
+                    "MALDITO" -> {
+                        when(getEstadoVital().toString()){
+                            "JOVEN" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
+                            "ADULTO" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
+                            "ANCIANO" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
+                        }
+                    }
+                }
+            }
+        }
+        return imagen
     }
 
     override fun toString(): String {

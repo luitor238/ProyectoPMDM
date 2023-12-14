@@ -9,6 +9,10 @@
     <string name="aplicar">APLICAR</string>
     <string name="jugar">JUGAR</string>
     <string name="volver">VOLVER</string>
+    <string name="verPersonaje">VER PERSONAJE</string>
+    <string name="crearMonstruo">CREAR MONSTRUO</string>
+    <string name="pelear">PELEAR</string>
+    <string name="comunicacion">COMUNICACION</string>
 
     #Variables
     <string name="nombre">Nickname: </string>

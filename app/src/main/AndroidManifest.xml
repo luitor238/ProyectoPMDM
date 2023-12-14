@@ -1,3 +1,4 @@
+<<<<<<< Original
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
@@ -16,13 +17,13 @@
             android:name=".MenuOpcionesActivity"
             android:exported="false" />
         <activity
-            android:name=".ComenzarAventuraActivity"
+            android:name=".VerPersonajeActivity"
             android:exported="false" />
         <activity
             android:name=".CrearPersonajeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CrearPersonajeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,3 +34,15 @@
     </application>
 
 </manifest>
+=======
+
+    <manifest xmlns:android ="http://schemas.android.com/apk/res/android"
+    >
+    <application>
+    <activity android:name ="com.example.proyectopmdm.CrearMonstruoActivity"
+    android:exported="false"
+    
+     />
+    </application>
+    </manifest>
+    >>>>>>> Added
