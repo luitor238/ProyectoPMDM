@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var spnEstVital: Spinner
 
     private lateinit var nickname: EditText
+    private lateinit var imagen: ImageView
     private lateinit var btnAplicar: Button
     private lateinit var btnCrear: Button
     private lateinit var btnVolver: Button
@@ -103,9 +105,111 @@ class MainActivity : AppCompatActivity() {
             btnVolver.visibility = View.VISIBLE
             textViewError.text = ""
 
-            // Crear personaje
+            // Seleccionamos la imagen que corresponda
+
+            imagen = findViewById(R.id.imageView)
+
+            when(clase){
+                "Brujo" -> {
+                    when(raza){
+                        "Humano" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
+                            }
+                        }
+                        "Elfo" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
+                            }
+                        }
+                        "Enano" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
+                            }
+                        }
+                        "Maldito" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
+                            }
+                        }
+                    }
+                }
+                "Mago" -> {
+                    when(raza){
+                        "Humano" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.humano_mago_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
+                            }
+                        }
+                        "Elfo" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
+                            }
+                        }
+                        "Enano" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.enano_mago_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
+                            }
+                        }
+                        "Maldito" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
+                            }
+                        }
+                    }
+                }
+                "Guerrero" -> {
+                    when(raza){
+                        "Humano" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
+                            }
+                        }
+                        "Elfo" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
+                            }
+                        }
+                        "Enano" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
+                            }
+                        }
+                        "Maldito" -> {
+                            when(estadoVital){
+                                "Joven" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
+                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
+                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
+                            }
+                        }
+                    }
+                }
+            }
 
             // Funcion del boton crear
+
             btnCrear.setOnClickListener {
                 personaje = Personaje(nombre,Personaje.Raza.valueOf(raza.toUpperCase()),Personaje.Clase.valueOf(clase.toUpperCase()),Personaje.EstadoVital.valueOf(estadoVital.toUpperCase()))
                 val intent = Intent(this@MainActivity, ComenzarAventuraActivity::class.java)
