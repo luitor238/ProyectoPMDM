@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 
 
-class CrearPersonajeActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var spnClase: Spinner
     private lateinit var spnRaza: Spinner
@@ -21,13 +21,13 @@ class CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var btnAplicar: Button
     private lateinit var btnCrear: Button
     private lateinit var btnVolver: Button
-    private lateinit var
+
     lateinit var textViewError: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_crear_personaje)
+        setContentView(R.layout.activity_main)
 
         // Espiner desplegables
 
@@ -74,7 +74,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
 
             // Funcion del boton crear
             btnCrear.setOnClickListener {
-                val intent = Intent(this@CrearPersonajeActivity, ComenzarAventuraActivity::class.java)
+                val intent = Intent(this@MainActivity, ComenzarAventuraActivity::class.java)
                 startActivity(intent)
 
             }

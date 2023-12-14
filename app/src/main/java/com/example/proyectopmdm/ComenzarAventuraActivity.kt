@@ -17,7 +17,7 @@ class ComenzarAventuraActivity : AppCompatActivity() {
         btnJugar=findViewById(R.id.btnJugar)
 
         btnVolver.setOnClickListener {
-            val intent = Intent(this@ComenzarAventuraActivity, CrearPersonajeActivity::class.java)
+            val intent = Intent(this@ComenzarAventuraActivity, MainActivity::class.java)
             startActivity(intent)
         }
         btnJugar.setOnClickListener {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_neutral100"
-    tools:context=".CrearPersonajeActivity">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -74,7 +74,7 @@
     <Button
         android:id="@+id/btnCrear"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="60dp"
@@ -192,8 +192,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
         android:layout_marginStart="65dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="65dp"
@@ -206,13 +206,13 @@
         android:id="@+id/textViewError"
         android:layout_width="0dp"
         android:layout_height="17dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="65dp"
         android:layout_marginEnd="65dp"
-        android:layout_marginBottom="5dp"
         android:textColor="#FF0000"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAplicar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAplicar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
