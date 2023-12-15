@@ -12,7 +12,7 @@ class VerPersonajeActivity : AppCompatActivity() {
     private lateinit var btnVolver: Button
     private lateinit var btnJugar: Button
 
-    private lateinit var personaje: Personaje
+
     private lateinit var imagen: ImageView
 
 
@@ -20,6 +20,7 @@ class VerPersonajeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_personaje)
 
+        var personaje: Personaje? = null
         // Asignamos valores a los textView
 
         personaje = intent.getSerializableExtra("Personaje") as Personaje
@@ -34,7 +35,7 @@ class VerPersonajeActivity : AppCompatActivity() {
         val defensa = findViewById<TextView>(R.id.varDefensa)
         val suerte = findViewById<TextView>(R.id.varSuerte)
 
-        nombre.text = personaje.getNombre()
+        nombre.text = personaje.getNombre().toString()
         expNivel.text = "${personaje.getExperiencia()}/${personaje.getNivel()}"
         clase.text = personaje.getClase().toString()
         raza.text = personaje.getRaza().toString()
@@ -47,7 +48,7 @@ class VerPersonajeActivity : AppCompatActivity() {
         // Asignamos imagen
 
         imagen = findViewById<ImageView>(R.id.imageView2)
-        imagen = (personaje.getImage())
+        //imagen = (personaje.getImage())
 
         // Funcion de los botones
 

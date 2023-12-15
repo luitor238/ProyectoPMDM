@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import java.util.Locale
 
 
 class CrearPersonajeActivity : AppCompatActivity() {
@@ -40,6 +42,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
 
         nickname = findViewById<EditText>(R.id.editTextNombre)
         nombre = nickname.text.toString()
+
 
         // Spinners de seleccion de clase, raza y estado vital y asignacion a sus respectivas variables
 
@@ -95,6 +98,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun clickBotonAplicar() {
         val texto = nickname.text.toString().trim()
 
@@ -211,7 +215,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
             // Funcion del boton crear
 
             btnCrear.setOnClickListener {
-                personaje = Personaje(nombre,Personaje.Raza.valueOf(raza.toUpperCase()),Personaje.Clase.valueOf(clase.toUpperCase()),Personaje.EstadoVital.valueOf(estadoVital.toUpperCase()))
+                personaje = Personaje(nombre,Personaje.Raza.valueOf(raza),Personaje.Clase.valueOf(clase),Personaje.EstadoVital.valueOf(estadoVital))
                 val intent = Intent(this@CrearPersonajeActivity, VerPersonajeActivity::class.java)
                 intent.putExtra("Personaje",personaje)
                 startActivity(intent)

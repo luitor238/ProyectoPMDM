@@ -459,96 +459,96 @@ class Personaje(
         when(clase){
             Clase.Brujo -> {
                 when(getRaza().toString()){
-                    "HUMANO" -> {
+                    "Humano" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
+                            "Joven" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
                         }
                     }
-                    "ELFO" -> {
+                    "Elfo" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
                         }
                     }
-                    "ENANO" -> {
+                    "Enano" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
                         }
                     }
-                    "MALDITO" -> {
+                    "Maldito" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
                         }
                     }
                 }
             }
             Clase.Mago -> {
                 when(getRaza().toString()){
-                    "HUMANO" -> {
+                    "Humano" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.humano_mago_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.humano_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
                         }
                     }
-                    "ELFO" -> {
+                    "Elfo" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
                         }
                     }
-                    "ENANO" -> {
+                    "Enano" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.enano_mago_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.enano_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
                         }
                     }
-                    "MALDITO" -> {
+                    "Maldito" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
                         }
                     }
                 }
             }
             Clase.Guerrero -> {
                 when(getRaza().toString()){
-                    "HUMANO" -> {
+                    "Humano" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
                         }
                     }
-                    "ELFO" -> {
+                    "Elfo" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
                         }
                     }
-                    "ENANO" -> {
+                    "Enano" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
                         }
                     }
-                    "MALDITO" -> {
+                    "Maldito" -> {
                         when(getEstadoVital().toString()){
-                            "JOVEN" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
-                            "ADULTO" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
-                            "ANCIANO" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
+                            "Joven" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
                         }
                     }
                 }
@@ -577,7 +577,7 @@ class Personaje(
  *                                  entrada o -1 si no lo encuentra
  *
  **********************************************************************************************************************/
-class Mochila(private var pesoMochila: Int){
+class Mochila(private var pesoMochila: Int):Serializable {
     private var contenido=ArrayList<Articulo>()
 
     fun getPesoMochila():Int{
@@ -656,7 +656,7 @@ class Mochila(private var pesoMochila: Int){
  *
  **********************************************************************************************************************/
 
-class Articulo(private var tipoArticulo: TipoArticulo, private var nombre: Nombre, private var peso: Int) {
+class Articulo(private var tipoArticulo: TipoArticulo, private var nombre: Nombre, private var peso: Int) :Serializable {
 
     enum class TipoArticulo { ARMA, OBJETO, PROTECCION }
     enum class Nombre { BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA }

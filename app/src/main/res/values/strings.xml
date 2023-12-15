@@ -41,4 +41,9 @@
         <item>Adulto</item>
         <item>Anciano</item>
     </string-array>
+
+    #Avisos
+    <string name="errorCampoVacio">Error: No puede haber campos vacíos.</string>
+
 </resources>
+
