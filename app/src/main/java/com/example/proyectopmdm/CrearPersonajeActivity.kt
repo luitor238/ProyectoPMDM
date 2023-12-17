@@ -35,6 +35,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var estadoVital: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_personaje)
 
