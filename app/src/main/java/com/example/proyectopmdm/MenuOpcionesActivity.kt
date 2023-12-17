@@ -12,6 +12,8 @@ private lateinit var comunicacion: Button
 
 class MenuOpcionesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_opciones)
 

@@ -39,14 +39,17 @@ class CrearPersonajeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_personaje)
 
-        // Asignacion del nickname a la variable nombre
+        //ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)
 
+        imagen = findViewById(R.id.imageView)
+        imagen.setImageResource(R.drawable.personaje_en_blanco)
+
+        // ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE
         nickname = findViewById<EditText>(R.id.editTextNombre)
         nombre = nickname.text.toString()
 
 
-        // Spinners de seleccion de clase, raza y estado vital y asignacion a sus respectivas variables
-
+        // SPINNERS PARA LA SELECCION DE CLASE, RAZA Y ESTADO VITAL Y ASIGNACION DE SUS RESPECTIVAS VARIABLES
         spnClase = findViewById(R.id.spnClase)
         ArrayAdapter.createFromResource(this, R.array.Clase, android.R.layout.simple_spinner_item).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

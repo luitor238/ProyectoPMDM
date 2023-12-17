@@ -9,14 +9,15 @@ import android.widget.TextView
 
 class VerPersonajeActivity : AppCompatActivity() {
 
+    //DECLARACION DE VARIABLES
     private lateinit var btnVolver: Button
     private lateinit var btnJugar: Button
-
-
     private lateinit var imagen: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_personaje)
 
@@ -48,7 +49,10 @@ class VerPersonajeActivity : AppCompatActivity() {
         // Asignamos imagen
 
         imagen = findViewById<ImageView>(R.id.imageView2)
+        imagen.setImageResource(R.drawable.personaje_en_blanco)
         //imagen = (personaje.getImage())
+
+
 
         // Funcion de los botones
 

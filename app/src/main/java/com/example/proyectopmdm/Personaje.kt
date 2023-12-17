@@ -1,7 +1,9 @@
 package com.example.proyectopmdm
 
 import android.widget.ImageView
+
 import java.io.Serializable
+
 
 /**
  * Clase que representa un personaje en el juego.
@@ -50,6 +52,7 @@ class Personaje(
     private var clase: Clase,
     private var estadoVital: EstadoVital
 ) :Serializable {
+    //private var imagen: ImageView
     private var salud: Int = 0
     private var ataque: Int = 0
     private var experiencia: Int
@@ -69,12 +72,20 @@ class Personaje(
 
     // Inicialización de los atributos tras la construcción del objeto Personaje
     init {
+      //  imagen = ImageView(context)
+      //  imagen.setImageResource(R.drawable.personaje_en_blanco)
+
+      //  imagen.setImageResource(R.drawable.personaje_en_blanco)
         calcularSalud()
         calcularAtaque()
         calcularDefensa()
+        //calcularImagen()
         experiencia = 0
         nivel = 1
         suerte = (0..10).random() // Asigna un valor de suerte aleatorio entre 0 y 10
+
+
+
     }
 
     fun getNombre(): String {
@@ -152,6 +163,107 @@ class Personaje(
             else -> 100 // Valor por defecto si el nivel está fuera del rango especificado
         }
     }
+    /*
+    private fun calcularImagen(){
+        imagen = when(clase){
+            "Brujo" -> {
+                when(raza){
+                    "Humano" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
+                        }
+                    }
+                    "Elfo" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
+                        }
+                    }
+                    "Enano" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
+                        }
+                    }
+                    "Maldito" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
+                        }
+                    }
+                }
+            }
+            "Mago" -> {
+                when(raza){
+                    "Humano" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.humano_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
+                        }
+                    }
+                    "Elfo" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
+                        }
+                    }
+                    "Enano" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.enano_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
+                        }
+                    }
+                    "Maldito" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
+                        }
+                    }
+                }
+            }
+            "Guerrero" -> {
+                when(raza){
+                    "Humano" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
+                        }
+                    }
+                    "Elfo" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
+                        }
+                    }
+                    "Enano" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
+                        }
+                    }
+                    "Maldito" -> {
+                        when(estadoVital){
+                            "Joven" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
+                        }
+                    }
+                }
+            }
+        }
+    }*/
 
     private fun calcularAtaque() {
         ataque = when (nivel) {
