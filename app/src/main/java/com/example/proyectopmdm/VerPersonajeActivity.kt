@@ -47,9 +47,9 @@ class VerPersonajeActivity : AppCompatActivity() {
         suerte.text = personaje.getSuerte().toString()
 
         // Asignamos imagen
-
         imagen = findViewById<ImageView>(R.id.imageView2)
-        imagen.setImageResource(R.drawable.personaje_en_blanco)
+        imagen.setImageResource(intent.getIntExtra("Imagen", 0))
+
         //imagen = (personaje.getImage())
 
 

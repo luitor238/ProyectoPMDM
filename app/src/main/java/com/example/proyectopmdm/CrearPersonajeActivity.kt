@@ -221,7 +221,10 @@ class CrearPersonajeActivity : AppCompatActivity() {
             btnCrear.setOnClickListener {
                 personaje = Personaje(nombre,Personaje.Raza.valueOf(raza),Personaje.Clase.valueOf(clase),Personaje.EstadoVital.valueOf(estadoVital))
                 val intent = Intent(this@CrearPersonajeActivity, VerPersonajeActivity::class.java)
+
                 intent.putExtra("Personaje",personaje)
+
+                intent.putExtra("Imagen", R.drawable.maldito_brujo_adulto)
                 startActivity(intent)
 
 
