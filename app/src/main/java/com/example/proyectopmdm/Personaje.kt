@@ -197,32 +197,32 @@ class Personaje(
             }
             Clase.Guerrero -> {
                 when(raza){
-                    "Humano" -> {
-                        when(aspectoPersonaje.getEstadoVital().toString()){
-                            "Joven" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
+                    Raza.Humano -> {
+                        when(this.estadoVital){
+                            EstadoVital.Joven ->  return "R.drawable.humano_guerrero_joven"
+                            EstadoVital.Adulto ->  return "R.drawable.humano_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "R.drawable.humano_guerrero_viejo"
                         }
                     }
-                    "Elfo" -> {
-                        when(aspectoPersonaje.getEstadoVital().toString()){
-                            "Joven" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
+                    Raza.Elfo -> {
+                        when(this.estadoVital){
+                            EstadoVital.Joven ->  return "R.drawable.elfo_guerrero_joven"
+                            EstadoVital.Adulto ->  return "R.drawable.elfo_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "R.drawable.elfo_guerrero_viejo"
                         }
                     }
-                    "Enano" -> {
-                        when(aspectoPersonaje.getEstadoVital().toString()){
-                            "Joven" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
+                    Raza.Enano -> {
+                        when(this.estadoVital){
+                            EstadoVital.Joven ->  return "R.drawable.enano_guerrero_joven"
+                            EstadoVital.Adulto ->  return "R.drawable.enano_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "R.drawable.enano_guerrero_viejo"
                         }
                     }
-                    "Maldito" -> {
-                        when(aspectoPersonaje.getEstadoVital().toString()){
-                            "Joven" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
+                    Raza.Maldito -> {
+                        when(this.estadoVital){
+                            EstadoVital.Joven ->  return "R.drawable.maldito_guerrero_joven"
+                            EstadoVital.Adulto ->  return "R.drawable.maldito_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "R.drawable.maldito_guerrero_viejo"
                         }
                     }
                 }

@@ -20,14 +20,12 @@ class CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var spnClase: Spinner
     private lateinit var spnRaza: Spinner
     private lateinit var spnEstVital: Spinner
-
     private lateinit var nickname: EditText
     private lateinit var imagen: ImageView
     private lateinit var btnAplicar: Button
     private lateinit var btnCrear: Button
     private lateinit var btnVolver: Button
     private lateinit var textViewError: TextView
-
     private lateinit var personaje: Personaje
     private lateinit var nombre: String
     private lateinit var clase: String
@@ -109,7 +107,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
         textViewError = findViewById(R.id.textViewError)
 
         btnAplicar.setOnClickListener {
-            clickBotonAplicar()
+            //clickBotonAplicar()
         }
     }
 
