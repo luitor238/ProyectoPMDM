@@ -35,12 +35,12 @@ class CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var estadoVital: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_personaje)
 
         //ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)
-
         imagen = findViewById(R.id.imageView)
         imagen.setImageResource(R.drawable.personaje_en_blanco)
 
@@ -55,27 +55,23 @@ class CrearPersonajeActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spnClase.adapter = adapter
         }
+
         spnClase.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 clase = resources.getStringArray(R.array.Clase)[position].toString()
+
+                imagen.setImageResource(R.drawable.maldito_guerrero_joven)
+
+
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
         }
-        spnRaza = findViewById(R.id.spnRaza)
-        ArrayAdapter.createFromResource(this, R.array.Raza, android.R.layout.simple_spinner_item).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spnRaza.adapter = adapter
-        }
-        spnRaza.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                raza = resources.getStringArray(R.array.Raza)[position].toString()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {
 
-            }
-        }
+        returnAspect(personaje)
+
+
         spnEstVital = findViewById(R.id.spnEstadoVital)
         ArrayAdapter.createFromResource(this, R.array.EstadoVital, android.R.layout.simple_spinner_item).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -90,6 +86,21 @@ class CrearPersonajeActivity : AppCompatActivity() {
             }
         }
 
+        spnRaza = findViewById(R.id.spnRaza)
+        ArrayAdapter.createFromResource(this, R.array.Raza, android.R.layout.simple_spinner_item).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spnRaza.adapter = adapter
+        }
+        spnRaza.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                raza = resources.getStringArray(R.array.Raza)[position].toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
+
         // Botones de aplicacion y creacion
 
         btnAplicar = findViewById(R.id.btnAplicar)
@@ -103,7 +114,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun clickBotonAplicar() {
+    private fun returnAspect(aspectoPersonaje: Personaje):  String {
         val texto = nickname.text.toString().trim()
 
         if (texto.isNotEmpty()) {
@@ -113,100 +124,101 @@ class CrearPersonajeActivity : AppCompatActivity() {
             btnVolver.visibility = View.VISIBLE
             textViewError.text = ""
 
-            // Seleccionamos la imagen que corresponda
 
+            // Seleccionamos la imagen que corresponda
             imagen = findViewById(R.id.imageView)
 
-            when(clase){
+            when(aspectoPersonaje.getClase().toString()){
                 "Brujo" -> {
-                    when(raza){
+                    when(aspectoPersonaje.getRaza().toString()){
                         "Humano" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.humano_brujo_joven"
+                                    //imagen.setImageResource(R.drawable.humano_brujo_joven)
+                                "Adulto" -> return "R.drawable.humano_brujo_adulto"
+                                "Anciano" -> return "R.drawable.humano_brujo_viejojfif"
                             }
                         }
                         "Elfo" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.elfo_brujo_joven"
+                                "Adulto" -> return "R.drawable.elfo_brujo_adulto"
+                                "Anciano" -> return "R.drawable.elfo_brujo_viejo"
                             }
                         }
                         "Enano" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.enano_brujo_joven"
+                                "Adulto" -> return "R.drawable.enano_brujo_adulto"
+                                "Anciano" -> return "R.drawable.enano_brujo_viejo"
                             }
                         }
                         "Maldito" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.maldito_brujo_joven"
+                                "Adulto" -> return "R.drawable.maldito_brujo_adulto"
+                                "Anciano" -> return "R.drawable.maldito_brujo_viejo"
                             }
                         }
                     }
                 }
                 "Mago" -> {
-                    when(raza){
+                    when(aspectoPersonaje.getRaza().toString()){
                         "Humano" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.humano_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.humano_mago_joven"
+                                "Adulto" -> return "R.drawable.humano_mago_adulto"
+                                "Anciano" -> return "R.drawable.humano_mago_viejo"
                             }
                         }
                         "Elfo" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.elfo_mago_joven"
+                                "Adulto" -> return "R.drawable.elfo_mago_adulto"
+                                "Anciano" -> return "R.drawable.elfo_mago_viejo"
                             }
                         }
                         "Enano" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.enano_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.enano_mago_joven"
+                                "Adulto" -> return "R.drawable.enano_mago_adulto"
+                                "Anciano" -> return "R.drawable.enano_mago_viejo"
                             }
                         }
                         "Maldito" -> {
-                            when(estadoVital){
-                                "Joven" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
+                            when(aspectoPersonaje.getEstadoVital().toString()){
+                                "Joven" -> return "R.drawable.maldito_mago_joven"
+                                "Adulto" -> return "R.drawable.maldito_mago_adulto"
+                                "Anciano" -> return "R.drawable.maldito_mago_viejo"
                             }
                         }
                     }
                 }
                 "Guerrero" -> {
-                    when(raza){
+                    when(aspectoPersonaje.getRaza().toString()){
                         "Humano" -> {
-                            when(estadoVital){
+                            when(aspectoPersonaje.getEstadoVital().toString()){
                                 "Joven" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
                                 "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
                                 "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
                             }
                         }
                         "Elfo" -> {
-                            when(estadoVital){
+                            when(aspectoPersonaje.getEstadoVital().toString()){
                                 "Joven" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
                                 "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
                                 "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
                             }
                         }
                         "Enano" -> {
-                            when(estadoVital){
+                            when(aspectoPersonaje.getEstadoVital().toString()){
                                 "Joven" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
                                 "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
                                 "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
                             }
                         }
                         "Maldito" -> {
-                            when(estadoVital){
+                            when(aspectoPersonaje.getEstadoVital().toString()){
                                 "Joven" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
                                 "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
                                 "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
@@ -221,10 +233,7 @@ class CrearPersonajeActivity : AppCompatActivity() {
             btnCrear.setOnClickListener {
                 personaje = Personaje(nombre,Personaje.Raza.valueOf(raza),Personaje.Clase.valueOf(clase),Personaje.EstadoVital.valueOf(estadoVital))
                 val intent = Intent(this@CrearPersonajeActivity, VerPersonajeActivity::class.java)
-
                 intent.putExtra("Personaje",personaje)
-
-                intent.putExtra("Imagen", R.drawable.maldito_brujo_adulto)
                 startActivity(intent)
 
 
