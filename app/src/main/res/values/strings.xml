@@ -26,17 +26,20 @@
 
     #Spinners
     <string-array name="Clase">
+        <item></item>
         <item>Brujo</item>
         <item>Mago</item>
         <item>Guerrero</item>
     </string-array>
     <string-array name="Raza">
+        <item></item>
         <item>Humano</item>
         <item>Elfo</item>
         <item>Enano</item>
         <item>Maldito</item>
     </string-array>
     <string-array name="EstadoVital">
+        <item></item>
         <item>Joven</item>
         <item>Adulto</item>
         <item>Anciano</item>

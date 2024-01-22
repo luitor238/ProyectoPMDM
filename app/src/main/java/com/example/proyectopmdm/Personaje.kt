@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.util.Log
 import android.widget.ImageView
 
 import java.io.Serializable
@@ -46,7 +47,7 @@ import java.io.Serializable
  * - realizarMision(tipoMision: String, dificultad: String): Simula la participación del personaje en una misión.
  * - toString(): Genera una representación en texto del personaje.
  */
-class Personaje(
+class Personaje  (
     private var nombre: String,
     private val raza: Raza,
     private var clase: Clase,
@@ -135,30 +136,30 @@ class Personaje(
                 when(this.raza){
                     Raza.Humano -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.humano_brujo_joven"
-                            EstadoVital.Adulto -> return "R.drawable.humano_brujo_adulto"
+                            EstadoVital.Joven -> return "humano_brujo_joven"
+                            EstadoVital.Adulto -> return "humano_brujo_adulto"
                             EstadoVital.Anciano -> return "R.drawable.humano_brujo_viejojfif"
                             }
                         }
                     Raza.Elfo -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.elfo_brujo_joven"
-                            EstadoVital.Adulto -> return "R.drawable.elfo_brujo_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.elfo_brujo_viejo"
+                            EstadoVital.Joven -> return "elfo_brujo_joven"
+                            EstadoVital.Adulto -> return "elfo_brujo_adulto"
+                            EstadoVital.Anciano -> return "elfo_brujo_viejo"
                         }
                     }
                     Raza.Enano -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.enano_brujo_joven"
-                            EstadoVital.Adulto -> return "R.drawable.enano_brujo_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.enano_brujo_viejo"
+                            EstadoVital.Joven -> return "enano_brujo_joven"
+                            EstadoVital.Adulto -> return "enano_brujo_adulto"
+                            EstadoVital.Anciano -> return "enano_brujo_viejo"
                         }
                     }
                     Raza.Maldito -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.maldito_brujo_joven"
-                            EstadoVital.Adulto -> return "R.drawable.maldito_brujo_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.maldito_brujo_viejo"
+                            EstadoVital.Joven -> return "maldito_brujo_joven"
+                            EstadoVital.Adulto -> return "maldito_brujo_adulto"
+                            EstadoVital.Anciano -> return "maldito_brujo_viejo"
                         }
                     }
                 }
@@ -167,30 +168,30 @@ class Personaje(
                 when(raza){
                     Raza.Humano -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.humano_mago_joven"
-                            EstadoVital.Adulto -> return "R.drawable.humano_mago_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.humano_mago_viejo"
+                            EstadoVital.Joven -> return "humano_mago_joven"
+                            EstadoVital.Adulto -> return "humano_mago_adulto"
+                            EstadoVital.Anciano -> return "humano_mago_viejo"
                         }
                     }
                     Raza.Elfo -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.elfo_mago_joven"
-                            EstadoVital.Adulto -> return "R.drawable.elfo_mago_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.elfo_mago_viejo"
+                            EstadoVital.Joven -> return "elfo_mago_joven"
+                            EstadoVital.Adulto -> return "elfo_mago_adulto"
+                            EstadoVital.Anciano -> return "elfo_mago_viejo"
                         }
                     }
                     Raza.Enano -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.enano_mago_joven"
-                            EstadoVital.Adulto -> return "R.drawable.enano_mago_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.enano_mago_viejo"
+                            EstadoVital.Joven -> return "enano_mago_joven"
+                            EstadoVital.Adulto -> return "enano_mago_adulto"
+                            EstadoVital.Anciano -> return "enano_mago_viejo"
                         }
                     }
                     Raza.Maldito -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven -> return "R.drawable.maldito_mago_joven"
-                            EstadoVital.Adulto -> return "R.drawable.maldito_mago_adulto"
-                            EstadoVital.Anciano -> return "R.drawable.maldito_mago_viejo"
+                            EstadoVital.Joven -> return "maldito_mago_joven"
+                            EstadoVital.Adulto -> return "maldito_mago_adulto"
+                            EstadoVital.Anciano -> return "maldito_mago_viejo"
                         }
                     }
                 }
@@ -199,30 +200,30 @@ class Personaje(
                 when(raza){
                     Raza.Humano -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven ->  return "R.drawable.humano_guerrero_joven"
-                            EstadoVital.Adulto ->  return "R.drawable.humano_guerrero_adulto"
-                            EstadoVital.Anciano ->  return "R.drawable.humano_guerrero_viejo"
+                            EstadoVital.Joven ->  return "humano_guerrero_joven"
+                            EstadoVital.Adulto ->  return "humano_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "humano_guerrero_viejo"
                         }
                     }
                     Raza.Elfo -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven ->  return "R.drawable.elfo_guerrero_joven"
-                            EstadoVital.Adulto ->  return "R.drawable.elfo_guerrero_adulto"
-                            EstadoVital.Anciano ->  return "R.drawable.elfo_guerrero_viejo"
+                            EstadoVital.Joven ->  return "elfo_guerrero_joven"
+                            EstadoVital.Adulto ->  return "elfo_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "elfo_guerrero_viejo"
                         }
                     }
                     Raza.Enano -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven ->  return "R.drawable.enano_guerrero_joven"
-                            EstadoVital.Adulto ->  return "R.drawable.enano_guerrero_adulto"
-                            EstadoVital.Anciano ->  return "R.drawable.enano_guerrero_viejo"
+                            EstadoVital.Joven ->  return "enano_guerrero_joven"
+                            EstadoVital.Adulto ->  return "enano_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "enano_guerrero_viejo"
                         }
                     }
                     Raza.Maldito -> {
                         when(this.estadoVital){
-                            EstadoVital.Joven ->  return "R.drawable.maldito_guerrero_joven"
-                            EstadoVital.Adulto ->  return "R.drawable.maldito_guerrero_adulto"
-                            EstadoVital.Anciano ->  return "R.drawable.maldito_guerrero_viejo"
+                            EstadoVital.Joven ->  return "maldito_guerrero_joven"
+                            EstadoVital.Adulto ->  return "maldito_guerrero_adulto"
+                            EstadoVital.Anciano ->  return "maldito_guerrero_viejo"
                         }
                     }
                 }
@@ -286,107 +287,6 @@ class Personaje(
             else -> 100 // Valor por defecto si el nivel está fuera del rango especificado
         }
     }
-    /*
-    private fun calcularImagen(){
-        imagen = when(clase){
-            "Brujo" -> {
-                when(raza){
-                    "Humano" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
-                        }
-                    }
-                    "Elfo" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
-                        }
-                    }
-                    "Enano" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
-                        }
-                    }
-                    "Maldito" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
-                        }
-                    }
-                }
-            }
-            "Mago" -> {
-                when(raza){
-                    "Humano" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.humano_mago_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
-                        }
-                    }
-                    "Elfo" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
-                        }
-                    }
-                    "Enano" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.enano_mago_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
-                        }
-                    }
-                    "Maldito" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
-                        }
-                    }
-                }
-            }
-            "Guerrero" -> {
-                when(raza){
-                    "Humano" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
-                        }
-                    }
-                    "Elfo" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
-                        }
-                    }
-                    "Enano" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
-                        }
-                    }
-                    "Maldito" -> {
-                        when(estadoVital){
-                            "Joven" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
-                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
-                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
-                        }
-                    }
-                }
-            }
-        }
-    }*/
 
     private fun calcularAtaque() {
         ataque = when (nivel) {

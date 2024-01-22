@@ -1,11 +1,12 @@
 package com.example.proyectopmdm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class VerPersonajeActivity : AppCompatActivity() {
 
@@ -13,18 +14,23 @@ class VerPersonajeActivity : AppCompatActivity() {
     private lateinit var btnVolver: Button
     private lateinit var btnJugar: Button
     private lateinit var imagen: ImageView
+    private val TAG = "LoginActivity"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
+        Log.d(TAG, "Cambio a Actividad {VerPersonajeactivity}")
         // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_personaje)
 
-        var personaje: Personaje? = null
+        var personaje: Personaje  = intent.getSerializableExtra("Personaje") as Personaje
         // Asignamos valores a los textView
 
-        personaje = intent.getSerializableExtra("Personaje") as Personaje
+        Log.d(TAG, "Recogida del Personaje en el Intent")
+
+
 
         val nombre = findViewById<TextView>(R.id.varNombre)
         val expNivel = findViewById<TextView>(R.id.textExpNivel)
@@ -36,7 +42,11 @@ class VerPersonajeActivity : AppCompatActivity() {
         val defensa = findViewById<TextView>(R.id.varDefensa)
         val suerte = findViewById<TextView>(R.id.varSuerte)
 
-        nombre.text = personaje.getNombre().toString()
+        Log.d(TAG, "Asignacion de los parametros del Personaje a la Actividad")
+
+        nombre.text = personaje.getNombre()
+        Log.d(TAG, "nombre: ${personaje.getNombre()}")
+
         expNivel.text = "${personaje.getExperiencia()}/${personaje.getNivel()}"
         clase.text = personaje.getClase().toString()
         raza.text = personaje.getRaza().toString()
@@ -46,15 +56,15 @@ class VerPersonajeActivity : AppCompatActivity() {
         defensa.text = personaje.getDefensa().toString()
         suerte.text = personaje.getSuerte().toString()
 
+
         // Asignamos imagen
         imagen = findViewById<ImageView>(R.id.imageView2)
-        imagen.setImageResource(intent.getIntExtra("Imagen", 0))
 
-        //imagen = (personaje.getImage())
-
+        Log.d(TAG, "Asignacion de la imagen del Personaje a la Actividad")
 
 
-        // Funcion de los botones
+        imagen.setImageResource(resources.getIdentifier(personaje.getImagen(), "drawable", packageName))
+
 
         btnVolver=findViewById(R.id.btnVolverCrearPersonaje)
         btnJugar=findViewById(R.id.btnJugar)
