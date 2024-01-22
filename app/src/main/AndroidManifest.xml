@@ -12,29 +12,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoPMDM"
         tools:targetApi="31">
-
+        <activity
+            android:name=".DadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".eventos.EnemigoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".eventos.MercaderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".eventos.CiudadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".eventos.ObjetoActivity"
+            android:exported="false" />
         <activity
             android:name=".MenuOpcionesActivity"
             android:exported="false" />
-
         <activity
             android:name=".VerPersonajeActivity"
             android:exported="false" />
-
         <activity
             android:name=".CrearPersonajeActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.proyectopmdm.CrearMonstruoActivity"
+            android:name=".CrearMonstruoActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

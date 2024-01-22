@@ -47,6 +47,14 @@
 
     #Avisos
     <string name="errorCampoVacio">Error: No puede haber campos vacíos.</string>
+    <string name="continuar">CONTINUAR</string>
+    <string name="recoger">RECOGER</string>
+    <string name="comerciar">COMERCIAR</string>
+    <string name="luchar">LUCHAR</string>
+    <string name="huir">HUIR</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="tirar_dado">TIRAR DADO</string>
+    <string name="menu_opciones">MENU OPCIONES</string>
 
 </resources>
 
