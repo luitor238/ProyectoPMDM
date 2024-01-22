@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProyectoPMDM"
         tools:targetApi="31">
         <activity
+            android:name=".DadoActivity"
+            android:exported="false" />
+        <activity
             android:name=".eventos.EnemigoActivity"
             android:exported="false" />
         <activity

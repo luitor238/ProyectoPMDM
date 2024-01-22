@@ -50,6 +50,8 @@
     <string name="luchar">LUCHAR</string>
     <string name="huir">HUIR</string>
     <string name="entrar">ENTRAR</string>
+    <string name="tirar_dado">TIRAR DADO</string>
+    <string name="menu_opciones">MENU OPCIONES</string>
 
 </resources>
 
