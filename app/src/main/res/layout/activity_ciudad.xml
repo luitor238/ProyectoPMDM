@@ -10,16 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#dadbd6">
+        android:background="@drawable/ciudad">
 
-        <ImageView
-            android:id="@+id/imageView4"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/dadoblanco"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="65dp"
+            android:background="@color/primaryColor"
+            android:text="MADRID"
+            android:textSize="55sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/primaryLightColor"/>
         <Button
             android:id="@+id/btnEntrar"
             android:layout_width="match_parent"

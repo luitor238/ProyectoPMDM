@@ -56,6 +56,10 @@
     <string name="tirar_dado">TIRAR DADO</string>
     <string name="menu_opciones">MENU OPCIONES</string>
     <string name="comienza_la_aventura_pulsa_el_dado_para_avanzar_cuidado_puedes_encontrarte_enemigos">Comienza la aventura, pulsa el DADO para avanzar. CUIDADO puedes encontrarte enemigos</string>
+    <string name="objeto">OBJETO</string>
+    <string name="mercader">MERCADER</string>
+    <string name="ciudad">CIUDAD</string>
+    <string name="enemigo">ENEMIGO</string>
 
 </resources>
 

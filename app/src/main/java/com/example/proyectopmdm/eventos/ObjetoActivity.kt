@@ -30,28 +30,28 @@ class ObjetoActivity : AppCompatActivity() {
 
         when (objeto){
             1-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.baston)
             }
             2-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.espada)
             }
             3-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.daga)
             }
             4-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.martillo)
             }
             5-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.garras)
             }
             6-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.pocion)
             }
             7-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.ira)
             }
             8-> {
-                imagen.setImageResource(R.drawable.dado1)
+                imagen.setImageResource(R.drawable.escudo)
             }
             9-> {
                 imagen.setImageResource(R.drawable.dado1)

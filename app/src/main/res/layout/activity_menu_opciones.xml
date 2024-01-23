@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="65dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="152dp"
             android:layout_marginEnd="65dp"
             android:backgroundTint="@color/primaryColor"
             android:elevation="2dp"
@@ -33,26 +33,9 @@
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/btnCrearMonstruo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="65dp"
-            android:backgroundTint="@color/primaryColor"
-            android:elevation="2dp"
-            android:shadowColor="#5C5C5C"
-            android:text="@string/crearMonstruo"
-            android:textColor="#FFFFFF"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            app:cornerRadius="5dp"
-            app:strokeColor="#FFFFFF"/>
 
         <Button
-            android:id="@+id/btnPelear"
+            android:id="@+id/btnEnemigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="?attr/materialButtonOutlinedStyle"
@@ -62,7 +45,7 @@
             android:backgroundTint="@color/primaryColor"
             android:elevation="2dp"
             android:shadowColor="#5C5C5C"
-            android:text="@string/pelear"
+            android:text="@string/enemigo"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
             android:textStyle="bold"
@@ -70,7 +53,7 @@
             app:strokeColor="#FFFFFF" />
 
         <Button
-            android:id="@+id/btnComunicacion"
+            android:id="@+id/btnCiudad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="?attr/materialButtonOutlinedStyle"
@@ -80,12 +63,50 @@
             android:backgroundTint="@color/primaryColor"
             android:elevation="2dp"
             android:shadowColor="#5C5C5C"
-            android:text="@string/comunicacion"
+            android:text="@string/ciudad"
             android:textColor="#FFFFFF"
             android:textSize="16dp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnMercader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="65dp"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:text="@string/mercader"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:strokeColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnObjeto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="65dp"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:text="@string/objeto"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:strokeColor="#FFFFFF"/>
+
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
