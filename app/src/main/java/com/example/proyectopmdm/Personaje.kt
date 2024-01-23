@@ -752,6 +752,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
                         else -> println("Nombre del artículo no válido para el tipo PROTECCION.")
                     }
                 }
+                else-> println("Nada")
             }
         } else {
             println("El peso del artículo excede el límite de la mochila.")
@@ -791,10 +792,48 @@ class Mochila(private var pesoMochila: Int):Serializable {
  *
  **********************************************************************************************************************/
 
-class Articulo(private var tipoArticulo: TipoArticulo, private var nombre: Nombre, private var peso: Int) :Serializable {
+class Articulo(private var nombre: Nombre, private var peso: Int) :Serializable {
 
-    enum class TipoArticulo { ARMA, OBJETO, PROTECCION }
-    enum class Nombre { BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA }
+    enum class TipoArticulo { ARMA, OBJETO, PROTECCION, ORO }
+    enum class Nombre { BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA, MONEDA }
+
+    private var tipoArticulo: TipoArticulo = when (nombre) {
+        Nombre.BASTON, Nombre.ESPADA, Nombre.DAGA, Nombre.MARTILLO, Nombre.GARRAS, Nombre.IRA -> TipoArticulo.ARMA
+        Nombre.POCION -> TipoArticulo.OBJETO
+        Nombre.ESCUDO, Nombre.ARMADURA -> TipoArticulo.PROTECCION
+        Nombre.MONEDA -> TipoArticulo.ORO
+    }
+    private var precio: Int = when (nombre) {
+        Nombre.MONEDA -> 15
+        Nombre.BASTON -> 5
+        Nombre.ESPADA -> 12
+        Nombre.DAGA -> 7
+        Nombre.MARTILLO -> 3
+        Nombre.POCION -> 15
+        Nombre.IRA -> 10
+        Nombre.ARMADURA -> 20
+        Nombre.ESCUDO -> 9
+        else -> 0
+    }
+
+    private var imagen: String = when (nombre) {
+        Nombre.BASTON -> "R.drawable.baston"
+        Nombre.ESPADA -> "R.drawable.espada"
+        Nombre.DAGA -> "R.drawable.daga"
+        Nombre.MARTILLO -> "R.drawable.martillo"
+        Nombre.GARRAS -> "R.drawable.garras"
+        Nombre.POCION -> "R.drawable.pocion"
+        Nombre.IRA -> "R.drawable.ira"
+        Nombre.ESCUDO -> "R.drawable.escudo"
+        Nombre.ARMADURA -> "R.drawable.armadura"
+        Nombre.MONEDA -> "R.drawable.moneda"
+    }
+
+    init{
+        if(nombre==Nombre.MONEDA)
+            peso=0
+    }
+
 
     fun getPeso(): Int {
         return peso
@@ -804,6 +843,12 @@ class Articulo(private var tipoArticulo: TipoArticulo, private var nombre: Nombr
     }
     fun getTipoArticulo(): TipoArticulo {
         return tipoArticulo
+    }
+    fun getPrecio(): Int {
+        return precio
+    }
+    fun getImagen(): String {
+        return imagen
     }
     fun getAumentoAtaque(): Int {
         return when (nombre) {
