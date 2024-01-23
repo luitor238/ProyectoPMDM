@@ -4,56 +4,225 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D4DADA"
     tools:context=".eventos.ObjetoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="601dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/carta_avatar1"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewNombre"
+                android:text=""
+                android:layout_width="118dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="31dp"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textViewTipoArticulo"
+                android:text=""
+                android:layout_width="92dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="31dp"
+                android:textAlignment="viewEnd"
+                android:textSize="16sp"
+                android:textColor="@color/material_dynamic_neutral50"
+                />
+
+        </LinearLayout>
+
+
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView"
+            android:layout_width="271dp"
+            android:layout_height="209dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/dadoblanco" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/dadoblanco"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
-        <Button
-            android:id="@+id/btnRecoger"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="43dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/peso" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="25dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textViewPeso"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/precio" />
+
+            <TextView
+                android:id="@+id/textViewPrecio"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="25dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="65dp"
-            android:backgroundTint="@color/primaryColor"
-            android:elevation="2dp"
-            android:shadowColor="#5C5C5C"
-            android:text="@string/recoger"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="5dp"
-            app:strokeColor="#FFFFFF"/>
-        <Button
-            android:id="@+id/btnContinuar"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="28dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/aumento_ataque"
+                android:layout_marginStart="48dp"/>
+
+            <TextView
+                android:id="@+id/textViewAumentoAtaque"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginStart="0dp"
+                android:textAlignment="viewEnd"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="65dp"
-            android:backgroundTint="@color/primaryColor"
-            android:elevation="2dp"
-            android:shadowColor="#5C5C5C"
-            android:text="@string/continuar"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="5dp"
-            app:strokeColor="#FFFFFF"/>
+            android:layout_height="3dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="55dp"
+            android:background="@color/material_dynamic_neutral70" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/aumento_defensa"
+                android:layout_marginStart="48dp"/>
+
+            <TextView
+                android:id="@+id/textViewAumentoDefensa"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginStart="0dp"
+                android:textAlignment="viewEnd"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="55dp"
+            android:background="@color/material_dynamic_neutral70" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/aumento_vida"
+                android:layout_marginStart="48dp"/>
+
+            <TextView
+                android:id="@+id/textViewAumentoVida"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_marginStart="0dp"
+                android:textAlignment="viewEnd"/>
+        </LinearLayout>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRecoger"
+        style="?attr/materialButtonOutlinedStyle"
+        android:elevation="2dp"
+        android:shadowColor="#5C5C5C"
+        android:text="@string/recoger"
+        tools:layout_editor_absoluteX="467dp"
+        tools:layout_editor_absoluteY="44dp"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnContinuar"
+        app:layout_constraintEnd_toStartOf="@+id/btnContinuar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/btnContinuar"
+        style="?attr/materialButtonOutlinedStyle"
+        android:text="@string/continuar"
+        tools:layout_editor_absoluteX="467dp"
+        tools:layout_editor_absoluteY="66dp"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#2196F3"
+        android:elevation="2dp"
+        android:shadowColor="#5C5C5C"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#A11818"
+        app:strokeColor="#FFFFFF" />
 </androidx.constraintlayout.widget.ConstraintLayout>

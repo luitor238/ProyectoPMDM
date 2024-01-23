@@ -60,6 +60,11 @@
     <string name="mercader">MERCADER</string>
     <string name="ciudad">CIUDAD</string>
     <string name="enemigo">ENEMIGO</string>
+    <string name="peso">Peso:</string>
+    <string name="precio">Precio:</string>
+    <string name="aumento_vida">Aumento vida:</string>
+    <string name="aumento_defensa">Aumento defensa:</string>
+    <string name="aumento_ataque">Aumento ataque:</string>
 
 </resources>
 
