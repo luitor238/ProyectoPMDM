@@ -45,9 +45,11 @@ class CrearPersonajeActivity : AppCompatActivity() {
         imagen = findViewById(R.id.imageView)
         imagen.setImageResource(R.drawable.personaje_en_blanco)
 
+
         // ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE
         nickname = findViewById<EditText>(R.id.editTextNombre)
-        nombre = nickname.text.toString()
+
+
 
 
         // SPINNERS PARA LA SELECCION DE CLASE, RAZA Y ESTADO VITAL Y ASIGNACION DE SUS RESPECTIVAS VARIABLES
@@ -236,13 +238,13 @@ class CrearPersonajeActivity : AppCompatActivity() {
             btnCrear.setOnClickListener {
 
 
-
-
                 try{
+                    nombre = nickname.text.toString()
                     val razaElegida = if (raza.equals("")) Personaje.Raza.valueOf(Personaje.Raza.Humano.toString()) else Personaje.Raza.valueOf(raza)
                     val claseElegida = if (clase.equals("")) Personaje.Clase.valueOf(Personaje.Clase.Brujo.toString()) else Personaje.Clase.valueOf(clase)
                     val estadoVitalElegido = if (estadoVital.equals("")) Personaje.EstadoVital.valueOf(Personaje.EstadoVital.Joven.toString()) else Personaje.EstadoVital.valueOf(estadoVital)
 
+                    Log.d(TAG," Nombre: ${nombre}")
                     Log.d(TAG, "Raza Intent: $razaElegida")
                     Log.d(TAG, "Clase Intent: $claseElegida")
                     Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
