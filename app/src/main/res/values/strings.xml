@@ -55,6 +55,7 @@
     <string name="entrar">ENTRAR</string>
     <string name="tirar_dado">TIRAR DADO</string>
     <string name="menu_opciones">MENU OPCIONES</string>
+    <string name="comienza_la_aventura_pulsa_el_dado_para_avanzar_cuidado_puedes_encontrarte_enemigos">Comienza la aventura, pulsa el DADO para avanzar. CUIDADO puedes encontrarte enemigos</string>
 
 </resources>
 
