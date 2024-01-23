@@ -64,7 +64,6 @@ class ObjetoActivity : AppCompatActivity() {
         aumentoVida.text = articulo.getAumentoVida().toString()
 
 
-
         //BOTONES
         btnRecoger.setOnClickListener {
             recogerArticulo(articulo)
