@@ -11,11 +11,15 @@ import com.example.proyectopmdm.R
 class MercaderActivity : AppCompatActivity() {
     private lateinit var imagen: ImageView
     private lateinit var btnContinuar: Button
+    private lateinit var btnComerciar: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
 
+
         btnContinuar = findViewById(R.id.btnContinuar)
+        btnComerciar = findViewById(R.id.btnComerciar)
+
 
         btnContinuar.setOnClickListener {
             val intent = Intent(this, DadoActivity::class.java)

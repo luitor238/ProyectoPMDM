@@ -37,6 +37,7 @@
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF"/>
+
         <Button
             android:id="@+id/btnContinuar"
             android:layout_width="match_parent"
