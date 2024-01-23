@@ -74,7 +74,7 @@ class VerPersonajeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnJugar.setOnClickListener {
-            val intent = Intent(this@VerPersonajeActivity, MenuOpcionesActivity::class.java)
+            val intent = Intent(this@VerPersonajeActivity, DadoActivity::class.java)
             startActivity(intent)
         }
     }
