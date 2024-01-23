@@ -40,32 +40,32 @@ class DadoActivity : AppCompatActivity() {
 
 
             when (dado){
-                1-> {imagen.setImageResource(R.drawable.dado1jpg)
+                1-> {imagen.setImageResource(R.drawable.dado1)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, ObjetoActivity::class.java)
                     startActivity(intent)}
-                2-> {imagen.setImageResource(R.drawable.dado2jpg)
+                2-> {imagen.setImageResource(R.drawable.dado2)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, CiudadActivity::class.java)
                     startActivity(intent)}
-                3-> {imagen.setImageResource(R.drawable.dado3jpg)
+                3-> {imagen.setImageResource(R.drawable.dado3)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, MercaderActivity::class.java)
                     startActivity(intent)}
-                4-> {imagen.setImageResource(R.drawable.dado4jpg)
+                4-> {imagen.setImageResource(R.drawable.dado4)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, EnemigoActivity::class.java)
                     startActivity(intent)}
-                5-> {imagen.setImageResource(R.drawable.dado5jpg)
+                5-> {imagen.setImageResource(R.drawable.dado5)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, MenuOpcionesActivity::class.java)
                     startActivity(intent)}
-                6-> {imagen.setImageResource(R.drawable.dado6jpg)
+                6-> {imagen.setImageResource(R.drawable.dado6)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, MenuOpcionesActivity::class.java)
