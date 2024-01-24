@@ -17,6 +17,7 @@ import com.example.proyectopmdm.DadoActivity
 import com.example.proyectopmdm.R
 import kotlin.random.Random
 
+
 class ObjetoActivity : AppCompatActivity() {
 
     private lateinit var nombre1: TextView
@@ -86,6 +87,7 @@ class ObjetoActivity : AppCompatActivity() {
 
 //CLASE PARA LA BASE DE DATOS
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
+
     companion object{
         private const val DATABASE_VERSION = 1
         private const val DATABASE = "Articulo.db"
@@ -98,7 +100,8 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         private const val COLUMN_IMAGEN = "imagen"
     }
     override fun onCreate(db: SQLiteDatabase) {
-        val createTable = "CREATE TABLE $TABLA_ARTICULOS ($KEY_ID INTEGER PRIMARY KEY," +
+        val createTable = "CREATE TABLE $TABLA_ARTICULOS(" +
+                "$KEY_ID INTEGER PRIMARY KEY," +
                 "$COLUMN_NOMBRE TEXT, $COLUMN_PESO INTEGER, $COLUMN_PRECIO INTEGER," +
                 "$COLUMN_TIPOARTICULO TEXT, $COLUMN_IMAGEN TEXT)"
         db.execSQL(createTable)
