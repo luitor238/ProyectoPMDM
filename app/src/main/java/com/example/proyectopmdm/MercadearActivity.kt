@@ -7,128 +7,60 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MercadearActivity : AppCompatActivity(){
+    /*
 
     private lateinit var imagenes: Array<ImageView>
     private lateinit var btnVolver: Array<Button>
+    private lateinit var btnComprar: Array<Button>
+    private lateinit var btnVender: Array<Button>
+    private lateinit var textos: Array<TextView>
     private lateinit var btnComerciar: Button
-    private lateinit var btnComprar: Button
-    private lateinit var btnVender: Button
+    private lateinit var vistas:  Array<View>*/
+    private val TAG = "LoginActivity"
 
 
 
-
-    private lateinit var btnContinuar: Button
-
-
-    private lateinit var nombre1: TextView
-    private lateinit var tipoArticulo: TextView
-    private lateinit var imagen: ImageView
-    private lateinit var peso1: TextView
-    private lateinit var precio: TextView
-    private lateinit var aumentoAtaque: TextView
-    private lateinit var aumentoDefensa: TextView
-    private lateinit var aumentoVida: TextView
-    private lateinit var btnRecoger: Button
-    private lateinit var btnContinuar: Button
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "Comienzo Actividad")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
 
-        imagenes = Array(10) { index -> findViewById<ImageView>(resources.getIdentifier("imagen${index + 1}", "id", packageName)) }
-        btnAtras = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
+        /*
+        try {
 
-        btnContinuar = findViewById(R.id.btnContinuar)
-        btnComerciar = findViewById(R.id.btnComerciar)
+            imagenes = Array(10) { index -> findViewById<ImageView>(resources.getIdentifier("imagen${index + 1}", "id", packageName)) }
+            btnVolver = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
+            textos = Array(3) { index -> findViewById<TextView>(resources.getIdentifier("texto${index + 1}", "id", packageName)) }
+            btnComprar = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnComprar${index + 1}", "id", packageName)) }
+            btnVender = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
+            vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
+            btnComerciar = findViewById(R.id.btnComerciar)
+            Log.d(TAG, "Asignacion Ids Correcta")
+        }catch(e: Exception){
+           // Log.d(TAG, "Asignacion Ids Incorrecta")
+        }*/
 
 
-        btnContinuar.setOnClickListener {
-            val intent = Intent(this, DadoActivity::class.java)
-            startActivity(intent)
-        }
 
-        btnContinuar.setOnClickListener {
-            setContentView(R.layout.activity_objeto)
 
-            nombre1 = findViewById(R.id.textViewNombre)
-            tipoArticulo = findViewById(R.id.textViewTipoArticulo)
-            peso1 = findViewById(R.id.textViewPeso)
-            precio = findViewById(R.id.textViewPrecio)
-            aumentoAtaque = findViewById(R.id.textViewAumentoAtaque)
-            aumentoDefensa = findViewById(R.id.textViewAumentoDefensa)
-            aumentoVida = findViewById(R.id.textViewAumentoVida)
 
-        }
+        /*
+        btnComerciar.setOnClickListener {
+            vistas[0].setOnClickListener {
+                // Cambiar la visibilidad de las vistas
+                if (vistas[0].visibility == View.VISIBLE) { vistas[0].visibility = View.GONE }
+        }*/
+
+
 
 
     }
-}
-
-//CLASE PARA LA BASE DE DATOS
-class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
-
-    companion object{
-        private const val DATABASE_VERSION = 1
-        private const val DATABASE = "Articulo.db"
-        private const val TABLA_ARTICULOS = "articulos"
-        private const val KEY_ID = "_id"
-        private const val COLUMN_NOMBRE = "nombre"
-        private const val COLUMN_PESO = "peso"
-        private const val COLUMN_PRECIO = "precio"
-        private const val COLUMN_TIPOARTICULO = "tipoArticulo"
-        private const val COLUMN_IMAGEN = "imagen"
-    }
-
-    override fun onCreate(db: SQLiteDatabase) {
-        val createTable = "CREATE TABLE $TABLA_ARTICULOS(" +
-                "$KEY_ID INTEGER PRIMARY KEY," +
-                "$COLUMN_NOMBRE TEXT, $COLUMN_PESO INTEGER, $COLUMN_PRECIO INTEGER," +
-                "$COLUMN_TIPOARTICULO TEXT, $COLUMN_IMAGEN TEXT)"
-        db.execSQL(createTable)
-    }
-
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLA_ARTICULOS")
-        onCreate(db)
-    }
-
-    fun insertarArticulo(articulo: Articulo){
-        val db =this.writableDatabase
-        val values = ContentValues().apply{
-            put(COLUMN_NOMBRE, articulo.getNombre().toString())
-            put(COLUMN_PESO, articulo.getPeso())
-            put(COLUMN_PRECIO, articulo.getPrecio())
-            put(COLUMN_TIPOARTICULO,articulo.getTipoArticulo().toString())
-            put(COLUMN_IMAGEN,articulo.getImagen())
-        }
-        db.insert(TABLA_ARTICULOS, null, values)
-        db.close()
-    }
-
-    @SuppressLint("Range")
-    fun getArticulo(): ArrayList<Articulo> {
-        val articulos = ArrayList<Articulo>()
-        val selectQuery = "SELECT * FROM $TABLA_ARTICULOS"
-        val db= this.readableDatabase
-        val cursor = db.rawQuery(selectQuery, null)
-        if(cursor.moveToFirst()){
-            do{
-                val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
-                val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE))
-                val peso = cursor.getInt(cursor.getColumnIndex(COLUMN_PESO))
-                val precio = cursor.getInt(cursor.getColumnIndex(COLUMN_PRECIO))
-                val tipoArticulo = cursor.getString(cursor.getColumnIndex(COLUMN_TIPOARTICULO))
-                val imagen = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGEN))
-            }while (cursor.moveToNext())
-        }
-        cursor.close()
-        db.close()
-        return articulos
-    }
-
 }

@@ -7,17 +7,20 @@
     tools:context=".eventos.MercaderActivity">
 
     <LinearLayout
+        android:id="@+id/vista1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -95,11 +98,13 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         android:visibility="gone"
+
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageButton
@@ -149,7 +154,6 @@
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="0.5"
-
                     style="?attr/materialButtonOutlinedStyle"
                     android:backgroundTint="@color/primaryColor"
                     android:elevation="2dp"
@@ -162,7 +166,7 @@
                     app:strokeColor="#FFFFFF"/>
 
                 <Button
-                    android:id="@+id/btnVender"
+                    android:id="@+id/btnVender1"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="0.5"
@@ -193,7 +197,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -252,6 +257,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:layout_marginTop="8dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -259,6 +265,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/texto1"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.6"
@@ -268,6 +275,7 @@
 
 
                     <TextView
+                        android:id="@+id/texto2"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.6"
@@ -302,6 +310,7 @@
                     android:layout_marginTop="10dp">
 
                     <ImageButton
+                        android:id="@+id/imagen1"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -310,6 +319,7 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
+                        android:id="@+id/imagen2"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -324,6 +334,7 @@
                     android:layout_marginTop="10dp">
 
                     <ImageButton
+                        android:id="@+id/imagen3"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -332,6 +343,7 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
+                        android:id="@+id/imagen4"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -346,6 +358,7 @@
                     android:layout_marginTop="10dp">
 
                     <ImageButton
+                        android:id="@+id/imagen5"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -354,6 +367,7 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
+                        android:id="@+id/imagen6"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -368,6 +382,7 @@
                     android:layout_marginTop="10dp">
 
                     <ImageButton
+                        android:id="@+id/imagen7"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -376,6 +391,31 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
+                        android:id="@+id/imagen8"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+               </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:id="@+id/imagen9"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/imagen10"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
@@ -406,6 +446,7 @@
                     android:scaleType="fitCenter" />
 
                 <TextView
+                    android:id="@+id/texto3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -420,6 +461,7 @@
                 android:layout_weight="0.3"/>
 
             <Button
+                android:id="@+id/btnComprar2"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -427,7 +469,7 @@
                 android:backgroundTint="@color/primaryColor"
                 android:elevation="2dp"
                 android:shadowColor="#5C5C5C"
-                android:text="@string/verPersonaje"
+                android:text="@string/comprar"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
