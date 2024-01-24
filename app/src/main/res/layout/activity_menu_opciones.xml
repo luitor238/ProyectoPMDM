@@ -28,7 +28,7 @@
             android:shadowColor="#5C5C5C"
             android:text="@string/verPersonaje"
             android:textColor="#FFFFFF"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF" />
@@ -47,7 +47,7 @@
             android:shadowColor="#5C5C5C"
             android:text="@string/enemigo"
             android:textColor="#FFFFFF"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF" />
@@ -65,7 +65,7 @@
             android:shadowColor="#5C5C5C"
             android:text="@string/ciudad"
             android:textColor="#FFFFFF"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF"/>
@@ -83,7 +83,7 @@
             android:shadowColor="#5C5C5C"
             android:text="@string/mercader"
             android:textColor="#FFFFFF"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF"/>
@@ -101,7 +101,25 @@
             android:shadowColor="#5C5C5C"
             android:text="@string/objeto"
             android:textColor="#FFFFFF"
-            android:textSize="16dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:strokeColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnMochila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="65dp"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:text="@string/mochila"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
             app:strokeColor="#FFFFFF"/>

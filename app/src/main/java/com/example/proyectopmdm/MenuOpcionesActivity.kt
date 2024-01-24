@@ -4,11 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.proyectopmdm.eventos.CiudadActivity
+import com.example.proyectopmdm.eventos.EnemigoActivity
+import com.example.proyectopmdm.eventos.MercaderActivity
+import com.example.proyectopmdm.eventos.ObjetoActivity
 
-private lateinit var verPersonaje: Button
-private lateinit var crearMonstruo: Button
-private lateinit var pelear: Button
-private lateinit var comunicacion: Button
+private lateinit var btnverPersonaje: Button
+private lateinit var btnenemigo: Button
+private lateinit var btnciudad: Button
+private lateinit var btnmercader: Button
+private lateinit var btnobjeto: Button
+private lateinit var btnMochila: Button
 
 class MenuOpcionesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,30 +23,37 @@ class MenuOpcionesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_opciones)
 
-        verPersonaje = findViewById(R.id.btnVerPersonaje)
-        crearMonstruo = findViewById(R.id.btnCrearMonstruo)
-        pelear = findViewById(R.id.btnPelear)
-        comunicacion = findViewById(R.id.btnComunicacion)
+        btnverPersonaje = findViewById(R.id.btnVerPersonaje)
+        btnenemigo = findViewById(R.id.btnEnemigo)
+        btnciudad = findViewById(R.id.btnCiudad)
+        btnmercader = findViewById(R.id.btnMercader)
+        btnobjeto = findViewById(R.id.btnObjeto)
+        btnMochila = findViewById(R.id.btnMochila)
 
-        verPersonaje.setOnClickListener{
+        btnverPersonaje.setOnClickListener{
             val intent = Intent(this,VerPersonajeActivity::class.java)
             startActivity(intent)
         }
-        /*
-        crearMonstruo.setOnClickListener {
-            val intent 0 Intent(this,CrearMonstruoActivity::class.java)
+        btnenemigo.setOnClickListener{
+            val intent = Intent(this,EnemigoActivity::class.java)
             startActivity(intent)
         }
-        pelear.setOnClickListener {
-            val intent = Intent(this,PelearActivity::class.java)
+        btnciudad.setOnClickListener{
+            val intent = Intent(this,CiudadActivity::class.java)
             startActivity(intent)
         }
-        comunicacion.setOnClickListener {
-            val intent= Intent(this,ComunicacionActivity::class.java)
+        btnmercader.setOnClickListener{
+            val intent = Intent(this,MercaderActivity::class.java)
             startActivity(intent)
         }
-         */
-
+        btnobjeto.setOnClickListener{
+            val intent = Intent(this,ObjetoActivity::class.java)
+            startActivity(intent)
+        }
+        btnMochila.setOnClickListener{
+            val intent = Intent(this,ObjetoActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
