@@ -12,6 +12,8 @@
     <string name="verPersonaje">VER PERSONAJE</string>
     <string name="crearMonstruo">CREAR MONSTRUO</string>
     <string name="pelear">PELEAR</string>
+    <string name="comprar">COMPRAR</string>
+    <string name="vender">VENDER</string>
     <string name="comunicacion">COMUNICACION</string>
 
     #Variables
