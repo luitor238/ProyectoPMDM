@@ -9,52 +9,443 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:background="#dadbd6">
+        android:visibility="gone">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:src="@drawable/dadoblanco"
-            android:layout_marginTop="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnVolver1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryLightColor"
+                android:src="@drawable/go_back_button_black"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="298dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Mercader"
+                android:textSize="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnVolver"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"/>
-        <Button
-            android:id="@+id/btnComerciar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="65dp"
-            android:backgroundTint="@color/primaryColor"
-            android:elevation="2dp"
-            android:shadowColor="#5C5C5C"
-            android:text="@string/comerciar"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="5dp"
-            app:strokeColor="#FFFFFF"/>
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnContinuar"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:src="@drawable/mercaderherrero"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp">
+
+                <Button
+                    android:id="@+id/btnComerciar"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:backgroundTint="@color/primaryColor"
+                    android:elevation="2dp"
+                    android:shadowColor="#5C5C5C"
+                    android:text="@string/comerciar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="#FFFFFF"/>
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnVolver2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryLightColor"
+                android:src="@drawable/go_back_button_black"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="298dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Mercader"
+                android:textSize="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnVolver"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:src="@drawable/mercaderherrero"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp">
+
+                <Button
+                    android:id="@+id/btnComprar"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:backgroundTint="@color/primaryColor"
+                    android:elevation="2dp"
+                    android:shadowColor="#5C5C5C"
+                    android:text="@string/comprar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="#FFFFFF"/>
+
+                <Button
+                    android:id="@+id/btnVender"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.5"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:backgroundTint="@color/primaryColor"
+                    android:elevation="2dp"
+                    android:shadowColor="#5C5C5C"
+                    android:text="@string/vender"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="5dp"
+                    app:strokeColor="#FFFFFF"/>
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_marginStart="65dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="65dp"
-            android:backgroundTint="@color/primaryColor"
-            android:elevation="2dp"
-            android:shadowColor="#5C5C5C"
-            android:text="@string/continuar"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="5dp"
-            app:strokeColor="#FFFFFF"/>
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnVolver03"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.1"
+                android:backgroundTint="@color/primaryLightColor"
+                android:src="@drawable/go_back_button_black"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:text="Articulos Mercader"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:cornerRadius="5dp"/>
+
+            <LinearLayout
+                android:id="@+id/aux"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="0.2"
+
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.2"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="0.5"
+                        android:backgroundTint="@color/primaryLightColor"
+                        android:src="@drawable/baseline_attach_money_24" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.3"
+                        android:backgroundTint="@color/primaryLightColor"
+                        android:src="@drawable/peso" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
+                        android:text=" : 842"
+                        android:textSize="22dp"
+                        app:cornerRadius="5dp" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
+                        android:text=" : 54"
+                        android:textSize="22dp"
+                        app:cornerRadius="5dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="560dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/dragon_verde"
+                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.2">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/circulo"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="22dp"
+                    android:textColor="#ffffff"
+                    app:cornerRadius="5dp"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.3"/>
+
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.3"
+                android:backgroundTint="@color/primaryColor"
+                android:elevation="2dp"
+                android:shadowColor="#5C5C5C"
+                android:text="@string/verPersonaje"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="5dp"
+                app:strokeColor="#FFFFFF" />
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@
     <string name="crearMonstruo">CREAR MONSTRUO</string>
     <string name="pelear">PELEAR</string>
     <string name="comprar">COMPRAR</string>
+    <string name="comerciar">COMERCIAR</string>
     <string name="vender">VENDER</string>
     <string name="comunicacion">COMUNICACION</string>
 
@@ -68,6 +69,8 @@
     <string name="aumento_defensa">Aumento defensa:</string>
     <string name="aumento_ataque">Aumento ataque:</string>
     <string name="mochila">MOCHILA</string>
+    <string name="borrar">BORRAR</string>
+    <string name="ver">VER</string>
 
 </resources>
 

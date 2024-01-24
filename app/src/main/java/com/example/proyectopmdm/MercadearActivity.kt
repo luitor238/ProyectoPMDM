@@ -13,9 +13,18 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MercadearActivity : AppCompatActivity(){
-    private lateinit var imagen: ImageView
-    private lateinit var btnContinuar: Button
+
+    private lateinit var imagenes: Array<ImageView>
+    private lateinit var btnVolver: Array<Button>
     private lateinit var btnComerciar: Button
+    private lateinit var btnComprar: Button
+    private lateinit var btnVender: Button
+
+
+
+
+    private lateinit var btnContinuar: Button
+
 
     private lateinit var nombre1: TextView
     private lateinit var tipoArticulo: TextView
@@ -29,8 +38,10 @@ class MercadearActivity : AppCompatActivity(){
     private lateinit var btnContinuar: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_mercader)
+        setContentView(R.layout.activity_mercader)
 
+        imagenes = Array(10) { index -> findViewById<ImageView>(resources.getIdentifier("imagen${index + 1}", "id", packageName)) }
+        btnAtras = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
 
         btnContinuar = findViewById(R.id.btnContinuar)
         btnComerciar = findViewById(R.id.btnComerciar)
