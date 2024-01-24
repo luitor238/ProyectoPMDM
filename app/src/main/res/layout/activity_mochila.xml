@@ -1,28 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="16dp"
+    android:background="#ffed5d"
     tools:context=".MochilaActivity">
 
+
+    <ImageButton
+        android:id="@+id/btnVolver"
+        android:layout_width="82dp"
+        android:layout_height="71dp"
+        android:backgroundTint="#ffed5d"
+        android:src="@drawable/go_back_button_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="410sp"
+        android:layout_height="600sp"
+        android:background="@drawable/mochila"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="0dp"/>
+
+    <TextView
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="80sp"
+        android:paddingTop="35sp"
+        android:text="@string/mochila"
+        android:textAlignment="center"
+        android:textColor="@color/primaryColor"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="SpeakableTextPresentCheck">
+        android:id="@+id/scrollView2"
+        android:layout_width="201dp"
+        android:layout_height="302dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.63"
+        app:layout_constraintStart_toStartOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="@+id/view7">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/LinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--Aqui se añaden los articulos-->
+            <!--Aqui se ñaden los objetos-->
+
+
+            <ImageButton
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00424242"
+                android:src="@tools:sample/avatars"
+                tools:ignore="SpeakableTextPresentCheck" />
+
 
         </LinearLayout>
+
+
     </ScrollView>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btnVer"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="150sp"
+        android:layout_height="60dp"
+
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="65dp"
+        android:layout_weight="0.5"
+        android:backgroundTint="@color/primaryColor"
+        android:elevation="2dp"
+        android:shadowColor="#5C5C5C"
+        android:text="@string/ver"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:strokeColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnBorrar"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="-30dp"
+        android:layout_weight="0.5"
+        android:backgroundTint="@color/primaryColor"
+        android:elevation="2dp"
+        android:shadowColor="#5C5C5C"
+        android:text="@string/borrar"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:strokeColor="#FFFFFF" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

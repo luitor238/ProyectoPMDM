@@ -68,6 +68,8 @@
     <string name="aumento_defensa">Aumento defensa:</string>
     <string name="aumento_ataque">Aumento ataque:</string>
     <string name="mochila">MOCHILA</string>
+    <string name="borrar">BORRAR</string>
+    <string name="ver">VER</string>
 
 </resources>
 
