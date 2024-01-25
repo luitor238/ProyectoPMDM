@@ -6,8 +6,6 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class BBDD {
-}
 
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
 
@@ -98,6 +96,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         val db= this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         if(cursor.moveToFirst()){
+
             do{
                 val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_ARTICULO))
@@ -105,6 +104,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 val precio = cursor.getInt(cursor.getColumnIndex(COLUMN_PRECIO))
                 val tipoArticulo = cursor.getString(cursor.getColumnIndex(COLUMN_TIPOARTICULO))
                 val imagen = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGEN))
+                articulos.add(Articulo(id,nombre, peso))
             }while (cursor.moveToNext())
         }
         cursor.close()
@@ -112,25 +112,25 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         return articulos
     }
 
-    fun getPersonaje(): Personaje {
-        val personaje = Personaje()
+    @SuppressLint("Range")
+    fun getPersonaje(): ArrayList<Personaje> {
+        val personajes = ArrayList<Personaje>()
         val selectQuery = "SELECT * FROM $TABLA_PERSONAJE"
-        val db= this.readableDatabase
-        val datos = db.rawQuery(selectQuery, null)
-
-            val id = datos.getInt(datos.getColumnIndex(KEY_ID_PERSONAJE))
-            val nombre = datos.getString(datos.getColumnIndex(COLUMN_NOMBRE_PERSONAJE))
-            val peso = datos.getInt(datos.getColumnIndex(COLUMN_RAZA))
-            val precio = datos.getInt(datos.getColumnIndex(COLUMN_CLASE))
-            val tipoArticulo = datos.getString(datos.getColumnIndex(COLUMN_ESTADO_VITAL))
-            val imagen = datos.getString(datos.getColumnIndex(COLUMN_KEY_ID_MOCHILA))
-
-
-
-
-        datos.close()
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
+                val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_PERSONAJE))
+                val estadoVital = cursor.getString(cursor.getColumnIndex(COLUMN_ESTADO_VITAL))
+                val clase = cursor.getString(cursor.getColumnIndex(COLUMN_CLASE))
+                val raza = cursor.getString(cursor.getColumnIndex(COLUMN_RAZA))
+                personajes.add(Personaje(nombre, estadoVital, clase, raza))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
         db.close()
-        return personaje
+        return personajes
     }
 
 }
