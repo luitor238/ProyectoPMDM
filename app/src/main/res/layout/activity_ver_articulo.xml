@@ -14,7 +14,7 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/carta_avatar1"
+        android:background="@drawable/carta_en_blanco"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

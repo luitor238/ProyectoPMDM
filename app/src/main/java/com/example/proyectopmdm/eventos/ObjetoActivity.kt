@@ -86,4 +86,3 @@ class ObjetoActivity : AppCompatActivity() {
     }
 }
 
-//CLASE PARA LA BASE DE DATOS

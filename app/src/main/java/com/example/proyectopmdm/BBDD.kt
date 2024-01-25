@@ -19,7 +19,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         private const val TABLA_ARTICULOS = "articulos"
         private const val KEY_ID = "id"
         private const val COLUMN_NOMBRE_ARTICULO = "nombre"
-        private const val COLUMN_PESO = "peso"
+        private const val COLUMN_PESO = "icon_peso"
         private const val COLUMN_PRECIO = "precio"
         private const val COLUMN_TIPOARTICULO = "tipoArticulo"
         private const val COLUMN_IMAGEN = "imagen"

@@ -20,7 +20,7 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
     enum class Clase { Brujo, Mago, Guerrero }
     enum class EstadoVital{Anciano, Joven, Adulto}
 
-    private val mochila = Mochila(10) // Ejemplo de peso máximo de la mochila
+    private val mochila = Mochila(10) // Ejemplo de icon_peso máximo de la mochila
     // Atributos para el equipo del personaje
     private var arma: Articulo? = null
     private var proteccion: Articulo? = null
@@ -695,7 +695,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
                 else-> println("Nada")
             }
         } else {
-            println("El peso del artículo excede el límite de la mochila.")
+            println("El icon_peso del artículo excede el límite de la mochila.")
         }
     }
     fun getContenido(): ArrayList<Articulo> {
