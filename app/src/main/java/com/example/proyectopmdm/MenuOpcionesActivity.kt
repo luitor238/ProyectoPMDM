@@ -51,7 +51,7 @@ class MenuOpcionesActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnMochila.setOnClickListener{
-            val intent = Intent(this,ObjetoActivity::class.java)
+            val intent = Intent(this,MochilaActivity::class.java)
             startActivity(intent)
         }
 

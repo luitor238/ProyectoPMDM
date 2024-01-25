@@ -6,53 +6,7 @@ import android.widget.ImageView
 import java.io.Serializable
 
 
-/**
- * Clase que representa un personaje en el juego.
- *
- * Atributos:
- * - nombre: El nombre del personaje.
- * - raza: La raza del personaje (Humano, Elfo, Enano, Maldito).
- * - clase: La clase del personaje (Brujo, Mago, Guerrero).
- * - salud: La salud actual del personaje.
- * - ataque: La capacidad de ataque del personaje.
- * - experiencia: La experiencia acumulada por el personaje.
- * - nivel: El nivel actual del personaje.
- * - suerte: El nivel de suerte del personaje (entre 0 y 10).
- * - defensa: El nivel de defensa del personaje.
- *
- * Enumeraciones:
- * - Raza: Enumeración para el tipo de raza del personaje.
- * - Clase: Enumeración para el tipo de clase del personaje.
- *
- * Métodos:
- * - getNombre(): Obtiene el nombre del personaje.
- * - setNombre(nuevoNombre: String): Establece un nuevo nombre para el personaje.
- * - getRaza(): Obtiene la raza del personaje.
- * - getSalud(): Obtiene la salud actual del personaje.
- * - setSalud(nuevaSalud: Int): Establece una nueva salud para el personaje.
- * - getAtaque(): Obtiene la capacidad de ataque del personaje.
- * - setAtaque(nuevoAtaque: Int): Establece una nueva capacidad de ataque para el personaje.
- * - getClase(): Obtiene la clase del personaje.
- * - setClase(nuevaClase: Clase): Establece una nueva clase para el personaje.
- * - getExperiencia(): Obtiene la experiencia acumulada por el personaje.
- * - setExperiencia(experienciaGanada: Int): Añade experiencia al personaje y gestiona el nivel.
- * - getNivel(): Obtiene el nivel actual del personaje.
- * - subirNivel(): Incrementa el nivel del personaje y ajusta salud y ataque.
- * - calcularSalud(): Calcula el valor de salud en función del nivel.
- * - calcularAtaque(): Calcula el valor de ataque en función del nivel.
- * - calcularDefensa(): Calcula el valor de defensa en función del nivel.
- * - pelea(monstruo: Monstruo): Simula una pelea entre el personaje y un monstruo.
- * - habilidad(): Activa la habilidad especial del personaje según su clase.
- * - entrenar(tiempoDeEntrenamiento: Int): Simula el entrenamiento del personaje.
- * - realizarMision(tipoMision: String, dificultad: String): Simula la participación del personaje en una misión.
- * - toString(): Genera una representación en texto del personaje.
- */
-class Personaje  (
-    private var nombre: String,
-    private val raza: Raza,
-    private var clase: Clase,
-    private var estadoVital: EstadoVital
-) :Serializable {
+class Personaje  (private var nombre: String, private val raza: Raza, private var clase: Clase, private var estadoVital: EstadoVital) :Serializable {
 
     private var salud: Int = 0
     private var ataque: Int = 0
@@ -697,21 +651,7 @@ class Personaje  (
     }
 
 }
-/***********************************************************************************************************************
- *  CLASE: Mochila
- *  CONSTRUCTOR:
- *      pesoMochila      - > Peso máximo que puede soportar la mochila (Int)
- *
- *  METODOS
- *      getPesoMochila()        - > Devuelve el peso máximo como Int
- *      addArticulo()           - > Añade un artículo (clase Articulo) a la mochila, comprobando que el peso del
- *                                  artículo sumado al peso total del resto de artículos de la Mochila no supere el
- *                                  límite (pesoMochila)
- *      getContenido()          - > Devuelve el ArrayList de artículos que contiene la mochila
- *      findObjeto(nombre)      - > Devuelve la posición del artículo que cuyo nombre (Articulo.Nombre) pasamos como
- *                                  entrada o -1 si no lo encuentra
- *
- **********************************************************************************************************************/
+
 class Mochila(private var pesoMochila: Int):Serializable {
     private var contenido=ArrayList<Articulo>()
 
@@ -772,25 +712,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
         }
     }
 }
-/***********************************************************************************************************************
- *  CLASE: Articulo
- *  CONSTRUCTOR:
- *      tipoArticulo  - > Enumeración con valores ARMA, OBJETO, PROTECCION
- *      nombre        - > Enumeración con valores BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA
- *      peso          - > Peso del artículo
- *
- *  METODOS
- *      getPeso()           - > Devuelve el peso como Int
- *      getNombre()         - > Devuelve el nombre del artículo
- *      getTipoArticulo()   - > Devuelve el tipo del artículo
- *      toString()          - > Sobreescribimos el método toString para darle formato a la visualización de los
- *                              artículos
- *      getAumentoAtaque()  - > Devuelve el aumento de ataque según el nombre del arma o si el objeto es IRA
- *      getAumentoDefensa() - > Devuelve el aumento de defensa según el nombre de la proteccion
- *      getAumentoVida()    - > Devuelve el aumento de vida si el objeto es POCION
- *
- *
- **********************************************************************************************************************/
+
 
 class Articulo(private var nombre: Nombre, private var peso: Int) :Serializable {
 

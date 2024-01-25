@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ class VerPersonajeActivity : AppCompatActivity() {
     private val TAG = "LoginActivity"
 
 
+    @SuppressLint("DiscouragedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
 
 

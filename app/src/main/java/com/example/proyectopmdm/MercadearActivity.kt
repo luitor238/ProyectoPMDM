@@ -33,24 +33,22 @@ class MercadearActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
 
-        /*
+
         try {
+            /*
+           imagenes = Array(10) { index -> findViewById<ImageView>(resources.getIdentifier("imagen${index + 1}", "id", packageName)) }
+           btnVolver = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
+           textos = Array(3) { index -> findViewById<TextView>(resources.getIdentifier("texto${index + 1}", "id", packageName)) }
+           btnComprar = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnComprar${index + 1}", "id", packageName)) }
+           btnVender = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
+           vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
+           btnComerciar = findViewById(R.id.btnComerciar)
+           */
 
-            imagenes = Array(10) { index -> findViewById<ImageView>(resources.getIdentifier("imagen${index + 1}", "id", packageName)) }
-            btnVolver = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
-            textos = Array(3) { index -> findViewById<TextView>(resources.getIdentifier("texto${index + 1}", "id", packageName)) }
-            btnComprar = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnComprar${index + 1}", "id", packageName)) }
-            btnVender = Array(3) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
-            vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
-            btnComerciar = findViewById(R.id.btnComerciar)
-            Log.d(TAG, "Asignacion Ids Correcta")
-        }catch(e: Exception){
-           // Log.d(TAG, "Asignacion Ids Incorrecta")
-        }*/
-
-
-
-
+           Log.d(TAG, "Asignacion Ids Correcta")
+       }catch(e: Exception){
+           Log.d(TAG, "Asignacion Ids Incorrecta")
+       }
 
         /*
         btnComerciar.setOnClickListener {
@@ -58,9 +56,6 @@ class MercadearActivity : AppCompatActivity(){
                 // Cambiar la visibilidad de las vistas
                 if (vistas[0].visibility == View.VISIBLE) { vistas[0].visibility = View.GONE }
         }*/
-
-
-
 
     }
 }
