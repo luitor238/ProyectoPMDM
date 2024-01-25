@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.io.Serializable
 
 
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
@@ -19,7 +20,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         private const val TABLA_ARTICULOS = "articulos"
         private const val KEY_ID = "id"
         private const val COLUMN_NOMBRE_ARTICULO = "nombre"
-        private const val COLUMN_PESO = "peso"
+        private const val COLUMN_PESO = "icon_peso"
         private const val COLUMN_PRECIO = "precio"
         private const val COLUMN_TIPOARTICULO = "tipoArticulo"
         private const val COLUMN_IMAGEN = "imagen"
@@ -66,9 +67,6 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         val values = ContentValues().apply{
             put(COLUMN_NOMBRE_ARTICULO, articulo.getNombre().toString())
             put(COLUMN_PESO, articulo.getPeso())
-            put(COLUMN_PRECIO, articulo.getPrecio())
-            put(COLUMN_TIPOARTICULO,articulo.getTipoArticulo().toString())
-            put(COLUMN_IMAGEN,articulo.getImagen())
         }
         db.insert(TABLA_ARTICULOS, null, values)
         db.close()
@@ -96,14 +94,12 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         val db= this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         if(cursor.moveToFirst()){
+            //class Articulo(private var id: Int, private var nombre: com.example.proyectopmdm.Articulo.Nombre, private var peso: Int) :
 
             do{
                 val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_ARTICULO))
                 val peso = cursor.getInt(cursor.getColumnIndex(COLUMN_PESO))
-                val precio = cursor.getInt(cursor.getColumnIndex(COLUMN_PRECIO))
-                val tipoArticulo = cursor.getString(cursor.getColumnIndex(COLUMN_TIPOARTICULO))
-                val imagen = cursor.getString(cursor.getColumnIndex(COLUMN_IMAGEN))
                 articulos.add(Articulo(id,nombre, peso))
             }while (cursor.moveToNext())
         }

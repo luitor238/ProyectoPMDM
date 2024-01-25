@@ -1,8 +1,6 @@
 package com.example.proyectopmdm
 
-import android.util.Log
 import android.widget.ImageView
-
 import java.io.Serializable
 
 
@@ -20,7 +18,7 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
     enum class Clase { Brujo, Mago, Guerrero }
     enum class EstadoVital{Anciano, Joven, Adulto}
 
-    private val mochila = Mochila(10) // Ejemplo de peso máximo de la mochila
+    private val mochila = Mochila(10) // Ejemplo de icon_peso máximo de la mochila
     // Atributos para el equipo del personaje
     private var arma: Articulo? = null
     private var proteccion: Articulo? = null
@@ -695,7 +693,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
                 else-> println("Nada")
             }
         } else {
-            println("El peso del artículo excede el límite de la mochila.")
+            println("El icon_peso del artículo excede el límite de la mochila.")
         }
     }
     fun getContenido(): ArrayList<Articulo> {
@@ -714,7 +712,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
 }
 
 
-class Articulo(private var id: Int, private var nombre: Articulo, private var peso: Int) :Serializable {
+class Articulo(private var id: Int, private var nombre: Nombre, private var peso: Int) :Serializable {
 
     enum class TipoArticulo { ARMA, OBJETO, PROTECCION, ORO }
     enum class Nombre { BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA, MONEDA }
@@ -800,3 +798,28 @@ class Articulo(private var id: Int, private var nombre: Articulo, private var pe
         return "[Tipo Artículo:$tipoArticulo, Nombre:$nombre, Peso:$peso]"
     }
 }
+
+class MyAppGlobals private constructor() {
+    // Variable global
+    var globalPersonaje: Personaje? = null
+
+    companion object {
+        // Referencia a la única instancia de la clase
+        @Volatile
+        private var instance: MyAppGlobals? = null
+
+        // Función para obtener la instancia de la clase
+        fun getInstance(): MyAppGlobals {
+            return instance ?: synchronized(this) {
+                instance ?: MyAppGlobals().also { instance = it }
+            }
+        }
+    }
+
+    // Función para inicializar la variable global del personaje
+    fun initPersonaje(personaje: Personaje) {
+        globalPersonaje = personaje
+    }
+}
+
+
