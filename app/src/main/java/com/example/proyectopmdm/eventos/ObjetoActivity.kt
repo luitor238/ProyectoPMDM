@@ -60,7 +60,7 @@ class ObjetoActivity : AppCompatActivity() {
         //Asignar atributos del articulo a los textView
         nombre1.text = articulo.getNombre().toString()
         tipoArticulo.text = articulo.getTipoArticulo().toString()
-        //imagen.setImageResource(articulo.getImagen().toInt())
+        imagen.setImageResource(resources.getIdentifier(articulo.getImagen(), "drawable", packageName))
         peso1.text = articulo.getPeso().toString()
         precio.text = articulo.getPrecio().toString()
         aumentoAtaque.text = articulo.getAumentoAtaque().toString()

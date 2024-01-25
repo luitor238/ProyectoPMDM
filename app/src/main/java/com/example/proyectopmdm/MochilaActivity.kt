@@ -32,15 +32,19 @@ class MochilaActivity : AppCompatActivity() {
             val intent = Intent(this,MenuOpcionesActivity::class.java)
             startActivity(intent)
         }
-
     }
 
     private fun agregarArticulo(url: Int, descripcion: String) {
         val nuevoArticulo = ImageButton(this)
+
+        // ATRIBUTOS
+        val layoutParams = nuevoArticulo.layoutParams
+        layoutParams.height = 300
+        nuevoArticulo.layoutParams = layoutParams                   // Cambiar el tamaño del ImageButton
         nuevoArticulo.setImageResource(url)
         nuevoArticulo.contentDescription = descripcion
-
-        // Falta personalizar la forma del ImageButton
+        nuevoArticulo.setBackgroundResource(R.color.transparent)
+        nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER    // Cambiar la escala de la imagen dentro del ImageButton
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         linearLayout.addView(nuevoArticulo)
