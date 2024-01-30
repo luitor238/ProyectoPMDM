@@ -749,6 +749,7 @@ class Articulo(private var id: Int, private var nombre: Nombre, private var peso
         Nombre.MONEDA -> "R.drawable.moneda"
     }
 
+
     init{
         if(nombre==Nombre.MONEDA)
             peso=0
@@ -799,19 +800,18 @@ class Articulo(private var id: Int, private var nombre: Nombre, private var peso
     }
 }
 
-class MyAppGlobals private constructor() {
+class variablesGlobales private constructor() {
     // Variable global
     var globalPersonaje: Personaje? = null
 
     companion object {
         // Referencia a la única instancia de la clase
         @Volatile
-        private var instance: MyAppGlobals? = null
+        private var instance: variablesGlobales? = null
 
         // Función para obtener la instancia de la clase
-        fun getInstance(): MyAppGlobals {
-            return instance ?: synchronized(this) {
-                instance ?: MyAppGlobals().also { instance = it }
+        fun getInstance(): variablesGlobales {
+            return instance ?: synchronized(this) { instance ?: variablesGlobales().also { instance = it }
             }
         }
     }
@@ -820,6 +820,7 @@ class MyAppGlobals private constructor() {
     fun initPersonaje(personaje: Personaje) {
         globalPersonaje = personaje
     }
+
 }
 
 
