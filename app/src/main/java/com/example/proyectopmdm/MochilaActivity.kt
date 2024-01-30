@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.example.proyectopmdm.eventos.DatabaseHelper
 
 class MochilaActivity : AppCompatActivity() {
 
@@ -22,7 +21,7 @@ class MochilaActivity : AppCompatActivity() {
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
-        //Agregar os articulos al scroll
+        //Agregar los articulos al scroll
         for(i in 0..articulos.size){
             agregarArticulo(articulos[i].getImagen().toInt(), articulos[i].getNombre().toString())
         }
@@ -34,17 +33,23 @@ class MochilaActivity : AppCompatActivity() {
         }
     }
 
-    private fun agregarArticulo(url: Int, descripcion: String) {
+    private fun agregarArticulo(url: Int, nombre: String) {
         val nuevoArticulo = ImageButton(this)
 
         // ATRIBUTOS
         val layoutParams = nuevoArticulo.layoutParams
         layoutParams.height = 300
-        nuevoArticulo.layoutParams = layoutParams                   // Cambiar el tamaño del ImageButton
+        nuevoArticulo.layoutParams = layoutParams
         nuevoArticulo.setImageResource(url)
-        nuevoArticulo.contentDescription = descripcion
+        nuevoArticulo.contentDescription = nombre
         nuevoArticulo.setBackgroundResource(R.color.transparent)
-        nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER    // Cambiar la escala de la imagen dentro del ImageButton
+        nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER
+
+        nuevoArticulo.setOnClickListener {
+            val intent = Intent(this, VerArticuloActivity::class.java)
+            intent.putExtra("nombre",nombre)
+            startActivity(intent)
+        }
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         linearLayout.addView(nuevoArticulo)

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.proyectopmdm.eventos.DatabaseHelper
 
 class VerArticuloActivity : AppCompatActivity() {
 
@@ -40,8 +39,15 @@ class VerArticuloActivity : AppCompatActivity() {
 
         val dbHelper = DatabaseHelper(this)
 
-        val selectorArticulo = 2    //Crear metodo para que aparezca el articulo seleccionado
+        var selectorArticulo = 0
+        val nombre = intent.getStringExtra("nombre")
         val articulos = dbHelper.getArticulo()
+
+        for (i in 0..articulos.size){
+            if(articulos[i].getNombre().toString()==nombre){
+                selectorArticulo=i
+            }
+        }
 
         //Muestra atributos del articulo
         nombre1.text = articulos[selectorArticulo].getNombre().toString()
