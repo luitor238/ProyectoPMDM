@@ -13,7 +13,6 @@ import com.example.proyectopmdm.Articulo.Nombre
 
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
 
-
     // Constantes para la base de datos y sus columnas
     companion object{
         private const val DATABASE_VERSION = 1
@@ -92,7 +91,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
 
 fun String.toNombre(): Nombre? {
     return try {
-        Nombre.valueOf(this.toUpperCase())
+        return Nombre.valueOf(this.toUpperCase())
     } catch (e: IllegalArgumentException) {
         // Manejar la excepción si el valor no coincide con ninguno del enum
         null
