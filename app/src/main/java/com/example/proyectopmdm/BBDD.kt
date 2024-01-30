@@ -6,6 +6,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import java.io.Serializable
+import com.example.proyectopmdm.Articulo.Nombre
+
+
 
 
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
@@ -25,14 +28,6 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         private const val COLUMN_TIPOARTICULO = "tipoArticulo"
         private const val COLUMN_IMAGEN = "imagen"
 
-        //CONSTANTES DE LA TABLA PERSONAJE
-        private const val TABLA_PERSONAJE = "articulos"
-        private const val KEY_ID_PERSONAJE = "id"
-        private const val COLUMN_NOMBRE_PERSONAJE = "nombrePersonaje"
-        private const val COLUMN_RAZA = "raza"
-        private const val COLUMN_CLASE = "clase"
-        private const val COLUMN_ESTADO_VITAL = "estadoVital"
-        private const val COLUMN_KEY_ID_MOCHILA = "estadoVital"
 
     }
 
@@ -44,19 +39,13 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 "$COLUMN_TIPOARTICULO TEXT, $COLUMN_IMAGEN TEXT)"
         db.execSQL(ARTICULOS)
 
-        val PERSONAJE = "CREATE TABLE $TABLA_PERSONAJE(" +
-                "$KEY_ID_PERSONAJE INTEGER PRIMARY KEY," +
-                "$COLUMN_NOMBRE_PERSONAJE TEXT, $COLUMN_RAZA TEXT, $COLUMN_KEY_ID_MOCHILA INTEGER," +
-                "$COLUMN_CLASE TEXT, $COLUMN_ESTADO_VITAL TEXT,"+
-                "FOREIGN KEY($COLUMN_KEY_ID_MOCHILA) REFERENCES $TABLA_ARTICULOS($KEY_ID))"
-        db.execSQL(PERSONAJE)
+
     }
 
 
     // Borra la tabla existente y la vuelve a crear si hay una actualización en la versión
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLA_ARTICULOS")
-        db.execSQL("DROP TABLE IF EXISTS $TABLA_PERSONAJE")
         onCreate(db)
     }
 
@@ -72,17 +61,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         db.close()
     }
 
-    fun insertarPersonaje(personaje: Personaje){
-        val db =this.writableDatabase
-        val values = ContentValues().apply{
-            put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre())
-            put(COLUMN_RAZA, personaje.getRaza().toString())
-            put(COLUMN_CLASE,personaje.getClase().toString())
-            put(COLUMN_ESTADO_VITAL,personaje.getEstadoVital().toString())
-        }
-        db.insert(TABLA_PERSONAJE, null, values)
-        db.close()
-    }
+
 
 
 
@@ -100,7 +79,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_ARTICULO))
                 val peso = cursor.getInt(cursor.getColumnIndex(COLUMN_PESO))
-                articulos.add(Articulo(id,nombre, peso))
+                articulos.add(Articulo(id,nombre.toNombre()!!, peso))
             }while (cursor.moveToNext())
         }
         cursor.close()
@@ -108,25 +87,14 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         return articulos
     }
 
-    @SuppressLint("Range")
-    fun getPersonaje(): ArrayList<Personaje> {
-        val personajes = ArrayList<Personaje>()
-        val selectQuery = "SELECT * FROM $TABLA_PERSONAJE"
-        val db = this.readableDatabase
-        val cursor = db.rawQuery(selectQuery, null)
-        if (cursor.moveToFirst()) {
-            do {
-                val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
-                val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_PERSONAJE))
-                val estadoVital = cursor.getString(cursor.getColumnIndex(COLUMN_ESTADO_VITAL))
-                val clase = cursor.getString(cursor.getColumnIndex(COLUMN_CLASE))
-                val raza = cursor.getString(cursor.getColumnIndex(COLUMN_RAZA))
-                personajes.add(Personaje(nombre, estadoVital, clase, raza))
-            } while (cursor.moveToNext())
-        }
-        cursor.close()
-        db.close()
-        return personajes
-    }
 
+}
+
+fun String.toNombre(): Nombre? {
+    return try {
+        Nombre.valueOf(this.toUpperCase())
+    } catch (e: IllegalArgumentException) {
+        // Manejar la excepción si el valor no coincide con ninguno del enum
+        null
+    }
 }
