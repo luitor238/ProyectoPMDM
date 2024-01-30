@@ -79,7 +79,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_ARTICULO))
                 val peso = cursor.getInt(cursor.getColumnIndex(COLUMN_PESO))
-                articulos.add(Articulo(id,nombre.toNombre()!!, peso))
+                articulos.add(Articulo(nombre.toNombre()!!, peso))
             }while (cursor.moveToNext())
         }
         cursor.close()

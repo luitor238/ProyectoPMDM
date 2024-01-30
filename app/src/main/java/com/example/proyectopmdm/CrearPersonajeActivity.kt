@@ -16,7 +16,7 @@ import android.widget.TextView
 import java.util.Locale
 
 
-class CrearPersonajeActivity : AppCompatActivity() {
+class  CrearPersonajeActivity : AppCompatActivity() {
 
     private lateinit var spnClase: Spinner
     private lateinit var spnRaza: Spinner
