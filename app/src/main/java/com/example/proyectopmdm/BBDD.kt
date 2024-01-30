@@ -92,7 +92,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
 
 fun String.toNombre(): Nombre? {
     return try {
-        Nombre.valueOf(this.toUpperCase())
+        return Nombre.valueOf(this.toUpperCase())
     } catch (e: IllegalArgumentException) {
         // Manejar la excepción si el valor no coincide con ninguno del enum
         null
