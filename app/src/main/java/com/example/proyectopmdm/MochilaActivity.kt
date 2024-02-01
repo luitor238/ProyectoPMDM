@@ -38,7 +38,7 @@ class MochilaActivity : AppCompatActivity() {
 
         // ATRIBUTOS
         val layoutParams = nuevoArticulo.layoutParams
-        layoutParams.height = 300
+        layoutParams.height = 220
         nuevoArticulo.layoutParams = layoutParams
         nuevoArticulo.setImageResource(url)
         nuevoArticulo.contentDescription = nombre
