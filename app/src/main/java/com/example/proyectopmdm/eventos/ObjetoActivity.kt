@@ -42,6 +42,7 @@ class ObjetoActivity : AppCompatActivity() {
         tipoArticulo = findViewById(R.id.textViewTipoArticulo)
         peso1 = findViewById(R.id.textViewPeso)
         precio = findViewById(R.id.textViewPrecio)
+        imagen = findViewById(R.id.imageView)
         aumentoAtaque = findViewById(R.id.textViewAumentoAtaque)
         aumentoDefensa = findViewById(R.id.textViewAumentoDefensa)
         aumentoVida = findViewById(R.id.textViewAumentoVida)
@@ -61,7 +62,9 @@ class ObjetoActivity : AppCompatActivity() {
         //Asignar atributos del articulo a los textView
         nombre1.text = articulo.getNombre().toString()
         tipoArticulo.text = articulo.getTipoArticulo().toString()
+
         imagen.setImageResource(resources.getIdentifier(articulo.getImagen(), "drawable", packageName))
+
         peso1.text = articulo.getPeso().toString()
         precio.text = articulo.getPrecio().toString()
         aumentoAtaque.text = articulo.getAumentoAtaque().toString()

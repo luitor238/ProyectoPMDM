@@ -737,16 +737,16 @@ class Articulo( private var nombre: Nombre, private var peso: Int) :Serializable
     }
 
     private var imagen: String = when (nombre) {
-        Nombre.BASTON -> "R.drawable.baston"
-        Nombre.ESPADA -> "R.drawable.espada"
-        Nombre.DAGA -> "R.drawable.daga"
-        Nombre.MARTILLO -> "R.drawable.martillo"
-        Nombre.GARRAS -> "R.drawable.garras"
-        Nombre.POCION -> "R.drawable.pocion"
-        Nombre.IRA -> "R.drawable.ira"
-        Nombre.ESCUDO -> "R.drawable.escudo"
-        Nombre.ARMADURA -> "R.drawable.armadura"
-        Nombre.MONEDA -> "R.drawable.moneda"
+        Nombre.BASTON -> "articulo_baston"
+        Nombre.ESPADA -> "articulo_espada"
+        Nombre.DAGA -> "articulo_daga"
+        Nombre.MARTILLO -> "articulo_martillo"
+        Nombre.GARRAS -> "articulo_garras2"
+        Nombre.POCION -> "articulo_pocion2"
+        Nombre.IRA -> "articulo_ira2"
+        Nombre.ESCUDO -> "articulo_escudo"
+        Nombre.ARMADURA -> "articulo_armadura"
+        Nombre.MONEDA -> "articulo_moneda"
     }
 
 

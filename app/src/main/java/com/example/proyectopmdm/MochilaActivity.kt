@@ -17,15 +17,20 @@ class MochilaActivity : AppCompatActivity() {
 
         val dbHelper = DatabaseHelper(this)
 
+        btnVolver = findViewById(R.id.btnVolver)
+
         var articulos = dbHelper.getArticulo()
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
-        //Agregar los articulos al scroll
-        for(i in 0..articulos.size){
-            agregarArticulo(articulos[i].getImagen().toInt(), articulos[i].getNombre().toString())
+        /*
+        if(!articulos.isEmpty()){
+            //Agregar los articulos al scroll
+            for(i in 1..articulos.size){
+                agregarArticulo(articulos[i].getImagen(), articulos[i].getNombre().toString())
+            }
         }
-
+*/
         //Boton volver al menu
         btnVolver.setOnClickListener(){
             val intent = Intent(this,MenuOpcionesActivity::class.java)
@@ -33,14 +38,14 @@ class MochilaActivity : AppCompatActivity() {
         }
     }
 
-    private fun agregarArticulo(url: Int, nombre: String) {
+    private fun agregarArticulo(url: String, nombre: String) {
         val nuevoArticulo = ImageButton(this)
 
         // ATRIBUTOS
         val layoutParams = nuevoArticulo.layoutParams
         layoutParams.height = 220
         nuevoArticulo.layoutParams = layoutParams
-        nuevoArticulo.setImageResource(url)
+        nuevoArticulo.setImageResource(resources.getIdentifier(url, "drawable", packageName))
         nuevoArticulo.contentDescription = nombre
         nuevoArticulo.setBackgroundResource(R.color.transparent)
         nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER
