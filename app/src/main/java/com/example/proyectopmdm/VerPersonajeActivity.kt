@@ -15,6 +15,7 @@ class VerPersonajeActivity : AppCompatActivity() {
     private lateinit var btnVolver: Button
     private lateinit var btnJugar: Button
     private lateinit var imagen: ImageView
+    private lateinit var personajeFinal: variablesGlobales
     private val TAG = "LoginActivity"
 
 
@@ -27,10 +28,15 @@ class VerPersonajeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_personaje)
 
-        var personaje: Personaje  = intent.getSerializableExtra("Personaje") as Personaje
-        // Asignamos valores a los textView
 
-        Log.d(TAG, "Recogida del Personaje en el Intent")
+        // Obtener la instancia única de variablesGlobales
+        val variablesGlobales = variablesGlobales.getInstance()
+
+        // Acceder a la variable global globalPersonaje
+        val personaje = variablesGlobales.globalPersonaje
+
+
+
 
 
 
@@ -46,17 +52,21 @@ class VerPersonajeActivity : AppCompatActivity() {
 
         Log.d(TAG, "Asignacion de los parametros del Personaje a la Actividad")
 
-        nombre.text = personaje.getNombre()
-        Log.d(TAG, "nombre: ${personaje.getNombre()}")
+        if (personaje != null) {
+            Log.d(TAG, "Datos Personaje")
+            Log.d(TAG,"NOMBRE DEL PERSONAJE ${personaje.getNombre()}")
+            nombre.text = personaje.getNombre()
+            expNivel.text = "${personaje.getExperiencia()}/${personaje.getNivel()}"
+            clase.text = personaje.getClase().toString()
+            raza.text = personaje.getRaza().toString()
+            estadoVital.text = personaje.getEstadoVital().toString()
+            salud.text = personaje.getSalud().toString()
+            ataque.text = personaje.getAtaque().toString()
+            defensa.text = personaje.getDefensa().toString()
+            suerte.text = personaje.getSuerte().toString()
 
-        expNivel.text = "${personaje.getExperiencia()}/${personaje.getNivel()}"
-        clase.text = personaje.getClase().toString()
-        raza.text = personaje.getRaza().toString()
-        estadoVital.text = personaje.getEstadoVital().toString()
-        salud.text = personaje.getSalud().toString()
-        ataque.text = personaje.getAtaque().toString()
-        defensa.text = personaje.getDefensa().toString()
-        suerte.text = personaje.getSuerte().toString()
+        }
+
 
 
         // Asignamos imagen
@@ -64,9 +74,15 @@ class VerPersonajeActivity : AppCompatActivity() {
 
         Log.d(TAG, "Asignacion de la imagen del Personaje a la Actividad")
 
-
-        imagen.setImageResource(resources.getIdentifier(personaje.getImagen(), "drawable", packageName))
-
+        if (personaje != null) {
+            imagen.setImageResource(
+                resources.getIdentifier(
+                    personaje.getImagen(),
+                    "drawable",
+                    packageName
+                )
+            )
+        }
 
         btnVolver=findViewById(R.id.btnVolverCrearPersonaje)
         btnJugar=findViewById(R.id.btnJugar)

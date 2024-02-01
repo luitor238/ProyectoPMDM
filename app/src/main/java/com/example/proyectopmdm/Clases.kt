@@ -802,7 +802,7 @@ class Articulo( private var nombre: Nombre, private var peso: Int) :Serializable
 
 class variablesGlobales private constructor() {
     // Variable global
-    var globalPersonaje: Personaje? = null
+    var  globalPersonaje:  Personaje? = null
 
     companion object {
         // Referencia a la única instancia de la clase

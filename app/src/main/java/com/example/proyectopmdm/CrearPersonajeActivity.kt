@@ -27,6 +27,9 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var btnVolver: Button
     private lateinit var textViewError: TextView
     private lateinit var personaje: Personaje
+
+
+
     private lateinit var nombre: String
     private  var clase: String=""
     private  var raza: String=""
@@ -115,6 +118,52 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         btnCrear = findViewById(R.id.btnCrear)
         btnVolver = findViewById(R.id.btnVolver)
         textViewError = findViewById(R.id.textViewError)
+
+        btnCrear.setOnClickListener {
+            val intent = Intent(this,VerPersonajeActivity::class.java)
+
+
+            try{
+                nombre = nickname.text.toString()
+                val razaElegida = if (raza.equals("")) Personaje.Raza.valueOf(Personaje.Raza.Humano.toString()) else Personaje.Raza.valueOf(raza)
+                val claseElegida = if (clase.equals("")) Personaje.Clase.valueOf(Personaje.Clase.Brujo.toString()) else Personaje.Clase.valueOf(clase)
+                val estadoVitalElegido = if (estadoVital.equals("")) Personaje.EstadoVital.valueOf(Personaje.EstadoVital.Joven.toString()) else Personaje.EstadoVital.valueOf(estadoVital)
+
+                Log.d(TAG," Nombre: ${nombre}")
+                Log.d(TAG, "Raza Intent: $razaElegida")
+                Log.d(TAG, "Clase Intent: $claseElegida")
+                Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
+
+
+
+
+                personaje = Personaje(
+                    nombre,
+                    razaElegida,
+                    claseElegida,
+                    estadoVitalElegido
+                )
+                val personajeFinal = variablesGlobales.getInstance().initPersonaje(personaje)
+
+                Log.d(TAG, "Usuario Creado")
+
+            }catch(e: Exception){
+                Log.d(TAG, "Error al Crear el Personaje")
+            }
+
+            try{
+                startActivity(intent)
+                Log.d(TAG, "Actividad Cambiada")
+            }catch (e: Exception) {
+                Log.d(TAG, "Error al cambiar de Actividad")
+            }
+
+
+        }
+        btnVolver.setOnClickListener {
+            btnVolver.visibility = View.GONE
+            textViewError.text = ""
+        }
 
 
     }
@@ -235,49 +284,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
             // Funcion del boton crear
 
-            btnCrear.setOnClickListener {
 
-
-                try{
-                    nombre = nickname.text.toString()
-                    val razaElegida = if (raza.equals("")) Personaje.Raza.valueOf(Personaje.Raza.Humano.toString()) else Personaje.Raza.valueOf(raza)
-                    val claseElegida = if (clase.equals("")) Personaje.Clase.valueOf(Personaje.Clase.Brujo.toString()) else Personaje.Clase.valueOf(clase)
-                    val estadoVitalElegido = if (estadoVital.equals("")) Personaje.EstadoVital.valueOf(Personaje.EstadoVital.Joven.toString()) else Personaje.EstadoVital.valueOf(estadoVital)
-
-                    Log.d(TAG," Nombre: ${nombre}")
-                    Log.d(TAG, "Raza Intent: $razaElegida")
-                    Log.d(TAG, "Clase Intent: $claseElegida")
-                    Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
-
-
-                    personaje = Personaje(
-                        nombre,
-                        razaElegida,
-                        claseElegida,
-                        estadoVitalElegido
-                    )
-                    Log.d(TAG, "Usuario Creado")
-
-                }catch(e: Exception){
-                    Log.d(TAG, "Error al Crear el Personaje")
-                }
-
-
-                val intent = Intent(this@CrearPersonajeActivity, VerPersonajeActivity::class.java)
-                intent.putExtra("Personaje", personaje)
-                try{
-                    startActivity(intent)
-                    Log.d(TAG, "Actividad Cambiada")
-                }catch (e: Exception) {
-                    Log.d(TAG, "Error al cambiar de Actividad")
-                }
-
-
-            }
-            btnVolver.setOnClickListener {
-                btnVolver.visibility = View.GONE
-                textViewError.text = ""
-            }
 
     }
 
