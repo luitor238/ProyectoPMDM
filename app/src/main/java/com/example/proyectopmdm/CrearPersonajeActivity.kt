@@ -27,6 +27,9 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var btnVolver: Button
     private lateinit var textViewError: TextView
     private lateinit var personaje: Personaje
+
+    val personajeFinal = variablesGlobales.getInstance().initPersonaje(personaje)
+
     private lateinit var nombre: String
     private  var clase: String=""
     private  var raza: String=""
@@ -236,6 +239,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
             // Funcion del boton crear
 
             btnCrear.setOnClickListener {
+                val intent = Intent(this,VerPersonajeActivity::class.java)
 
 
                 try{
@@ -250,21 +254,22 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                     Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
 
 
+
+
                     personaje = Personaje(
                         nombre,
                         razaElegida,
                         claseElegida,
                         estadoVitalElegido
                     )
+                    personajeFinal.initPersonaje(personaje)
+
                     Log.d(TAG, "Usuario Creado")
 
                 }catch(e: Exception){
                     Log.d(TAG, "Error al Crear el Personaje")
                 }
 
-
-                val intent = Intent(this@CrearPersonajeActivity, VerPersonajeActivity::class.java)
-                intent.putExtra("Personaje", personaje)
                 try{
                     startActivity(intent)
                     Log.d(TAG, "Actividad Cambiada")

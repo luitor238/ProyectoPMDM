@@ -13,7 +13,6 @@ import com.example.proyectopmdm.Articulo.Nombre
 
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
 
-
     // Constantes para la base de datos y sus columnas
     companion object{
         private const val DATABASE_VERSION = 1
