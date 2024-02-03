@@ -14,8 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="visible"
-        >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +55,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
-                android:src="@drawable/mercaderherrero"
+                android:src="@drawable/tienda"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <LinearLayout
@@ -200,7 +199,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -317,8 +316,10 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:src="@drawable/articulo_ira2"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000" />
 
                     <ImageButton
                         android:id="@+id/imagen2"
@@ -326,8 +327,10 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:src="@drawable/articulo_pocion2"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -341,8 +344,10 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:src="@drawable/articulo_garras2"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"/>
 
                     <ImageButton
                         android:id="@+id/imagen4"
@@ -350,7 +355,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/navaja"
+                        android:scaleType="fitCenter"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                 </LinearLayout>
 
@@ -365,7 +372,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/articulo_armadura"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
@@ -374,7 +383,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/articulo_espada"
+                        android:scaleType="fitCenter"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
@@ -389,7 +400,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/articulo_escudo"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
@@ -398,7 +411,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/articulo_martillo"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                </LinearLayout>
 
@@ -413,7 +428,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/articulo_baston"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
@@ -422,7 +439,9 @@
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
                         android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
+                        android:src="@drawable/articulo_martillo"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="#00000000"
                         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                 </LinearLayout>
             </LinearLayout>
