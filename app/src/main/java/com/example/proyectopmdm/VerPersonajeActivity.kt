@@ -36,10 +36,6 @@ class VerPersonajeActivity : AppCompatActivity() {
         val personaje = variablesGlobales.globalPersonaje
 
 
-
-
-
-
         val nombre = findViewById<TextView>(R.id.varNombre)
         val expNivel = findViewById<TextView>(R.id.textExpNivel)
         val clase = findViewById<TextView>(R.id.varClase)
@@ -88,7 +84,7 @@ class VerPersonajeActivity : AppCompatActivity() {
         btnJugar=findViewById(R.id.btnJugar)
 
         btnVolver.setOnClickListener {
-            val intent = Intent(this@VerPersonajeActivity, CrearPersonajeActivity::class.java)
+            val intent = Intent(this@VerPersonajeActivity, DadoActivity::class.java)
             startActivity(intent)
         }
         btnJugar.setOnClickListener {

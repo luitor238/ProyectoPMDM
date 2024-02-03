@@ -91,6 +91,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/vista2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +151,7 @@
                 android:layout_marginTop="40dp">
 
                 <Button
-                    android:id="@+id/btnComprar"
+                    android:id="@+id/btnComprar1"
                     android:layout_width="0dp"
                     android:layout_height="60dp"
                     android:layout_weight="0.5"
@@ -192,6 +193,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/vista3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +209,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/btnVolver03"
+                android:id="@+id/btnVolver3"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="0.1"
