@@ -10,10 +10,12 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.proyectopmdm.DadoActivity
+import com.example.proyectopmdm.MenuOpcionesActivity
 import com.example.proyectopmdm.R
+import com.example.proyectopmdm.VerPersonajeActivity
 
 class MercaderActivity : AppCompatActivity() {
-    private lateinit var imagenes: Array<ImageButton>
+    private lateinit var imagenes: Array<Pair<ImageButton, Int>>
     private lateinit var btnVolver: Array<ImageButton>
     private lateinit var btnComprar: Array<Button>
     private lateinit var btnVender: Array<Button>
@@ -26,37 +28,37 @@ class MercaderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
 
-
-
         imagenes = Array(10) { index -> findViewById<ImageButton>(resources.getIdentifier("imagen${index + 1}", "id", packageName)) }
-        Log.d(TAG, "Inicializacion de las imagenes")
-
-
         btnVolver = Array(3) { index -> findViewById<ImageButton>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
-        Log.d(TAG, "Inicializacion de los volver")
-
         textos = Array(3) { index -> findViewById<TextView>(resources.getIdentifier("texto${index + 1}", "id", packageName)) }
-        Log.d(TAG, "Inicializacion de los textos")
-/*
-        btnComprar = Array(2) { index -> findViewById<ImageButton>(resources.getIdentifier("btnComprar${index + 1}", "id", packageName)) }
-        Log.d(TAG, "Inicializacion de los comprar")
-
-        btnVender = Array(1) { index -> findViewById<ImageButton>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
-        Log.d(TAG, "Comienzo Actividad")*/
-
+        btnComprar = Array(2) { index -> findViewById<Button>(resources.getIdentifier("btnComprar${index + 1}", "id", packageName)) }
+        btnVender = Array(1) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
         vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
-        Log.d(TAG, "Inicializacion de las vistas")
-
         btnComerciar = findViewById(R.id.btnComerciar)
-        Log.d(TAG, "Inicializacion boton comerciar")
+        Log.d(TAG, "Inicializacion de los elementos")
 
 
 
         btnComerciar.setOnClickListener {
-                // Cambiar la visibilidad de las vistas
-                if (vistas[1].visibility == View.VISIBLE) {
-                    vistas[1].visibility = View.GONE
+            Log.d(TAG, "Boton comerciar")
+            // Cambiar la visibilidad de las vistas
+                if (vistas[0].visibility == View.VISIBLE) {
+                    vistas[0].visibility = View.GONE
+                    vistas[1].visibility = View.VISIBLE
+                }
+        }
+        btnVolver[0].setOnClickListener {
+            val intent = Intent(this, MenuOpcionesActivity::class.java)
 
+            startActivity(intent)
+        }
+
+        btnComprar[0].setOnClickListener {
+            Log.d(TAG, "Boton comerciar")
+            // Cambiar la visibilidad de las vistas
+            if (vistas[1].visibility == View.VISIBLE) {
+                vistas[1].visibility = View.GONE
+                vistas[2].visibility = View.VISIBLE
             }
         }
     }
