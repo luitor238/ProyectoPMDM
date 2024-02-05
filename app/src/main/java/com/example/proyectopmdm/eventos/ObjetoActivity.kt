@@ -57,7 +57,7 @@ class ObjetoActivity : AppCompatActivity() {
         //Crear articulo aleatorio
         val nombre = Articulo.Nombre.values()[Random.nextInt(Articulo.Nombre.values().size)]
         val peso = Random.nextInt(1, 5)
-        val articulo = Articulo(nombre,peso)
+        val articulo = Articulo(0,nombre,peso)
 
         //Asignar atributos del articulo a los textView
         nombre1.text = articulo.getNombre().toString()

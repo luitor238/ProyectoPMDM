@@ -1,16 +1,27 @@
 package com.example.proyectopmdm
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 
 class MochilaActivity : AppCompatActivity() {
 
-    private lateinit var btnVolver: Button
+    private lateinit var seleccionado: Articulo
+    private lateinit var btnVolver: ImageButton
+    private lateinit var articulos: ArrayList<Articulo>
+
+    private lateinit var btnBorrar: Button
+    private lateinit var btnVer: Button
+    private lateinit var btnUsar: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mochila)
@@ -18,46 +29,116 @@ class MochilaActivity : AppCompatActivity() {
         val dbHelper = DatabaseHelper(this)
 
         btnVolver = findViewById(R.id.btnVolver)
+        btnBorrar = findViewById(R.id.btnBorrar)
+        btnVer = findViewById(R.id.btnVer)
+        btnUsar = findViewById(R.id.btnUsar)
 
-        var articulos = dbHelper.getArticulo()
+        articulos = dbHelper.getArticulo()
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
-        /*
+
         if(!articulos.isEmpty()){
             //Agregar los articulos al scroll
-            for(i in 1..articulos.size){
-                agregarArticulo(articulos[i].getImagen(), articulos[i].getNombre().toString())
+            for(i in 0..(articulos.size-1)){
+                agregarArticulo(articulos[i])
             }
         }
-*/
+        else{
+            Toast.makeText(this,"Mochila Vacia!",Toast.LENGTH_SHORT).show()
+        }
+
         //Boton volver al menu
         btnVolver.setOnClickListener(){
             val intent = Intent(this,MenuOpcionesActivity::class.java)
             startActivity(intent)
         }
-    }
 
-    private fun agregarArticulo(url: String, nombre: String) {
-        val nuevoArticulo = ImageButton(this)
+        //Borrar articulo
+        btnBorrar.setOnClickListener(){
+            articulos = dbHelper.getArticulo()
 
-        // ATRIBUTOS
-        val layoutParams = nuevoArticulo.layoutParams
-        layoutParams.height = 220
-        nuevoArticulo.layoutParams = layoutParams
-        nuevoArticulo.setImageResource(resources.getIdentifier(url, "drawable", packageName))
-        nuevoArticulo.contentDescription = nombre
-        nuevoArticulo.setBackgroundResource(R.color.transparent)
-        nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER
+            //Elimina registro en BBDD
+            dbHelper.eliminarRegistro(seleccionado.id)
 
-        nuevoArticulo.setOnClickListener {
-            val intent = Intent(this, VerArticuloActivity::class.java)
-            intent.putExtra("nombre",nombre)
+            /*for (i in 0..(articulos.size-1)){
+                if(articulos[i].getNombre()== seleccionado.getNombre()) {
+                    dbHelper.eliminarRegistro(i+1)
+                }
+            }*/
+
+            //Ocultamos botones
+            btnBorrar.visibility= View.INVISIBLE
+            btnVer.visibility= View.INVISIBLE
+            btnUsar.visibility= View.INVISIBLE
+
+            //Recargamos articulos en la mochila
+            var i = 0
+            while (i < linearLayout.childCount) {
+                val view = linearLayout.getChildAt(i)
+
+                // Verifica si el hijo es un ImageButton y elimínalo
+                if (view is ImageButton) {
+                    linearLayout.removeViewAt(i)
+                } else {
+                    i++
+                }
+            }
+
+            if(!articulos.isEmpty()){
+                //Agregar los articulos al scroll
+                for(i in 0..(articulos.size-1)){
+                    agregarArticulo(articulos[i])
+                }
+            }
+            else{
+                Toast.makeText(this,"Mochila Vacia!",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnVer.setOnClickListener(){
+            val intent = Intent(this,VerArticuloActivity::class.java)
+            intent.putExtra("articulo",seleccionado)
             startActivity(intent)
         }
 
+        btnUsar.setOnClickListener(){
+
+        }
+
+        dbHelper.close()
+
+    }
+
+    private fun agregarArticulo(articulo: Articulo) {
+        val nuevoArticulo = ImageButton(this)
+        val alturaEnPx = resources.getDimensionPixelSize(
+            R.dimen.tu_altura_imagebutton
+        )
+
+        //ATRIBUTOS del imageButton
+        nuevoArticulo.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            alturaEnPx
+        )
+        nuevoArticulo.setImageResource(resources.getIdentifier(articulo.getImagen(), "drawable", packageName))
+        nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER
+        nuevoArticulo.setBackgroundColor(Color.TRANSPARENT)
+
+
+        //Funcion del boton articulo
+        nuevoArticulo.setOnClickListener {
+            seleccionado = articulo
+            if(btnBorrar.visibility==View.INVISIBLE || btnVer.visibility==View.INVISIBLE || btnUsar.visibility==View.INVISIBLE) {
+                btnBorrar.visibility= View.VISIBLE
+                btnVer.visibility= View.VISIBLE
+                btnUsar.visibility= View.VISIBLE
+            }
+            nuevoArticulo.tag = articulo.id//-----------------------------
+        }
+
+        //Añadir al linearLayout
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         linearLayout.addView(nuevoArticulo)
-
     }
 }

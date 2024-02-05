@@ -712,7 +712,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
 }
 
 
-class Articulo( private var nombre: Nombre, private var peso: Int) :Serializable {
+class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) :Serializable {
 
     enum class TipoArticulo { ARMA, OBJETO, PROTECCION, ORO }
     enum class Nombre { BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA, MONEDA }

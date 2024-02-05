@@ -9,6 +9,8 @@ import android.widget.TextView
 
 class VerArticuloActivity : AppCompatActivity() {
 
+    private lateinit var articulo: Articulo
+
     private lateinit var nombre1: TextView
     private lateinit var tipoArticulo: TextView
     private lateinit var imagen: ImageView
@@ -33,31 +35,22 @@ class VerArticuloActivity : AppCompatActivity() {
         aumentoAtaque = findViewById(R.id.textViewAumentoAtaque)
         aumentoDefensa = findViewById(R.id.textViewAumentoDefensa)
         aumentoVida = findViewById(R.id.textViewAumentoVida)
+        imagen = findViewById(R.id.imageView)
         //Botones
         btnVolver = findViewById(R.id.btnVolver)
 
-
         val dbHelper = DatabaseHelper(this)
 
-        var selectorArticulo = 0
-        val nombre = intent.getStringExtra("nombre")
-        val articulos = dbHelper.getArticulo()
+        articulo = intent.getSerializableExtra("articulo") as Articulo
 
-        for (i in 0..articulos.size){
-            if(articulos[i].getNombre().toString()==nombre){
-                selectorArticulo=i
-            }
-        }
-
-        //Muestra atributos del articulo
-        nombre1.text = articulos[selectorArticulo].getNombre().toString()
-        tipoArticulo.text = articulos[selectorArticulo].getTipoArticulo().toString()
-        imagen.setImageResource(articulos[selectorArticulo].getImagen().toInt())
-        peso1.text = articulos[selectorArticulo].getPeso().toString()
-        precio.text = articulos[selectorArticulo].getPrecio().toString()
-        aumentoAtaque.text = articulos[selectorArticulo].getAumentoAtaque().toString()
-        aumentoDefensa.text = articulos[selectorArticulo].getAumentoDefensa().toString()
-        aumentoVida.text = articulos[selectorArticulo].getAumentoVida().toString()
+        nombre1.text = articulo.getNombre().toString()
+        tipoArticulo.text = articulo.getTipoArticulo().toString()
+        imagen.setImageResource(resources.getIdentifier(articulo.getImagen(), "drawable", packageName))
+        peso1.text = articulo.getPeso().toString()
+        precio.text = articulo.getPrecio().toString()
+        aumentoAtaque.text = articulo.getAumentoAtaque().toString()
+        aumentoDefensa.text = articulo.getAumentoDefensa().toString()
+        aumentoVida.text = articulo.getAumentoVida().toString()
 
 
         btnVolver.setOnClickListener {

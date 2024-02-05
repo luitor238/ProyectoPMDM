@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/textViewNombre"
-                android:layout_width="118dp"
+                android:layout_width="110dp"
                 android:layout_height="24dp"
                 android:layout_marginStart="80dp"
                 android:layout_marginTop="31dp"
@@ -72,14 +72,14 @@
                 android:text="@string/peso" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textViewPeso"
                 android:layout_width="80dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="25dp"
                 android:text="" />
 
             <TextView
-                android:id="@+id/textViewPeso"
+                android:id="@+id/textView10"
                 android:layout_width="50dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="25dp"

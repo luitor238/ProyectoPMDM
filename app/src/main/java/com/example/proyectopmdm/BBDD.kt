@@ -78,12 +78,20 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
                 val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_ARTICULO))
                 val peso = cursor.getInt(cursor.getColumnIndex(COLUMN_PESO))
-                articulos.add(Articulo(nombre.toNombre()!!, peso))
+                articulos.add(Articulo(id,nombre.toNombre()!!, peso))
             }while (cursor.moveToNext())
         }
         cursor.close()
         db.close()
         return articulos
+    }
+
+    fun eliminarRegistro(id: Int): Boolean {
+        val db = this.writableDatabase
+        val whereClause = "$KEY_ID = ?"
+        val whereArgs = arrayOf(id.toString())
+
+        return db.delete(TABLA_ARTICULOS, whereClause, whereArgs) > 0
     }
 
 
