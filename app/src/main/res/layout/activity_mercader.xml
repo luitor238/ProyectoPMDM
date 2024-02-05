@@ -14,8 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="visible"
-        >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +55,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="450dp"
-                android:src="@drawable/mercaderherrero"
+                android:src="@drawable/tienda"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <LinearLayout
@@ -200,7 +199,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -304,126 +303,289 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imagen1"
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
 
-                    <ImageButton
-                        android:id="@+id/imagen2"
+                        <View
+                            android:id="@+id/my_view1"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#00000000"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen1"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view1"
+                            android:layout_alignEnd="@id/my_view1"
+                            android:src="@drawable/articulo_ira2"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
+
+                        <View
+                            android:id="@+id/my_view2"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#00000000"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen2"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view2"
+                            android:layout_alignEnd="@id/my_view2"
+                            android:src="@drawable/articulo_pocion2"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imagen3"
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
 
-                    <ImageButton
-                        android:id="@+id/imagen4"
+                        <View
+                            android:id="@+id/my_view3"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen3"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view3"
+                            android:layout_alignEnd="@id/my_view3"
+                            android:src="@drawable/articulo_garras2"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
+
+                        <View
+                            android:id="@+id/my_view4"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen4"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view4"
+                            android:layout_alignEnd="@id/my_view4"
+                            android:src="@drawable/navaja"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="fitCenter"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imagen5"
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
 
-                    <ImageButton
-                        android:id="@+id/imagen6"
+                        <View
+                            android:id="@+id/my_view5"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen5"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view5"
+                            android:layout_alignEnd="@id/my_view5"
+                            android:src="@drawable/articulo_escudo"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
+
+                        <View
+                            android:id="@+id/my_view6"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen6"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view6"
+                            android:layout_alignEnd="@id/my_view6"
+                            android:src="@drawable/articulo_espada"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="fitCenter"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imagen7"
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
 
-                    <ImageButton
-                        android:id="@+id/imagen8"
+                        <View
+                            android:id="@+id/my_view7"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen7"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view7"
+                            android:layout_alignEnd="@id/my_view7"
+                            android:src="@drawable/articulo_armadura"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-               </LinearLayout>
+                        android:layout_weight="0.5">
+
+                        <View
+                            android:id="@+id/my_view8"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen8"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view8"
+                            android:layout_alignEnd="@id/my_view8"
+                            android:src="@drawable/articulo_martillo"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imagen9"
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
 
-                    <ImageButton
-                        android:id="@+id/imagen10"
+                        <View
+                            android:id="@+id/my_view9"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen9"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view9"
+                            android:layout_alignEnd="@id/my_view9"
+                            android:src="@drawable/articulo_baston"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:layout_margin="10dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/dragon_verde"
-                        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                        android:layout_weight="0.5">
+
+                        <View
+                            android:id="@+id/my_view10"
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:background="#ffffffff"
+                            android:layout_centerInParent="true"/>
+
+                        <ImageButton
+                            android:id="@+id/imagen10"
+                            android:layout_height="200dp"
+                            android:layout_width="match_parent"
+                            android:layout_alignTop="@id/my_view10"
+                            android:layout_alignEnd="@id/my_view10"
+                            android:src="@drawable/articulo_baston"
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:scaleType="centerCrop"
+                            android:backgroundTint="#00000000"  />
+                    </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
@@ -452,7 +614,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="1"
+                    android:text="0"
                     android:textSize="22dp"
                     android:textColor="#ffffff"
                     app:cornerRadius="5dp"/>
@@ -476,7 +638,8 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:cornerRadius="5dp"
-                app:strokeColor="#FFFFFF" />
+                app:strokeColor="#FFFFFF"
+                tools:ignore="TouchTargetSizeCheck" />
 
 
 
