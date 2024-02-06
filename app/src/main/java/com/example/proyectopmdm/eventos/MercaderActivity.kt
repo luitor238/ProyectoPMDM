@@ -11,7 +11,9 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.proyectopmdm.DadoActivity
+import com.example.proyectopmdm.DatabaseHelper
 import com.example.proyectopmdm.MenuOpcionesActivity
 import com.example.proyectopmdm.R
 import com.example.proyectopmdm.VerPersonajeActivity
@@ -48,6 +50,7 @@ class MercaderActivity : AppCompatActivity() {
         btnVender = Array(1) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
         vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
         btnComerciar = findViewById(R.id.btnComerciar)
+        val dbHelper = DatabaseHelper(this)
         Log.d(TAG, "Inicializacion de los elementos")
 
         textos[0].text = personaje?.getDinero().toString()
@@ -69,12 +72,21 @@ class MercaderActivity : AppCompatActivity() {
         }
 
         btnComprar[0].setOnClickListener {
-            Log.d(TAG, "Boton comerciar")
             // Cambiar la visibilidad de las vistas
             if (vistas[1].visibility == View.VISIBLE) {
                 vistas[1].visibility = View.GONE
                 vistas[2].visibility = View.VISIBLE
             }
+        }
+        btnComprar[1].setOnClickListener {
+            imagenes.forEachIndexed { index, (imageButton, value) ->
+                if (imagenes[index].second == 1) {
+                    //dbHelper.insertarArticulo(articulo)
+                    Toast.makeText(this, "Articulo añadido!", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
         }
 
 
