@@ -81,43 +81,69 @@ class MercaderActivity : AppCompatActivity() {
                 vistas[2].visibility = View.VISIBLE
             }
         }
+
+
         btnComprar[1].setOnClickListener {
             imagenes.forEachIndexed { index, (imageButton, value) ->
                 if (imagenes[index].second == 1) {
-                    if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_ira2)){
-
-                        val nombre = Articulo.Nombre.values()[Random.nextInt(Articulo.Nombre.values().size)]
-                        val peso = Random.nextInt(1, 5)
-                        val articulo = Articulo(0,nombre,peso)
-                        dbHelper.insertarArticulo(articulo)
-                        Toast.makeText(this, "Articulo añadido!", Toast.LENGTH_SHORT).show()
-
-                    } else {
-                        if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_pocion2)){
-                        } else {
-                            if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_garras2)){
-                            } else {
-                                if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.navaja)){
-                                } else {
-                                    if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_escudo)){
-                                    } else {
-                                        if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_espada)){
-                                        } else {
-                                            if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_armadura)){
-                                            } else {
-                                                if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_martillo)){
-                                                } else {
-                                                    if(imagenes[index].first.drawable == ContextCompat.getDrawable(this, R.drawable.articulo_baston)){
-                                                    } else {
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                    when (imagenes[index].first.drawable) {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_ira2) -> {
+                            val nombre = Articulo.Nombre.IRA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_pocion2) -> {
+                            val nombre = Articulo.Nombre.POCION
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_garras2) -> {
+                            val nombre = Articulo.Nombre.GARRAS
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.navaja) -> {
+                            val nombre = Articulo.Nombre.DAGA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_escudo) -> {
+                            val nombre = Articulo.Nombre.ESCUDO
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_espada) -> {
+                            val nombre = Articulo.Nombre.ESPADA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_armadura) ->{
+                            val nombre = Articulo.Nombre.ARMADURA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_martillo) ->{
+                            val nombre = Articulo.Nombre.MARTILLO
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_baston) ->{
+                            val nombre = Articulo.Nombre.BASTON
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo)
                         }
                     }
+                    Toast.makeText(this, "Articulos añadidos!", Toast.LENGTH_SHORT).show()
+
                 }
             }
         }

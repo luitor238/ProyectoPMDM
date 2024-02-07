@@ -71,7 +71,6 @@ class ObjetoActivity : AppCompatActivity() {
         aumentoDefensa.text = articulo.getAumentoDefensa().toString()
         aumentoVida.text = articulo.getAumentoVida().toString()
 
-
         //Boton recoger articulo
         btnRecoger.setOnClickListener {
             dbHelper.insertarArticulo(articulo)
