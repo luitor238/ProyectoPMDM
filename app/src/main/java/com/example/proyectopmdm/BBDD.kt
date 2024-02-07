@@ -38,37 +38,6 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 "$COLUMN_TIPOARTICULO TEXT, $COLUMN_IMAGEN TEXT)"
         db.execSQL(ARTICULOS)
 
-        val valoresIniciales = ContentValues().apply {
-            put(COLUMN_NOMBRE_ARTICULO, "IRA")
-            put(COLUMN_PESO, 100)
-            put(COLUMN_PRECIO, 50)
-            put(COLUMN_TIPOARTICULO, "PROTECCION")
-            put(COLUMN_IMAGEN, "articulo_ira2")
-        }
-        db.insert(TABLA_ARTICULOS, null, valoresIniciales)
-
-        val valoresIniciales2 = ContentValues().apply {
-            put(COLUMN_NOMBRE_ARTICULO, "POCION")
-            put(COLUMN_PESO, 100)
-            put(COLUMN_PRECIO, 50)
-            put(COLUMN_TIPOARTICULO, "PROTECCION")
-            put(COLUMN_IMAGEN, "articulo_pocion2")
-        }
-        db.insert(TABLA_ARTICULOS, null, valoresIniciales2)
-
-
-        val valoresIniciales3 = ContentValues().apply {
-            put(COLUMN_NOMBRE_ARTICULO, "GARRAS")
-            put(COLUMN_PESO, 100)
-            put(COLUMN_PRECIO, 50)
-            put(COLUMN_TIPOARTICULO, "PROTECCION")
-            put(COLUMN_IMAGEN, "articulo_garras2")
-        }
-        db.insert(TABLA_ARTICULOS, null, valoresIniciales3)
-
-
-
-
     }
 
 

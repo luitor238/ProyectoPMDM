@@ -727,6 +727,7 @@ class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) 
         Nombre.ESCUDO, Nombre.ARMADURA -> TipoArticulo.PROTECCION
         Nombre.MONEDA -> TipoArticulo.ORO
     }
+
     private var precio: Int = when (nombre) {
         Nombre.MONEDA -> 15
         Nombre.BASTON -> 5
