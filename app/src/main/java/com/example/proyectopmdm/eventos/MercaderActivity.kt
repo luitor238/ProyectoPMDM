@@ -86,13 +86,16 @@ class MercaderActivity : AppCompatActivity() {
         btnComprar[1].setOnClickListener {
             imagenes.forEachIndexed { index, (imageButton, value) ->
                 if (imagenes[index].second == 1) {
+                    Log.d(TAG, "entro al when")
                     when (imagenes[index].first.drawable) {
                         ContextCompat.getDrawable(this, R.drawable.articulo_ira2) -> {
+                            Log.d(TAG, "IRA")
                             val nombre = Articulo.Nombre.IRA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
+
                         ContextCompat.getDrawable(this, R.drawable.articulo_pocion2) -> {
                             val nombre = Articulo.Nombre.POCION
                             val peso = Random.nextInt(1, 5)

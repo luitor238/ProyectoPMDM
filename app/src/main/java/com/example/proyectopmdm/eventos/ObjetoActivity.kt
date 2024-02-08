@@ -51,7 +51,6 @@ class ObjetoActivity : AppCompatActivity() {
         btnRecoger = findViewById(R.id.btnRecoger)
         btnContinuar = findViewById(R.id.btnContinuar)
 
-
         val dbHelper = DatabaseHelper(this)
 
         //Crear articulo aleatorio
