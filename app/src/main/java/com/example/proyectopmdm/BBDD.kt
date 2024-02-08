@@ -38,7 +38,6 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 "$COLUMN_TIPOARTICULO TEXT, $COLUMN_IMAGEN TEXT)"
         db.execSQL(ARTICULOS)
 
-
     }
 
 

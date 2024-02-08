@@ -12,6 +12,7 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
     private var nivel: Int
     private var suerte: Int
     private var defensa: Int = 0
+    private var dinero: Int = 0
 
     // Enumeración para el tipo de raza y clase
     enum class Raza { Humano, Elfo, Enano, Maldito }
@@ -53,7 +54,6 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
         return raza
     }
 
-
     fun getSalud(): Int {
         return salud
     }
@@ -68,6 +68,12 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
     }
     fun getClase(): Clase {
         return clase
+    }
+    fun getDinero(): Int {
+        return dinero
+    }
+    fun setDinero(cambio: Int){
+        dinero = dinero+cambio
     }
     fun setClase(nuevaClase: String) {
 
@@ -183,8 +189,6 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
         }
 
     }
-
-
 
     fun getEstadoVital(): EstadoVital {
         return estadoVital
@@ -723,6 +727,7 @@ class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) 
         Nombre.ESCUDO, Nombre.ARMADURA -> TipoArticulo.PROTECCION
         Nombre.MONEDA -> TipoArticulo.ORO
     }
+
     private var precio: Int = when (nombre) {
         Nombre.MONEDA -> 15
         Nombre.BASTON -> 5

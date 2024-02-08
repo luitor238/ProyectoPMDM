@@ -51,7 +51,6 @@ class ObjetoActivity : AppCompatActivity() {
         btnRecoger = findViewById(R.id.btnRecoger)
         btnContinuar = findViewById(R.id.btnContinuar)
 
-
         val dbHelper = DatabaseHelper(this)
 
         //Crear articulo aleatorio
@@ -70,7 +69,6 @@ class ObjetoActivity : AppCompatActivity() {
         aumentoAtaque.text = articulo.getAumentoAtaque().toString()
         aumentoDefensa.text = articulo.getAumentoDefensa().toString()
         aumentoVida.text = articulo.getAumentoVida().toString()
-
 
         //Boton recoger articulo
         btnRecoger.setOnClickListener {
