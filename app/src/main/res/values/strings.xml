@@ -71,6 +71,15 @@
     <string name="borrar">BORRAR</string>
     <string name="ver">VER</string>
     <string name="usar">USAR</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="signIn">SING IN</string>
+    <string name="email">Email</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="crea_tu_cuenta">CREA TU CUENTA</string>
+    <string name="iniciar_sesion">INICIAR SESION</string>
+    <string name="crear_cuenta">CREAR CUENTA</string>
 
 </resources>
 

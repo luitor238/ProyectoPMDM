@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 class VerPersonajeActivity : AppCompatActivity() {
 
     //DECLARACION DE VARIABLES
-    private lateinit var btnVolver: Button
     private lateinit var btnJugar: Button
     private lateinit var imagen: ImageView
     private lateinit var personajeFinal: variablesGlobales
@@ -80,13 +79,9 @@ class VerPersonajeActivity : AppCompatActivity() {
             )
         }
 
-        btnVolver=findViewById(R.id.btnVolverCrearPersonaje)
         btnJugar=findViewById(R.id.btnJugar)
 
-        btnVolver.setOnClickListener {
-            val intent = Intent(this@VerPersonajeActivity, DadoActivity::class.java)
-            startActivity(intent)
-        }
+
         btnJugar.setOnClickListener {
             val intent = Intent(this@VerPersonajeActivity, DadoActivity::class.java)
             startActivity(intent)

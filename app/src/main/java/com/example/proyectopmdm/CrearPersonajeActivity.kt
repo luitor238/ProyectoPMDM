@@ -37,6 +37,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private val TAG = "LoginActivity"
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         Log.d(TAG, "Comienzo Actividad")
@@ -116,8 +117,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         // Botones de aplicacion y creacion
 
         btnCrear = findViewById(R.id.btnCrear)
-        btnVolver = findViewById(R.id.btnVolver)
-        textViewError = findViewById(R.id.textViewError)
+        btnVolver = findViewById(R.id.imageBtnGoBack)
 
         btnCrear.setOnClickListener {
             val intent = Intent(this,VerPersonajeActivity::class.java)
@@ -160,9 +160,10 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
 
         }
+
         btnVolver.setOnClickListener {
-            btnVolver.visibility = View.GONE
-            textViewError.text = ""
+            val intent = Intent(this, SingInActivity::class.java)
+            startActivity(intent)
         }
 
 

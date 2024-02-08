@@ -12,7 +12,6 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="60dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="#2196F3"
         android:elevation="2dp"
@@ -24,27 +23,10 @@
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="#A11818"
         app:strokeColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/btnVolverCrearPersonaje"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="110dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#2196F3"
-        android:elevation="2dp"
-        android:text="@string/volver"
-        android:textColor="#FFFFFF"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:cornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnJugar"
-        app:layout_constraintEnd_toStartOf="@+id/btnJugar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#FFFFFF" />
 
     <View
         android:id="@+id/view4"
