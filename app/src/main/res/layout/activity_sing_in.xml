@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/primaryTextColor"
-                    android:drawableStart="@drawable/icon_person"
+                    android:drawableStart="@drawable/icon_email"
                     android:drawablePadding="10dp"
                     android:hint="@string/email"
                     android:textColorHint="@color/secondaryColor"
@@ -142,7 +142,7 @@
 
             <!--SIGN IN BUTTOM-->
             <Button
-                android:id="@+id/btnSignIn"
+                android:id="@+id/btnCrear"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

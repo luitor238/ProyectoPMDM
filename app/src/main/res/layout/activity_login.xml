@@ -7,14 +7,11 @@
     tools:context=".LoginActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="729dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
-        android:orientation="vertical"
         android:background="@drawable/background_gradient"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,23 +27,23 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:src="@drawable/personaje_en_blanco_sinfondo" />
+            android:src="@drawable/personaje_en_blanco" />
 
         <!--TITULO-->
         <TextView
             android:id="@+id/textViewTitulo"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="0dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="40dp"
+            android:gravity="center"
             android:paddingStart="30dp"
             android:paddingEnd="50dp"
             android:text="Mii VIDA"
-            android:textSize="50sp"
-            android:gravity="center"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
         <!--USERNAME-->
         <com.google.android.material.textfield.TextInputLayout
@@ -61,13 +58,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/primaryTextColor"
-                android:drawableStart="@drawable/icon_person"
+                android:drawableStart="@drawable/icon_email"
                 android:drawablePadding="10dp"
-                android:hint="@string/username"
-                android:textColorHint="@color/secondaryColor"
-                android:textColor="@color/primaryDarkColor"
+                android:hint="@string/email"
                 android:importantForAutofill="no"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/primaryDarkColor"
+                android:textColorHint="@color/secondaryColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,10 +85,10 @@
                 android:drawableStart="@drawable/icon_lock"
                 android:drawablePadding="10dp"
                 android:hint="@string/password"
-                android:textColor="@color/primaryDarkColor"
-                android:textColorHint="@color/secondaryColor"
                 android:importantForAutofill="no"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/primaryDarkColor"
+                android:textColorHint="@color/secondaryColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,22 +98,22 @@
             android:id="@+id/textViewWarning"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
             android:background="#00FF0000"
             android:drawableStart="@drawable/icon_warning"
+            android:gravity="center"
             android:paddingStart="30dp"
             android:paddingEnd="50dp"
             android:text=""
-            android:textSize="15sp"
-            android:gravity="center"
             android:textColor="@color/warning"
+            android:textSize="15sp"
             android:visibility="gone" />
 
         <!--BUTON LOGIN-->
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnIniciarSesion"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -134,7 +131,7 @@
 
         <!--BUTON SIGN IN-->
         <Button
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnCrearCuenta"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="60dp"

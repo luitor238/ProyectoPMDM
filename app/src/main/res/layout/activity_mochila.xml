@@ -13,7 +13,7 @@
         android:layout_width="82dp"
         android:layout_height="71dp"
         android:backgroundTint="#edeee9"
-        android:src="@drawable/go_back_button_black"
+        android:src="@drawable/icon_arrow_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />

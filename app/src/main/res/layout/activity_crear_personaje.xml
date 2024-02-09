@@ -173,7 +173,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre"
-        tools:srcCompat="@drawable/personaje_en_blanco_sinfondo" />
+        tools:srcCompat="@drawable/personaje_en_blanco" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:src="@drawable/dragon_verde"
+            android:src="@drawable/mounstro_coronavirus"
             android:layout_marginTop="80dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"/>
