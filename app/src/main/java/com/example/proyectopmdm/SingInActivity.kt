@@ -8,15 +8,18 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class SingInActivity : AppCompatActivity() {
-
     private lateinit var Email : EditText
     private lateinit var Password : EditText
     private lateinit var RepeatPassword : EditText
     private lateinit var btnCrearCuenta: Button
     private lateinit var textViewWarning: TextView
     private lateinit var auth: FirebaseAuth
+
     //VARIABLE SISTEMA LOG
     private val TAG = "LoginActivity"
 
@@ -36,7 +39,7 @@ class SingInActivity : AppCompatActivity() {
 
                 if (Email.text.isNotEmpty() && Password.text.isNotEmpty() && RepeatPassword.text.isNotEmpty()){
 
-                    if(Password.text==RepeatPassword.text) {
+                    if(Password.text.toString()==RepeatPassword.text.toString()) {
                         crearUsuario()
                     }else{
                         textViewWarning.text = "La contraseña no es igual"
@@ -63,7 +66,7 @@ class SingInActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 Log.d(TAG, "Usuario Creado Correctamente")
 
-                val intent = Intent(this, VerPersonajeActivity::class.java)
+                val intent = Intent(this, CrearPersonajeActivity::class.java)
                 startActivity(intent)
             } else {
                 textViewWarning.text = "Usuario No Encontrado"

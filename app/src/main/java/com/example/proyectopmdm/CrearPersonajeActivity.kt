@@ -27,15 +27,11 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var btnVolver: Button
     private lateinit var textViewError: TextView
     private lateinit var personaje: Personaje
-
-
-
     private lateinit var nombre: String
     private  var clase: String=""
     private  var raza: String=""
     private  var estadoVital: String=""
     private val TAG = "LoginActivity"
-
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,23 +42,25 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_crear_personaje)
 
         //ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)
+        Log.d(TAG, "ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)")
         imagen = findViewById(R.id.imageView)
         imagen.setImageResource(R.drawable.personaje_en_blanco)
 
 
         // ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE
+        Log.d(TAG, "ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE")
         nickname = findViewById<EditText>(R.id.editTextNombre)
 
 
-
-
         // SPINNERS PARA LA SELECCION DE CLASE, RAZA Y ESTADO VITAL Y ASIGNACION DE SUS RESPECTIVAS VARIABLES
+        Log.d(TAG, "SPINNERS PARA LA SELECCION DE CLASE, RAZA Y ESTADO VITAL Y ASIGNACION DE SUS RESPECTIVAS VARIABLES")
         spnClase = findViewById(R.id.spnClase)
         ArrayAdapter.createFromResource(this, R.array.Clase, android.R.layout.simple_spinner_item).also {
             adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spnClase.adapter = adapter
         }
 
+        Log.d(TAG, "spnClase")
         spnClase.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (position != 0) {
@@ -78,7 +76,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         }
 
 
-
+        Log.d(TAG, "spnEstVital")
         spnEstVital = findViewById(R.id.spnEstadoVital)
         ArrayAdapter.createFromResource(this, R.array.EstadoVital, android.R.layout.simple_spinner_item).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -96,6 +94,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
             }
         }
 
+        Log.d(TAG, "spnRaza")
         spnRaza = findViewById(R.id.spnRaza)
         ArrayAdapter.createFromResource(this, R.array.Raza, android.R.layout.simple_spinner_item).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -119,6 +118,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         btnCrear = findViewById(R.id.btnCrear)
         btnVolver = findViewById(R.id.imageBtnGoBack)
 
+        Log.d(TAG, "btnCrear")
         btnCrear.setOnClickListener {
             val intent = Intent(this,VerPersonajeActivity::class.java)
 
@@ -161,6 +161,8 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
         }
 
+
+        Log.d(TAG, "btnVolver")
         btnVolver.setOnClickListener {
             val intent = Intent(this, SingInActivity::class.java)
             startActivity(intent)
