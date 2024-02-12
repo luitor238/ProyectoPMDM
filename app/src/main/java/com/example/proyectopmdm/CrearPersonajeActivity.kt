@@ -114,9 +114,9 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
 
         // Botones de aplicacion y creacion
-
         btnCrear = findViewById(R.id.btnCrear)
         btnVolver = findViewById(R.id.imageBtnGoBack)
+
 
         Log.d(TAG, "btnCrear")
         btnCrear.setOnClickListener {
