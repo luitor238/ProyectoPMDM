@@ -86,7 +86,15 @@ class MercaderActivity : AppCompatActivity() {
         btnComprar[1].setOnClickListener {
             imagenes.forEachIndexed { index, (imageButton, value) ->
                 if (imagenes[index].second == 1) {
-                    Log.d(TAG, "entro al when")
+
+                    val drawable1 = imagenes[index].first.drawable
+                    val drawable2 = ContextCompat.getDrawable(this, R.drawable.articulo_ira2)
+
+                    Log.d(TAG, "La primera variable es: $drawable1")
+                    Log.d(TAG, "La segunda variable es: $drawable2")
+
+
+
                     when (imagenes[index].first.drawable) {
                         ContextCompat.getDrawable(this, R.drawable.articulo_ira2) -> {
                             Log.d(TAG, "IRA")
