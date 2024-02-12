@@ -155,18 +155,13 @@ class  CrearPersonajeActivity : AppCompatActivity() {
             }catch (e: Exception) {
                 Log.d(TAG, "Error al cambiar de Actividad")
             }
-
-
         }
-
 
         Log.d(TAG, "btnVolver")
         btnVolver.setOnClickListener {
             val intent = Intent(this, SingInActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
     @SuppressLint("SetTextI18n")

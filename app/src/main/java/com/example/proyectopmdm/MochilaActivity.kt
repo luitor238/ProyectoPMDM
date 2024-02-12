@@ -26,6 +26,12 @@ class MochilaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mochila)
 
+        // Obtener la instancia única de variablesGlobales
+        val variablesGlobales = variablesGlobales.getInstance()
+
+        // Acceder a la variable global globalPersonaje
+        val personaje = variablesGlobales.globalPersonaje
+
         val dbHelper = DatabaseHelper(this)
 
         btnVolver = findViewById(R.id.btnVolver)
@@ -103,12 +109,32 @@ class MochilaActivity : AppCompatActivity() {
         }
 
         btnUsar.setOnClickListener(){
+            personaje?.usarObjeto(seleccionado, this)
+            dbHelper.eliminarRegistro(seleccionado.id)
 
+            //Ocultamos botones
+            btnBorrar.visibility= View.INVISIBLE
+            btnVer.visibility= View.INVISIBLE
+            btnUsar.visibility= View.INVISIBLE
+
+            //Recargamos articulos en la mochila
+            var i = 0
+            while (i < linearLayout.childCount) {
+                val view = linearLayout.getChildAt(i)
+
+                // Verifica si el hijo es un ImageButton y elimínalo
+                if (view is ImageButton) {
+                    linearLayout.removeViewAt(i)
+                } else {
+                    i++
+                }
+            }
         }
 
         dbHelper.close()
 
     }
+
 
     private fun agregarArticulo(articulo: Articulo) {
         val nuevoArticulo = ImageButton(this)

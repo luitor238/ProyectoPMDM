@@ -1,6 +1,8 @@
 package com.example.proyectopmdm
 
+import android.content.Context
 import android.widget.ImageView
+import android.widget.Toast
 import java.io.Serializable
 
 
@@ -515,29 +517,34 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
             }
         }
     }
-    fun usarObjeto(articulo: Articulo) {
+    fun usarObjeto(articulo: Articulo, context: Context) {
         when (articulo.getTipoArticulo()) {
             Articulo.TipoArticulo.OBJETO -> {
                 when (articulo.getNombre()) {
                     Articulo.Nombre.POCION -> {
                         // Aumentar la vida del personaje al usar una poción
                         salud += articulo.getAumentoVida()
-                        println("Has usado la poción y aumentado tu vida. Vida actual: $salud")
-                        mochila.getContenido().remove(articulo)
+                        Toast.makeText(context, "Has usado la poción y aumentado tu vida. Vida actual: $salud", Toast.LENGTH_SHORT).show()
                     }
                     Articulo.Nombre.IRA -> {
                         // Aumentar el ataque del personaje al usar un objeto de ira
                         ataque += articulo.getAumentoAtaque()
-                        println("Has canalizado tu ira y aumentado tu ataque. Ataque actual: $ataque")
-                        mochila.getContenido().remove(articulo)
+                        Toast.makeText(context, "Has canalizado tu ira y aumentado tu ataque. Ataque actual: $ataque", Toast.LENGTH_SHORT).show()
                     }
-                    else -> {
-                        println("No se puede usar el objeto. Tipo de objeto no válido.")
-                    }
+
+                    else -> {Toast.makeText(context, "Este articulo no tiene uso.", Toast.LENGTH_SHORT).show()}
                 }
             }
+            Articulo.TipoArticulo.ARMA -> {
+                ataque += articulo.getAumentoAtaque()
+                Toast.makeText(context, "Has usado un objeto tipo arma y aumentado tu ataque a $ataque.", Toast.LENGTH_SHORT).show()
+            }
+            Articulo.TipoArticulo.PROTECCION -> {
+                salud += articulo.getAumentoDefensa()
+                Toast.makeText(context, "Has usado un objeto de proteccion y aumentado tu defensa a $defensa.", Toast.LENGTH_SHORT).show()
+            }
             else -> {
-                println("No se puede usar el artículo. Tipo de artículo no válido.")
+                Toast.makeText(context, "Este articulo no tiene uso.", Toast.LENGTH_SHORT).show()
             }
         }
     }

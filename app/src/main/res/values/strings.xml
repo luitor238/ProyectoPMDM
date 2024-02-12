@@ -80,6 +80,7 @@
     <string name="crea_tu_cuenta">CREA TU CUENTA</string>
     <string name="iniciar_sesion">INICIAR SESION</string>
     <string name="crear_cuenta">CREAR CUENTA</string>
+    <string name="nickname">Nickname</string>
 
 </resources>
 
