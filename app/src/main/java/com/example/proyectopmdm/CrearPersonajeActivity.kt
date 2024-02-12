@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import java.util.Locale
@@ -24,7 +25,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var nickname: EditText
     private lateinit var imagen: ImageView
     private lateinit var btnCrear: Button
-    private lateinit var btnVolver: Button
+    private lateinit var btnVolver: ImageButton
     private lateinit var textViewError: TextView
     private lateinit var personaje: Personaje
     private lateinit var nombre: String
@@ -135,8 +136,6 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                 Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
 
 
-
-
                 personaje = Personaje(
                     nombre,
                     razaElegida,
@@ -172,123 +171,116 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun selectAspect()   {
-            when (clase) {
-                "Brujo", "" -> {
-                    when (raza) {
-                        "Humano", "" -> {
-                            when (estadoVital) {
-                                "Joven","" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
+    private fun selectAspect() {
+        when (clase) {
+            "Brujo", "" -> {
+                when (raza) {
+                    "Humano", "" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.humano_brujo_joven)
 
-                                "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
-                            }
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_brujo_viejojfif)
                         }
+                    }
 
-                        "Elfo" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
-                            }
+                    "Elfo" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.elfo_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_brujo_viejo)
                         }
+                    }
 
-                        "Enano" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
-                            }
+                    "Enano" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.enano_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_brujo_viejo)
                         }
+                    }
 
-                        "Maldito" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
-                            }
+                    "Maldito" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.maldito_brujo_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_brujo_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_brujo_viejo)
                         }
                     }
                 }
-
-                "Mago" -> {
-                    when (raza) {
-                        "Humano", "" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.humano_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
-                            }
-                        }
-
-                        "Elfo" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
-                            }
-                        }
-
-                        "Enano" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.enano_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
-                            }
-                        }
-
-                        "Maldito" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
-                            }
-                        }
-                    }
-                }
-
-                "Guerrero" -> {
-                    when (raza) {
-                        "Humano", "" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
-                            }
-                        }
-
-                        "Elfo" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
-                            }
-                        }
-
-                        "Enano" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
-                            }
-                        }
-
-                        "Maldito" -> {
-                            when (estadoVital) {
-                                "Joven", "" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
-                                "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
-                                "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
-                            }
-                        }
-                    }
-                }
-
             }
 
-            // Funcion del boton crear
+            "Mago" -> {
+                when (raza) {
+                    "Humano", "" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.humano_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_mago_viejo)
+                        }
+                    }
 
+                    "Elfo" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.elfo_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_mago_viejo)
+                        }
+                    }
 
+                    "Enano" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.enano_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_mago_viejo)
+                        }
+                    }
 
+                    "Maldito" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.maldito_mago_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_mago_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_mago_viejo)
+                        }
+                    }
+                }
+            }
+
+            "Guerrero" -> {
+                when (raza) {
+                    "Humano", "" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.humano_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.humano_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.humano_guerrero_viejo)
+                        }
+                    }
+
+                    "Elfo" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.elfo_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.elfo_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.elfo_guerrero_viejo)
+                        }
+                    }
+
+                    "Enano" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.enano_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.enano_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.enano_guerrero_viejo)
+                        }
+                    }
+
+                    "Maldito" -> {
+                        when (estadoVital) {
+                            "Joven", "" -> imagen.setImageResource(R.drawable.maldito_guerrero_joven)
+                            "Adulto" -> imagen.setImageResource(R.drawable.maldito_guerrero_adulto)
+                            "Anciano" -> imagen.setImageResource(R.drawable.maldito_guerrero_viejo)
+                        }
+                    }
+                }
+            }
+        }
     }
-
 }
