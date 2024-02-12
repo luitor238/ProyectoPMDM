@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import java.util.Locale
@@ -24,7 +25,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var nickname: EditText
     private lateinit var imagen: ImageView
     private lateinit var btnCrear: Button
-    private lateinit var btnVolver: Button
+    private lateinit var btnVolver: ImageButton
     private lateinit var textViewError: TextView
     private lateinit var personaje: Personaje
     private lateinit var nombre: String
