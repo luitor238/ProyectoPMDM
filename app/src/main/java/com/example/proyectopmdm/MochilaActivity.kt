@@ -109,6 +109,7 @@ class MochilaActivity : AppCompatActivity() {
         }
 
         btnUsar.setOnClickListener(){
+            articulos = dbHelper.getArticulo()
             personaje?.usarObjeto(seleccionado, this)
             dbHelper.eliminarRegistro(seleccionado.id)
 
