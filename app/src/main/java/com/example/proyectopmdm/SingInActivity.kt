@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +18,7 @@ class SingInActivity : AppCompatActivity() {
     private lateinit var Password : EditText
     private lateinit var RepeatPassword : EditText
     private lateinit var btnCrearCuenta: Button
+    private lateinit var btnVolver: ImageButton
     private lateinit var textViewWarning: TextView
     private lateinit var auth: FirebaseAuth
 
@@ -32,6 +34,7 @@ class SingInActivity : AppCompatActivity() {
         RepeatPassword = findViewById(R.id.editTextRepeatPassword)
         btnCrearCuenta = findViewById(R.id.btnCrear)
         textViewWarning = findViewById(R.id.textViewWarning)
+        btnVolver = findViewById(R.id.imageBtnGoBack)
         auth= Firebase.auth
 
         try {
@@ -40,7 +43,13 @@ class SingInActivity : AppCompatActivity() {
                 if (Email.text.isNotEmpty() && Password.text.isNotEmpty() && RepeatPassword.text.isNotEmpty()){
 
                     if(Password.text.toString()==RepeatPassword.text.toString()) {
-                        crearUsuario()
+                        if(Password.length()>=8) {
+                            crearUsuario()
+                        } else {
+                            textViewWarning.text = "La contraseña debe tener minimo 8 caracteres."
+                            textViewWarning.visibility = View.VISIBLE
+                            Log.d(TAG, "Contraseña muy corta")
+                        }
                     }else{
                         textViewWarning.text = "La contraseña no es igual"
                         textViewWarning.visibility = View.VISIBLE
@@ -57,6 +66,12 @@ class SingInActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.d(TAG, "Error no esperado")
         }
+
+        btnVolver.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        })
+
     }
 
 
