@@ -81,6 +81,7 @@
     <string name="iniciar_sesion">INICIAR SESION</string>
     <string name="crear_cuenta">CREAR CUENTA</string>
     <string name="nickname">Nickname</string>
+    <string name="seguir_jugando">SEGUIR JUGANDO</string>
 
 </resources>
 

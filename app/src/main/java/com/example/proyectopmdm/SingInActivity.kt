@@ -42,20 +42,26 @@ class SingInActivity : AppCompatActivity() {
 
                 if (Email.text.isNotEmpty() && Password.text.isNotEmpty() && RepeatPassword.text.isNotEmpty()){
 
-                    if(Password.text.toString()==RepeatPassword.text.toString()) {
-                        if(Password.length()>=8) {
-                            crearUsuario()
-                        } else {
-                            textViewWarning.text = "La contraseña debe tener minimo 8 caracteres."
+                    if(Email.text.toString().contains('@') && Email.text.toString().contains('.')){
+                        if(Password.text.toString()==RepeatPassword.text.toString()) {
+                            if(Password.length()>=8) {
+                                crearUsuario()
+                            } else {
+                                textViewWarning.text = "La contraseña debe tener minimo 8 caracteres."
+                                textViewWarning.visibility = View.VISIBLE
+                                Log.d(TAG, "Contraseña muy corta")
+                            }
+                        }else{
+                            textViewWarning.text = "La contraseña no es igual"
                             textViewWarning.visibility = View.VISIBLE
-                            Log.d(TAG, "Contraseña muy corta")
+                            Log.d(TAG, "La contraseña no es igual")
                         }
-                    }else{
-                        textViewWarning.text = "La contraseña no es igual"
-                        textViewWarning.visibility = View.VISIBLE
-                        Log.d(TAG, "La contraseña no es igual")
                     }
-
+                    else{
+                        textViewWarning.text = "Formato email incorrecto."
+                        textViewWarning.visibility = View.VISIBLE
+                        Log.d(TAG, "Formato email incorrecto.")
+                    }
                 } else{
                     textViewWarning.text = "Debes rellenar todos los campos"
                     textViewWarning.visibility = View.VISIBLE

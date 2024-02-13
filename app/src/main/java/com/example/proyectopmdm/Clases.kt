@@ -276,9 +276,11 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
             else -> 4 // Valor por defecto si el nivel está fuera del rango especificado
         }
     }
-    fun pelea(monstruo: Monstruo) {
+    fun pelea(monstruo: Monstruo): String {
+        var result=""
         var vidaMonstruo = monstruo.getSalud()
-        var expGanada = monstruo.getSalud() // La experiencia ganada es igual a la salud inicial del monstruo
+        var expGanada =
+            monstruo.getSalud() // La experiencia ganada es igual a la salud inicial del monstruo
         var vidaPersonaje = salud
         var contador = false
         println("¡Un ${monstruo.getNombre()} se acerca!")
@@ -290,7 +292,7 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
             println("¿Deseas activar la habilidad del personaje? (Sí/No)")
             val respuesta = readLine()?.toLowerCase()
 
-            if ((respuesta == "si" || respuesta == "sí")&&contador==false) {
+            if ((respuesta == "si" || respuesta == "sí") && contador == false) {
                 habilidad() // Activa la habilidad del personaje
                 contador = true
             }
@@ -315,7 +317,10 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
                 if (vidaMonstruo <= 0) {
                     setExperiencia(expGanada)  // El personaje gana experiencia igual a la salud inicial del monstruo
                     println("${nombre} ha derrotado al ${monstruo.getNombre()} y gana ${expGanada} de experiencia.")
+                    result = "¡GANASTE!"
                     break
+                } else {
+                    result = "¡PERDISTE!"
                 }
 
                 // Monstruo ataca al personaje
@@ -323,6 +328,7 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
                 println("${monstruo.getNombre()} ataca a ${nombre}. Salud de ${nombre}: ${vidaPersonaje}")
             }
         }
+        return result
     }
 
     fun habilidad() {

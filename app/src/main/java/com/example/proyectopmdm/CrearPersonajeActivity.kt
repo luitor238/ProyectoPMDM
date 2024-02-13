@@ -17,7 +17,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.Locale
 
 
 class  CrearPersonajeActivity : AppCompatActivity() {
@@ -47,7 +46,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
         //ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)
         Log.d(TAG, "ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)")
-        imagen = findViewById(R.id.imageView)
+        imagen = findViewById(R.id.imageViewEnemigo)
         imagen.setImageResource(R.drawable.personaje_en_blanco)
 
 

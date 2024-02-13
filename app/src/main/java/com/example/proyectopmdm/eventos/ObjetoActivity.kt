@@ -1,11 +1,7 @@
 package com.example.proyectopmdm.eventos
 
 import android.annotation.SuppressLint
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -42,7 +38,7 @@ class ObjetoActivity : AppCompatActivity() {
         tipoArticulo = findViewById(R.id.textViewTipoArticulo)
         peso1 = findViewById(R.id.textViewPeso)
         precio = findViewById(R.id.textViewPrecio)
-        imagen = findViewById(R.id.imageView)
+        imagen = findViewById(R.id.imageViewEnemigo)
         aumentoAtaque = findViewById(R.id.textViewAumentoAtaque)
         aumentoDefensa = findViewById(R.id.textViewAumentoDefensa)
         aumentoVida = findViewById(R.id.textViewAumentoVida)

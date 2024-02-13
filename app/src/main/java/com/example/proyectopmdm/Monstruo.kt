@@ -1,9 +1,11 @@
 package com.example.proyectopmdm
 
+import java.io.Serializable
+
 class Monstruo(
     private var nombre: String,
     private var nivel: Int
-) {
+) :Serializable {
     private var salud: Int = 0
     private var ataque: Int = 0
 

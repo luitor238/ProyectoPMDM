@@ -35,7 +35,7 @@ class VerArticuloActivity : AppCompatActivity() {
         aumentoAtaque = findViewById(R.id.textViewAumentoAtaque)
         aumentoDefensa = findViewById(R.id.textViewAumentoDefensa)
         aumentoVida = findViewById(R.id.textViewAumentoVida)
-        imagen = findViewById(R.id.imageView)
+        imagen = findViewById(R.id.imageViewEnemigo)
         //Botones
         btnVolver = findViewById(R.id.btnVolver)
 
