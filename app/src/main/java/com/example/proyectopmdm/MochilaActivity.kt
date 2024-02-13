@@ -56,7 +56,7 @@ class MochilaActivity : AppCompatActivity() {
 
         //Boton volver al menu
         btnVolver.setOnClickListener(){
-            val intent = Intent(this,MenuOpcionesActivity::class.java)
+            val intent = Intent(this,DadoActivity::class.java)
             startActivity(intent)
         }
 
@@ -66,12 +66,6 @@ class MochilaActivity : AppCompatActivity() {
 
             //Elimina registro en BBDD
             dbHelper.eliminarRegistro(seleccionado.id)
-
-            /*for (i in 0..(articulos.size-1)){
-                if(articulos[i].getNombre()== seleccionado.getNombre()) {
-                    dbHelper.eliminarRegistro(i+1)
-                }
-            }*/
 
             //Ocultamos botones
             btnBorrar.visibility= View.INVISIBLE
@@ -100,6 +94,9 @@ class MochilaActivity : AppCompatActivity() {
             else{
                 Toast.makeText(this,"Mochila Vacia!",Toast.LENGTH_SHORT).show()
             }
+
+            val intent = Intent(this,MochilaActivity::class.java)
+            startActivity(intent)
         }
 
         btnVer.setOnClickListener(){
@@ -129,6 +126,9 @@ class MochilaActivity : AppCompatActivity() {
                     i++
                 }
             }
+
+            val intent = Intent(this,MochilaActivity::class.java)
+            startActivity(intent)
         }
 
         dbHelper.close()
