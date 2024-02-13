@@ -87,16 +87,10 @@ class MercaderActivity : AppCompatActivity() {
             imagenes.forEachIndexed { index, (imageButton, value) ->
                 if (imagenes[index].second == 1) {
 
-                    val drawable1 = imagenes[index].first.drawable
-                    val drawable2 = ContextCompat.getDrawable(this, R.drawable.articulo_ira2)
-
-                    Log.d(TAG, "La primera variable es: $drawable1")
-                    Log.d(TAG, "La segunda variable es: $drawable2")
 
 
-
-                    when (imagenes[index].first.drawable) {
-                        ContextCompat.getDrawable(this, R.drawable.articulo_ira2) -> {
+                    when (imagenes[index].first.drawable.constantState) {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_ira2)?.constantState -> {
                             Log.d(TAG, "IRA")
                             val nombre = Articulo.Nombre.IRA
                             val peso = Random.nextInt(1, 5)
@@ -104,49 +98,49 @@ class MercaderActivity : AppCompatActivity() {
                             dbHelper.insertarArticulo(articulo)
                         }
 
-                        ContextCompat.getDrawable(this, R.drawable.articulo_pocion2) -> {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_pocion2)?.constantState -> {
                             val nombre = Articulo.Nombre.POCION
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.articulo_garras2) -> {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_garras2)?.constantState -> {
                             val nombre = Articulo.Nombre.GARRAS
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.navaja) -> {
+                        ContextCompat.getDrawable(this, R.drawable.navaja)?.constantState -> {
                             val nombre = Articulo.Nombre.DAGA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.articulo_escudo) -> {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_escudo)?.constantState -> {
                             val nombre = Articulo.Nombre.ESCUDO
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.articulo_espada) -> {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_espada)?.constantState -> {
                             val nombre = Articulo.Nombre.ESPADA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.articulo_armadura) ->{
+                        ContextCompat.getDrawable(this, R.drawable.articulo_armadura)?.constantState ->{
                             val nombre = Articulo.Nombre.ARMADURA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.articulo_martillo) ->{
+                        ContextCompat.getDrawable(this, R.drawable.articulo_martillo)?.constantState ->{
                             val nombre = Articulo.Nombre.MARTILLO
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
                         }
-                        ContextCompat.getDrawable(this, R.drawable.articulo_baston) ->{
+                        ContextCompat.getDrawable(this, R.drawable.articulo_baston)?.constantState ->{
                             val nombre = Articulo.Nombre.BASTON
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
