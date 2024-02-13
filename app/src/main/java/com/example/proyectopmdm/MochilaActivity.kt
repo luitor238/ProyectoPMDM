@@ -31,7 +31,6 @@ class MochilaActivity : AppCompatActivity() {
 
         // Acceder a la variable global globalPersonaje
         val personaje = variablesGlobales.globalPersonaje
-
         val dbHelper = DatabaseHelper(this)
 
         btnVolver = findViewById(R.id.btnVolver)
