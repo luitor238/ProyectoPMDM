@@ -85,7 +85,18 @@ class SingInActivity : AppCompatActivity() {
     fun crearUsuario(){
         auth.createUserWithEmailAndPassword(Email.text.toString(), Password.text.toString()).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                Log.d(TAG, "Usuario Creado Correctamente")
+
+                val userId = FirebaseAuth.getInstance().currentUser?.uid
+                if (userId != null) {
+
+                    val globalInstance = variableGlobal.getInstance()
+                    globalInstance.initPersonaje(userId)
+                    Log.d(TAG, "El usuario creado correctamente")
+
+                } else {
+                    Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")
+                }
+
 
                 val intent = Intent(this, CrearPersonajeActivity::class.java)
                 intent.putExtra("email", Email.text.toString())

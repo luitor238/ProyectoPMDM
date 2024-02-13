@@ -14,7 +14,6 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
     private var nivel: Int
     private var suerte: Int
     private var defensa: Int = 0
-    private var dinero: Int = 0
 
     // Enumeración para el tipo de raza y clase
     enum class Raza { Humano, Elfo, Enano, Maldito }
@@ -71,12 +70,7 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
     fun getClase(): Clase {
         return clase
     }
-    fun getDinero(): Int {
-        return dinero
-    }
-    fun setDinero(cambio: Int){
-        dinero = dinero+cambio
-    }
+
     fun setClase(nuevaClase: String) {
 
         when(nuevaClase){
@@ -818,25 +812,25 @@ class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) 
     }
 }
 
-class variablesGlobales private constructor() {
+class variableGlobal private constructor() {
     // Variable global
-    var  globalPersonaje:  Personaje? = null
+    var  idPersonaje:  String? = null
 
     companion object {
         // Referencia a la única instancia de la clase
         @Volatile
-        private var instance: variablesGlobales? = null
+        private var instance: variableGlobal? = null
 
         // Función para obtener la instancia de la clase
-        fun getInstance(): variablesGlobales {
-            return instance ?: synchronized(this) { instance ?: variablesGlobales().also { instance = it }
+        fun getInstance(): variableGlobal {
+            return instance ?: synchronized(this) { instance ?: variableGlobal().also { instance = it }
             }
         }
     }
 
     // Función para inicializar la variable global del personaje
-    fun initPersonaje(personaje: Personaje) {
-        globalPersonaje = personaje
+    fun initPersonaje(id: String?) {
+        idPersonaje = id
     }
 
 }
