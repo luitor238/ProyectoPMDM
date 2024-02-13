@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "484533430652",
-    "project_id": "pmdm-73e2e",
-    "storage_bucket": "pmdm-73e2e.appspot.com"
+    "project_number": "625868315035",
+    "project_id": "task08gui",
+    "storage_bucket": "task08gui.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:484533430652:android:9a5daacc7dc80b23f95cf9",
+        "mobilesdk_app_id": "1:625868315035:android:75fa8c80b77321d5d3a93e",
         "android_client_info": {
           "package_name": "com.example.proyectopmdm"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC9aNV-9XgjV6VNfT0DA06S1wgYBL1lfx0"
+          "current_key": "AIzaSyCO5g523Y9Vx3AmkO-hlyry5h-aw2-2Eqg"
         }
       ],
       "services": {

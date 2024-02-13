@@ -52,36 +52,24 @@ class LoginActivity : AppCompatActivity() {
 
         try {
             btnIniciarSesion.setOnClickListener{
+
                 if (Email.text.isNotEmpty() && Password.text.isNotEmpty()){
                     auth.signInWithEmailAndPassword(Email.text.toString(), Password.text.toString()).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
+
                             Log.d(TAG, "Autenticacion del ususario Correcta")
-                            //val user = auth.currentUser
+
 
                             val userId = FirebaseAuth.getInstance().currentUser?.uid
                             if (userId != null) {
-                                obtenerPersonajeDeUsuarioActual { personaje ->
-                                    if (personaje != null) {
-                                        Log.d(TAG, "Recuperado objeto Personaje asociado al usuario actual" )
-                                        try {
-
-                                            val intent = Intent(this, VerPersonajeActivity::class.java)
-                                            intent.putExtra("email", Email.text.toString())
-                                            Log.d(TAG, "Preparado para cambiar actividad" )
-                                            startActivity(intent)
-
-                                        }catch (e: Exception){
-                                            Log.d(TAG, "No se pudo cambiar de actividad" )
-
-                                        }
 
 
-                                    } else {
-                                        // Si el usuario no tiene ningún personaje asociado
-                                        Log.d(TAG, "El usuario no tiene ningún personaje asociado" )
-                                    }
-                                }
+                                val globalInstance = variableGlobal.getInstance()
+
+
+
+
+
                             } else {
                                 Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")
                             }
@@ -119,42 +107,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
-fun obtenerPersonajeDeUsuarioActual(callback: (Personaje?) -> Unit) {
-    // Obtenemos el ID del usuario actualmente autenticado
-    val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-    // Verificamos si el usuario está autenticado
-    if (userId != null) {
-        val db = FirebaseFirestore.getInstance()
 
-        // Obtenemos el documento del personaje del usuario en Firestore
-        db.collection("usuarios").document(userId)
-            .collection("personaje")
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                // Si existe al menos un documento en la colección "personaje" del usuario
-                if (!querySnapshot.isEmpty) {
-                    // Obtenemos el primer documento (suponiendo que solo hay un personaje por usuario)
-                    val document = querySnapshot.documents[0]
-                    // Convertimos los datos del documento en un objeto Personaje
-                    val personaje = document.toObject(Personaje::class.java)
-                    val personajeFinal = personaje?.let {
-                        variablesGlobales.getInstance().initPersonaje(
-                            it
-                        )
-                    }
 
-                } else {
-                    // Si no hay documentos en la colección, el usuario no tiene ningún personaje aún
-                    callback(null)
-                }
-            }
-            .addOnFailureListener { exception ->
-                // Manejamos cualquier error que pueda ocurrir durante la obtención del personaje
-                callback(null)
-            }
-    } else {
-        // Si el usuario no está autenticado, llamamos al callback con null
-        callback(null)
-    }
-}
+
+
+

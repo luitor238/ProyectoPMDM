@@ -50,14 +50,9 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         imagen = findViewById(R.id.imageView)
         imagen.setImageResource(R.drawable.personaje_en_blanco)
 
-
-
-
-
         // ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE
         Log.d(TAG, "ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE")
         nickname = findViewById<EditText>(R.id.editTextNombre)
-
 
         // SPINNERS PARA LA SELECCION DE CLASE, RAZA Y ESTADO VITAL Y ASIGNACION DE SUS RESPECTIVAS VARIABLES
         Log.d(TAG, "SPINNERS PARA LA SELECCION DE CLASE, RAZA Y ESTADO VITAL Y ASIGNACION DE SUS RESPECTIVAS VARIABLES")
@@ -66,8 +61,6 @@ class  CrearPersonajeActivity : AppCompatActivity() {
             adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spnClase.adapter = adapter
         }
-
-        Log.d(TAG, "spnClase")
         spnClase.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (position != 0) {
@@ -81,9 +74,6 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
             }
         }
-
-
-        Log.d(TAG, "spnEstVital")
         spnEstVital = findViewById(R.id.spnEstadoVital)
         ArrayAdapter.createFromResource(this, R.array.EstadoVital, android.R.layout.simple_spinner_item).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -100,8 +90,6 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
             }
         }
-
-        Log.d(TAG, "spnRaza")
         spnRaza = findViewById(R.id.spnRaza)
         ArrayAdapter.createFromResource(this, R.array.Raza, android.R.layout.simple_spinner_item).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -148,38 +136,17 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                     claseElegida,
                     estadoVitalElegido
                 )
-                val personajeFinal = variablesGlobales.getInstance().initPersonaje(personaje)
+
+
+                val dbHelper = DatabaseHelper(this)
+                val globalInstance = variableGlobal.getInstance()
+                dbHelper.insertarPersonaje(globalInstance.toString(),personaje)
 
                 Log.d(TAG, "Usuario Creado")
 
             }catch(e: Exception){
                 Log.d(TAG, "Error al Crear el Personaje")
             }
-
-            val auth = FirebaseAuth.getInstance()
-            val extras = intent.extras
-            if (extras != null) {
-                val email = extras.getString("email")
-                val password = extras.getString("password")
-
-                if (email != null) {
-                    if (password != null) {
-                        auth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(this) { task ->
-                                val userId = FirebaseAuth.getInstance().currentUser?.uid
-
-                                if (userId != null) {
-                                    guardarPersonajeEnFirestore(personaje, userId)
-                                } else {
-                                    // El usuario no está autenticado. Manejar el error apropiadamente
-                                }
-                            }
-                    }
-                }
-            }
-
-
-
 
             try{
                 startActivity(intent)
@@ -311,29 +278,4 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     }
 }
 
-fun guardarPersonajeEnFirestore(personaje: Personaje, userId: String) {
-    val db = FirebaseFirestore.getInstance()
-
-    // Convierte el objeto Personaje a un HashMap
-    val personajeMap = hashMapOf(
-        "nombre" to personaje.getNombre(),
-        "raza" to personaje.getRaza().name,
-        "clase" to personaje.getClase().name,
-        "estadoVital" to personaje.getEstadoVital().name,
-        "salud" to personaje.getSalud(),
-        "ataque" to personaje.getAtaque(),
-        // Agrega los demás campos según tu objeto
-    )
-
-    // Guarda el objeto Personaje en Firestore
-    db.collection("usuarios").document(userId)
-        .collection("personajes").document(personaje.getNombre()) // Asociar al usuario por su ID y al personaje por su nombre
-        .set(personajeMap)
-        .addOnSuccessListener {
-            Log.d(TAG, "Personaje creado correctamente")
-        }
-        .addOnFailureListener { e ->
-            // Error al guardar el personaje en Firestore. Manejar el error apropiadamente
-        }
-}
 
