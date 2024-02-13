@@ -1,6 +1,7 @@
 package com.example.proyectopmdm
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,8 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
 
@@ -46,6 +49,9 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         Log.d(TAG, "ASIGNACION DE LA FOTO POR DEFECTO ( EL CALVO)")
         imagen = findViewById(R.id.imageView)
         imagen.setImageResource(R.drawable.personaje_en_blanco)
+
+
+
 
 
         // ASIGNACION DEL NICKNAME A LA VARIABLE NOMBRE
@@ -149,6 +155,31 @@ class  CrearPersonajeActivity : AppCompatActivity() {
             }catch(e: Exception){
                 Log.d(TAG, "Error al Crear el Personaje")
             }
+
+            val auth = FirebaseAuth.getInstance()
+            val extras = intent.extras
+            if (extras != null) {
+                val email = extras.getString("email")
+                val password = extras.getString("password")
+
+                if (email != null) {
+                    if (password != null) {
+                        auth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(this) { task ->
+                                val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+                                if (userId != null) {
+                                    guardarPersonajeEnFirestore(personaje, userId)
+                                } else {
+                                    // El usuario no está autenticado. Manejar el error apropiadamente
+                                }
+                            }
+                    }
+                }
+            }
+
+
+
 
             try{
                 startActivity(intent)
@@ -279,3 +310,30 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         }
     }
 }
+
+fun guardarPersonajeEnFirestore(personaje: Personaje, userId: String) {
+    val db = FirebaseFirestore.getInstance()
+
+    // Convierte el objeto Personaje a un HashMap
+    val personajeMap = hashMapOf(
+        "nombre" to personaje.getNombre(),
+        "raza" to personaje.getRaza().name,
+        "clase" to personaje.getClase().name,
+        "estadoVital" to personaje.getEstadoVital().name,
+        "salud" to personaje.getSalud(),
+        "ataque" to personaje.getAtaque(),
+        // Agrega los demás campos según tu objeto
+    )
+
+    // Guarda el objeto Personaje en Firestore
+    db.collection("usuarios").document(userId)
+        .collection("personajes").document(personaje.getNombre()) // Asociar al usuario por su ID y al personaje por su nombre
+        .set(personajeMap)
+        .addOnSuccessListener {
+            Log.d(TAG, "Personaje creado correctamente")
+        }
+        .addOnFailureListener { e ->
+            // Error al guardar el personaje en Firestore. Manejar el error apropiadamente
+        }
+}
+

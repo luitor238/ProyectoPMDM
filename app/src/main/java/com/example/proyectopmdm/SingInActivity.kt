@@ -82,6 +82,8 @@ class SingInActivity : AppCompatActivity() {
                 Log.d(TAG, "Usuario Creado Correctamente")
 
                 val intent = Intent(this, CrearPersonajeActivity::class.java)
+                intent.putExtra("email", Email.text.toString())
+                intent.putExtra("password", Password.text.toString())
                 startActivity(intent)
             } else {
                 textViewWarning.text = "Usuario No Encontrado"

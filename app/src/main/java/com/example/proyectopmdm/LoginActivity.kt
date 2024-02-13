@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.auth
 
 class LoginActivity : AppCompatActivity() {
@@ -57,12 +58,39 @@ class LoginActivity : AppCompatActivity() {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "Autenticacion del ususario Correcta")
                             //val user = auth.currentUser
-                            val intent = Intent(this, VerPersonajeActivity::class.java)
-                            intent.putExtra("email", Email.text.toString())
-                            startActivity(intent)
+
+                            val userId = FirebaseAuth.getInstance().currentUser?.uid
+                            if (userId != null) {
+                                obtenerPersonajeDeUsuarioActual { personaje ->
+                                    if (personaje != null) {
+                                        Log.d(TAG, "Recuperado objeto Personaje asociado al usuario actual" )
+                                        try {
+
+                                            val intent = Intent(this, VerPersonajeActivity::class.java)
+                                            intent.putExtra("email", Email.text.toString())
+                                            Log.d(TAG, "Preparado para cambiar actividad" )
+                                            startActivity(intent)
+
+                                        }catch (e: Exception){
+                                            Log.d(TAG, "No se pudo cambiar de actividad" )
+
+                                        }
 
 
-                        } else {
+                                    } else {
+                                        // Si el usuario no tiene ningún personaje asociado
+                                        Log.d(TAG, "El usuario no tiene ningún personaje asociado" )
+                                    }
+                                }
+                            } else {
+                                Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")
+                            }
+
+
+
+
+                        }
+                        else {
                             val builder = AlertDialog.Builder(this)
                             builder.setTitle("Error")
                             builder.setMessage("Se ha producido un error en la autenticacion del ususario")
@@ -89,5 +117,44 @@ class LoginActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.d(TAG, "Usuario No Creado Correctamente")
         }
+    }
+}
+fun obtenerPersonajeDeUsuarioActual(callback: (Personaje?) -> Unit) {
+    // Obtenemos el ID del usuario actualmente autenticado
+    val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+    // Verificamos si el usuario está autenticado
+    if (userId != null) {
+        val db = FirebaseFirestore.getInstance()
+
+        // Obtenemos el documento del personaje del usuario en Firestore
+        db.collection("usuarios").document(userId)
+            .collection("personaje")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                // Si existe al menos un documento en la colección "personaje" del usuario
+                if (!querySnapshot.isEmpty) {
+                    // Obtenemos el primer documento (suponiendo que solo hay un personaje por usuario)
+                    val document = querySnapshot.documents[0]
+                    // Convertimos los datos del documento en un objeto Personaje
+                    val personaje = document.toObject(Personaje::class.java)
+                    val personajeFinal = personaje?.let {
+                        variablesGlobales.getInstance().initPersonaje(
+                            it
+                        )
+                    }
+
+                } else {
+                    // Si no hay documentos en la colección, el usuario no tiene ningún personaje aún
+                    callback(null)
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Manejamos cualquier error que pueda ocurrir durante la obtención del personaje
+                callback(null)
+            }
+    } else {
+        // Si el usuario no está autenticado, llamamos al callback con null
+        callback(null)
     }
 }
