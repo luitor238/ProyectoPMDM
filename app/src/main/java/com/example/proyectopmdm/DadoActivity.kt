@@ -1,13 +1,16 @@
 package com.example.proyectopmdm
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.example.proyectopmdm.eventos.CiudadActivity
 import com.example.proyectopmdm.eventos.EnemigoActivity
 import com.example.proyectopmdm.eventos.MercaderActivity
@@ -23,6 +26,7 @@ class DadoActivity : AppCompatActivity() {
     private lateinit var btnTirarDado: ImageButton
     private lateinit var btnMenu: Button
     private lateinit var btnMapa: ImageButton
+    private lateinit var btnComunicacion: ImageButton
     private lateinit var btnverPersonaje: ImageButton
     private lateinit var btnMochila: ImageButton
 
@@ -30,21 +34,27 @@ class DadoActivity : AppCompatActivity() {
     private val TAG = "LoginActivity"
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dado)
 
-        // Obtener la instancia única de variablesGlobales
-        val variablesGlobales = variablesGlobales.getInstance()
+        val dbHelper = DatabaseHelper(this)
 
-        // Acceder a la variable global globalPersonaje
-        val personaje = variablesGlobales.globalPersonaje
+        var personaje: Personaje? = null
+        val personajes = dbHelper.getPersonaje()
+        for (e in personajes){
+            if(e.getId()==GlobalVariables.id){
+                personaje=e
+            }
+        }
 
         textViewExp = findViewById(R.id.textViewExperiencia)
         textViewMonedas = findViewById(R.id.textViewMonedas)
         textViewNombre = findViewById(R.id.textViewNombre)
         btnTirarDado = findViewById(R.id.btnTirarDado)
         btnMenu = findViewById(R.id.btnMenu)
+        btnComunicacion = findViewById(R.id.btnComunicacion)
         btnMapa = findViewById(R.id.btnMapa)
         btnverPersonaje = findViewById(R.id.btnPerfil)
         btnMochila = findViewById(R.id.btnMochila)
@@ -98,6 +108,10 @@ class DadoActivity : AppCompatActivity() {
             val intent = Intent(this, MenuOpcionesActivity::class.java)
             startActivity(intent)
         }
+        btnComunicacion.setOnClickListener {
+            //val intent = Intent(this, ComunicacionActivity::class.java)
+            //startActivity(intent)
+        }
         btnMapa.setOnClickListener {
             //val intent = Intent(this, MapaActivity::class.java)
             //startActivity(intent)
@@ -111,5 +125,40 @@ class DadoActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        showExitConfirmationDialog()
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun showExitConfirmationDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_exit, null)
+        val builder = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false)
+
+        val alertDialog = builder.create()
+
+        dialogView.findViewById<Button>(R.id.btnGuardar).setOnClickListener {
+            // Lógica para guardar en la base de datos SQLite
+            saveToDatabase()
+            alertDialog.dismiss()
+            finish()
+        }
+
+        dialogView.findViewById<Button>(R.id.btnNoGuardar).setOnClickListener {
+            alertDialog.dismiss()
+            finish()
+        }
+
+        alertDialog.show()
+    }
+
+    private fun saveToDatabase() {
+        // Lógica para guardar los cambios en la base de datos SQLite
     }
 }

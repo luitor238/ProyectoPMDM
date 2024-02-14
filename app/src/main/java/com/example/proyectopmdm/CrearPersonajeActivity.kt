@@ -136,7 +136,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
                 val dbHelper = DatabaseHelper(this)
                 val globalInstance = variableGlobal.getInstance()
-                dbHelper.insertarPersonaje(globalInstance.toString(),personaje)
+                dbHelper.insertarPersonaje(personaje)
 
                 Log.d(TAG, "Usuario Creado")
 

@@ -61,7 +61,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
 
 
         val PERSONAJE = "CREATE TABLE $TABLA_PERSONAJE(" +
-                "$KEY_ID_USUARIO TEXT PRIMARY KEY," +
+                "$KEY_ID_USUARIO INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_NOMBRE_PERSONAJE TEXT," +
                 "$COLUMN_RAZA TEXT," +
                 "$COLUMN_CLASE TEXT," +
@@ -99,21 +99,23 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         db.insert(TABLA_ARTICULOS, null, values)
         db.close()
     }
-    fun insertarPersonaje(id: String,personaje: Personaje){
+    fun insertarPersonaje(personaje: Personaje){
         val db =this.writableDatabase
         val values = ContentValues().apply{
 
-            put(KEY_ID_USUARIO, id)
+            if(personaje.getId()!=0){
+                put(KEY_ID_USUARIO, personaje.getId())
+            }
             put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre().toString())
             put(COLUMN_RAZA, personaje.getRaza().toString())
             put(COLUMN_CLASE, personaje.getClase().toString())
             put(COLUMN_ESTADO_VITAL, personaje.getEstadoVital().toString())
-            put(COLUMN_SALUD, personaje.getSalud().toString())
-            put(COLUMN_ATAQUE, personaje.getAtaque().toString())
-            put(COLUMN_EXPERIENCIA, personaje.getExperiencia().toString())
-            put(COLUMN_NIVEL, personaje.getNivel().toString())
-            put(COLUMN_SUERTE, personaje.getSuerte().toString())
-            put(COLUMN_DEFENSA, personaje.getDefensa().toString())
+            put(COLUMN_SALUD, personaje.getSalud())
+            put(COLUMN_ATAQUE, personaje.getAtaque())
+            put(COLUMN_EXPERIENCIA, personaje.getExperiencia())
+            put(COLUMN_NIVEL, personaje.getNivel())
+            put(COLUMN_SUERTE, personaje.getSuerte())
+            put(COLUMN_DEFENSA, personaje.getDefensa())
 
         }
         db.insert(TABLA_PERSONAJE, null, values)
@@ -174,6 +176,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         db.close()
         return personajes
     }
+
 
     fun eliminarRegistro(id: Int): Boolean {
         val db = this.writableDatabase

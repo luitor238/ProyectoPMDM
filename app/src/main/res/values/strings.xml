@@ -82,6 +82,11 @@
     <string name="crear_cuenta">CREAR CUENTA</string>
     <string name="nickname">Nickname</string>
     <string name="seguir_jugando">SEGUIR JUGANDO</string>
+    <string name="nombrem">Nombre:</string>
+    <string name="nivel">Nivel:</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="no_guardar">NO GUARDAR</string>
+    <string name="guardar_cambios">¿Desea guardar los cambios antes de salir?</string>
 
 </resources>
 

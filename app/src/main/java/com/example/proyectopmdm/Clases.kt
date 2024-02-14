@@ -64,6 +64,9 @@ class Personaje :Serializable {
         }
     }
 
+    fun getId(): Int{
+        return id
+    }
     fun getNombre(): String {
         return nombre
     }
@@ -852,6 +855,10 @@ class variableGlobal private constructor() {
         idPersonaje = id
     }
 
+}
+
+object GlobalVariables {
+    var id: Int = 0
 }
 
 

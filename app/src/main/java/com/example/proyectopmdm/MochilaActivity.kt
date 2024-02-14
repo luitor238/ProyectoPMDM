@@ -26,12 +26,15 @@ class MochilaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mochila)
 
-        // Obtener la instancia única de variablesGlobales
-        val variablesGlobales = variablesGlobales.getInstance()
-
-        // Acceder a la variable global globalPersonaje
-        val personaje = variablesGlobales.globalPersonaje
         val dbHelper = DatabaseHelper(this)
+
+        var personaje: Personaje? = null
+        val personajes = dbHelper.getPersonaje()
+        for (e in personajes){
+            if(e.getId()==GlobalVariables.id){
+                personaje=e
+            }
+        }
 
         btnVolver = findViewById(R.id.btnVolver)
         btnBorrar = findViewById(R.id.btnBorrar)

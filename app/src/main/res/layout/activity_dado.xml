@@ -18,17 +18,42 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <ImageButton
-            android:id="@+id/btnTirarDado"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="258dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="0dp"
-            android:background="@color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/dadoblancosinfondo"
-            tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
+            android:layout_height="300dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnTirarDado"
+                android:layout_width="270dp"
+                android:layout_height="258dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="0dp"
+                android:background="@color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dadoblancosinfondo"
+                tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnComunicacion"
+                    android:layout_width="85dp"
+                    android:layout_height="65dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_comunicacion"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -152,6 +177,7 @@
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
     </LinearLayout>
 
 

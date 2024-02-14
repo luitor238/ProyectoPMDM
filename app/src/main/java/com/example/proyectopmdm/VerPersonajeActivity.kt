@@ -14,25 +14,27 @@ class VerPersonajeActivity : AppCompatActivity() {
     //DECLARACION DE VARIABLES
     private lateinit var btnJugar: Button
     private lateinit var imagen: ImageView
-    private lateinit var personajeFinal: variablesGlobales
     private val TAG = "LoginActivity"
 
 
-    @SuppressLint("DiscouragedApi")
+    @SuppressLint("DiscouragedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val dbHelper = DatabaseHelper(this)
+
+        var personaje: Personaje? = null
+        val personajes = dbHelper.getPersonaje()
+        for (e in personajes){
+            if(e.getId()==GlobalVariables.id){
+                personaje=e
+            }
+        }
 
 
         Log.d(TAG, "Cambio a Actividad {VerPersonajeactivity}")
         // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_personaje)
-
-
-        // Obtener la instancia única de variablesGlobales
-        val variablesGlobales = variablesGlobales.getInstance()
-
-        // Acceder a la variable global globalPersonaje
-        val personaje = variablesGlobales.globalPersonaje
 
 
         val nombre = findViewById<TextView>(R.id.varNombre)

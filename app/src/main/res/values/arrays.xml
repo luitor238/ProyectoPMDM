@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+    <array name="monstruos">
+        <item>@drawable/mounstro_coronavirus</item>
+        <item>@drawable/mounstro_dragon</item>
+        <item>@drawable/mounstro_oso</item>
+        <item>@drawable/mounstro_patomotero</item>
+        <item>@drawable/mounstro_pollito</item>
+    </array>
+</resources>

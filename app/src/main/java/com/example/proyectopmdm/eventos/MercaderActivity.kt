@@ -16,7 +16,9 @@ import androidx.core.content.ContextCompat
 import com.example.proyectopmdm.Articulo
 import com.example.proyectopmdm.DadoActivity
 import com.example.proyectopmdm.DatabaseHelper
+import com.example.proyectopmdm.GlobalVariables
 import com.example.proyectopmdm.MenuOpcionesActivity
+import com.example.proyectopmdm.Personaje
 import com.example.proyectopmdm.R
 import com.example.proyectopmdm.VerPersonajeActivity
 import kotlin.random.Random
@@ -31,14 +33,23 @@ class MercaderActivity : AppCompatActivity() {
     private lateinit var btnComerciar: Button
     private lateinit var vistas:  Array<View>
     private var cont: Int= 0
-    val variablesGlobales = com.example.proyectopmdm.variablesGlobales.getInstance()
-    val personaje = variablesGlobales.globalPersonaje
     private val TAG = "LoginActivity"
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
+
+
+        val dbHelper = DatabaseHelper(this)
+        //Saca personaje
+        var personaje: Personaje? = null
+        val personajes = dbHelper.getPersonaje()
+        for (e in personajes){
+            if(e.getId()== GlobalVariables.id){
+                personaje=e
+            }
+        }
 
         imagenes = Array(10) { index -> val imageButton = findViewById<ImageButton>(
             resources.getIdentifier("imagen${index + 1}", "id", packageName))
@@ -53,10 +64,10 @@ class MercaderActivity : AppCompatActivity() {
         btnVender = Array(1) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
         vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
         btnComerciar = findViewById(R.id.btnComerciar)
-        val dbHelper = DatabaseHelper(this)
+
         Log.d(TAG, "Inicializacion de los elementos")
 
-        textos[0].text = personaje?.getDinero().toString()
+        //textos[0].text = personaje?.getDinero().toString()
 
 
 
