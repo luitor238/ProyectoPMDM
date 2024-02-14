@@ -6,14 +6,40 @@ import android.widget.Toast
 import java.io.Serializable
 
 
-class Personaje  (private var nombre: String, private val raza: Raza, private var clase: Clase, private var estadoVital: EstadoVital) :Serializable {
+class Personaje :Serializable {
 
+    private var id: Int = 0
+    private var nombre: String = ""
+    private var raza: Raza = Raza.Humano
+    private var clase: Clase = Clase.Brujo
+    private var estadoVital: EstadoVital = EstadoVital.Joven
     private var salud: Int = 0
     private var ataque: Int = 0
-    private var experiencia: Int
-    private var nivel: Int
-    private var suerte: Int
+    private var experiencia: Int = 0
+    private var nivel: Int = 0
+    private var suerte: Int = 0
     private var defensa: Int = 0
+
+    constructor(nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital) {
+        this.nombre = nombre
+        this.raza = raza
+        this.clase = clase
+        this.estadoVital = estadoVital
+    }
+
+    constructor(id: Int, nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital, salud: Int, ataque: Int, experiencia: Int, nivel: Int, suerte: Int, defensa: Int) {
+        this.id = id
+        this.nombre = nombre
+        this.raza = raza
+        this.clase = clase
+        this.estadoVital = estadoVital
+        this.salud = salud
+        this.ataque = ataque
+        this.experiencia = experiencia
+        this.nivel = nivel
+        this.suerte = suerte
+        this.defensa = defensa
+    }
 
     // Enumeración para el tipo de raza y clase
     enum class Raza { Humano, Elfo, Enano, Maldito }
@@ -27,22 +53,15 @@ class Personaje  (private var nombre: String, private val raza: Raza, private va
 
     // Inicialización de los atributos tras la construcción del objeto Personaje
     init {
-
-      //  imagen = ImageView(context)
-      //  imagen.setImageResource(R.drawable.personaje_en_blanco)
-
-      //  imagen.setImageResource(R.drawable.personaje_en_blanco)
-
-        calcularSalud()
-        calcularAtaque()
-        calcularDefensa()
-        //calcularImagen()
-        experiencia = 0
-        nivel = 1
-        suerte = (0..10).random() // Asigna un valor de suerte aleatorio entre 0 y 10
-
-
-
+        if(experiencia==0 && nivel==0 && suerte==0) {
+            calcularSalud()
+            calcularAtaque()
+            calcularDefensa()
+            //calcularImagen()
+            experiencia = 0
+            nivel = 1
+            suerte = (0..10).random() // Asigna un valor de suerte aleatorio entre 0 y 10
+        }
     }
 
     fun getNombre(): String {

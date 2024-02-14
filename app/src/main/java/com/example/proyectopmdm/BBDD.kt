@@ -5,9 +5,12 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.io.Serializable
 import com.example.proyectopmdm.Articulo.Nombre
-import org.w3c.dom.Text
+import com.example.proyectopmdm.Personaje.Raza
+import com.example.proyectopmdm.Personaje.Clase
+import com.example.proyectopmdm.Personaje.EstadoVital
+
+
 
 
 class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION){
@@ -102,22 +105,20 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
 
             put(KEY_ID_USUARIO, id)
             put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre().toString())
-            put(COLUMN_RAZA, personaje.getNombre().toString())
-            put(COLUMN_CLASE, personaje.getNombre().toString())
-            put(COLUMN_ESTADO_VITAL, personaje.getNombre().toString())
-            put(COLUMN_SALUD, personaje.getNombre().toString())
-            put(COLUMN_ATAQUE, personaje.getNombre().toString())
-            put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre().toString())
-            put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre().toString())
-
-
+            put(COLUMN_RAZA, personaje.getRaza().toString())
+            put(COLUMN_CLASE, personaje.getClase().toString())
+            put(COLUMN_ESTADO_VITAL, personaje.getEstadoVital().toString())
+            put(COLUMN_SALUD, personaje.getSalud().toString())
+            put(COLUMN_ATAQUE, personaje.getAtaque().toString())
+            put(COLUMN_EXPERIENCIA, personaje.getExperiencia().toString())
+            put(COLUMN_NIVEL, personaje.getNivel().toString())
+            put(COLUMN_SUERTE, personaje.getSuerte().toString())
+            put(COLUMN_DEFENSA, personaje.getDefensa().toString())
 
         }
         db.insert(TABLA_PERSONAJE, null, values)
         db.close()
     }
-
-
 
 
 
@@ -144,6 +145,36 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         return articulos
     }
 
+    @SuppressLint("Range")
+    // Obtiene todos los personajes de la base de datos
+    fun getPersonaje(): ArrayList<Personaje> {
+        val personajes = ArrayList<Personaje>()
+        val globalInstance = variableGlobal.getInstance()
+        val selectQuery = "SELECT * FROM $TABLA_PERSONAJE WHERE KEY_ID_USUARIO = 'globalInstance' "
+        val db= this.readableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        if(cursor.moveToFirst()){
+
+            do{
+                val id = cursor.getInt(cursor.getColumnIndex(KEY_ID_USUARIO))
+                val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_PERSONAJE))
+                val raza = cursor.getString(cursor.getColumnIndex(COLUMN_RAZA))
+                val clase = cursor.getString(cursor.getColumnIndex(COLUMN_CLASE))
+                val estadoVital = cursor.getString(cursor.getColumnIndex(COLUMN_ESTADO_VITAL))
+                val salud = cursor.getInt(cursor.getColumnIndex(COLUMN_SALUD))
+                val ataque = cursor.getInt(cursor.getColumnIndex(COLUMN_ATAQUE))
+                val experiencia = cursor.getInt(cursor.getColumnIndex(COLUMN_EXPERIENCIA))
+                val nivel = cursor.getInt(cursor.getColumnIndex(COLUMN_NIVEL))
+                val suerte = cursor.getInt(cursor.getColumnIndex(COLUMN_SUERTE))
+                val defensa = cursor.getInt(cursor.getColumnIndex(COLUMN_DEFENSA))
+                personajes.add(Personaje(id, nombre, raza.toRaza()!!, clase.toClase()!!, estadoVital.toEstadoVital()!!, salud, ataque, experiencia, nivel, suerte, defensa))
+            }while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return personajes
+    }
+
     fun eliminarRegistro(id: Int): Boolean {
         val db = this.writableDatabase
         val whereClause = "$KEY_ID = ?"
@@ -158,6 +189,30 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
 fun String.toNombre(): Nombre? {
     return try {
         return Nombre.valueOf(this.toUpperCase())
+    } catch (e: IllegalArgumentException) {
+        // Manejar la excepción si el valor no coincide con ninguno del enum
+        null
+    }
+}
+fun String.toRaza(): Raza? {
+    return try {
+        return Raza.valueOf(this.toUpperCase())
+    } catch (e: IllegalArgumentException) {
+        // Manejar la excepción si el valor no coincide con ninguno del enum
+        null
+    }
+}
+fun String.toClase(): Clase? {
+    return try {
+        return Clase.valueOf(this.toUpperCase())
+    } catch (e: IllegalArgumentException) {
+        // Manejar la excepción si el valor no coincide con ninguno del enum
+        null
+    }
+}
+fun String.toEstadoVital(): EstadoVital? {
+    return try {
+        return EstadoVital.valueOf(this.toUpperCase())
     } catch (e: IllegalArgumentException) {
         // Manejar la excepción si el valor no coincide con ninguno del enum
         null
