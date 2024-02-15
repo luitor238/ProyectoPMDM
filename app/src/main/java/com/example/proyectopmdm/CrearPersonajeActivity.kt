@@ -136,9 +136,8 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                     estadoVitalElegido
                 )
 
-
                 val dbHelper = DatabaseHelper(this)
-                dbHelper.insertarPersonaje(id, personaje)
+                dbHelper.insertarPersonaje(personaje)
 
                 Log.d(TAG, "Usuario Creado")
 
