@@ -6,13 +6,8 @@ import android.widget.Toast
 import java.io.Serializable
 
 
-class Personaje :Serializable {
+class Personaje (private var id: String, private var nombre: String, private var raza: Raza, private var clase: Clase, private var estadoVital: EstadoVital):Serializable {
 
-    private var id: String = ""
-    private var nombre: String = ""
-    private var raza: Raza = Raza.Humano
-    private var clase: Clase = Clase.Brujo
-    private var estadoVital: EstadoVital = EstadoVital.Joven
     private var salud: Int = 0
     private var ataque: Int = 0
     private var experiencia: Int = 0
@@ -20,27 +15,6 @@ class Personaje :Serializable {
     private var suerte: Int = 0
     private var defensa: Int = 0
 
-    constructor(id: String, nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital) {
-        this.id = id
-        this.nombre = nombre
-        this.raza = raza
-        this.clase = clase
-        this.estadoVital = estadoVital
-    }
-
-    constructor(id: String, nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital, salud: Int, ataque: Int, experiencia: Int, nivel: Int, suerte: Int, defensa: Int) {
-        this.id = id
-        this.nombre = nombre
-        this.raza = raza
-        this.clase = clase
-        this.estadoVital = estadoVital
-        this.salud = salud
-        this.ataque = ataque
-        this.experiencia = experiencia
-        this.nivel = nivel
-        this.suerte = suerte
-        this.defensa = defensa
-    }
 
     // Enumeración para el tipo de raza y clase
     enum class Raza { Humano, Elfo, Enano, Maldito }
@@ -71,11 +45,11 @@ class Personaje :Serializable {
     fun getNombre(): String {
         return nombre
     }
-    fun setNombre(nuevoNombre: String) {
-        nombre = nuevoNombre
-    }
     fun getRaza(): Raza {
         return raza
+    }
+    fun getClase(): Clase {
+        return clase
     }
 
     fun getSalud(): Int {
@@ -90,22 +64,58 @@ class Personaje :Serializable {
     fun setAtaque(nuevoAtaque: Int) {
         ataque = nuevoAtaque
     }
-    fun getClase(): Clase {
-        return clase
+    fun getEstadoVital(): EstadoVital {
+        return estadoVital
     }
-
-    fun setClase(nuevaClase: String) {
-
-        when(nuevaClase){
-            "Brujo" -> { clase = Clase.Brujo }
-
-            "Mago" -> {clase = Clase.Mago }
-
-            "Guerrero" -> {clase = Clase.Guerrero }
-
+    fun setEstadoVital(stringEstadoVital: String) {
+        when(stringEstadoVital){
+            "Joven" -> estadoVital = EstadoVital.Joven
+            "Adulto" -> estadoVital = EstadoVital.Adulto
+            "Anciano" -> estadoVital = EstadoVital.Anciano
         }
-
     }
+    fun getExperiencia(): Int {
+        return experiencia
+    }
+    fun setExperiencia(experienciaGanada: Int) {
+        experiencia += experienciaGanada
+        while (experiencia >= 1000) {
+            subirNivel()
+            experiencia -= 1000 // Reducir la experiencia en 1000 al subir de nivel
+        }
+    }
+    fun setExperienciaN(experienciaN: Int) {
+        experiencia = experienciaN
+    }
+    fun getNivel(): Int {
+        return nivel
+    }
+    fun setNivel(nivelN: Int) {
+        nivel = nivelN
+    }
+    fun subirNivel() {
+        if (nivel < 10) { // Limitar el nivel a 10
+            nivel++
+            calcularSalud() // Calcular el nuevo valor de salud al subir de nivel
+            calcularAtaque() // Calcular el nuevo valor de ataque al subir de nivel
+            calcularDefensa()
+        }
+    }
+    fun getDefensa(): Int {
+        return defensa
+    }
+    fun setDefensa(defensaN: Int) {
+        defensa = defensaN
+    }
+    fun getSuerte(): Int {
+        return suerte
+    }
+    fun setSuerte(suerteN: Int) {
+        suerte = suerteN
+    }
+
+
+
 
     fun getImagen(): String{
         when(this.clase){
@@ -209,44 +219,7 @@ class Personaje :Serializable {
 
     }
 
-    fun getEstadoVital(): EstadoVital {
-        return estadoVital
-    }
-    fun setEstadoVital(stringEstadoVital: String) {
-        when(stringEstadoVital){
-            "Joven" -> estadoVital = EstadoVital.Joven
 
-            "Adulto" -> estadoVital = EstadoVital.Adulto
-            "Anciano" -> estadoVital = EstadoVital.Anciano
-        }
-    }
-    fun getExperiencia(): Int {
-        return experiencia
-    }
-    fun setExperiencia(experienciaGanada: Int) {
-        experiencia += experienciaGanada
-        while (experiencia >= 1000) {
-            subirNivel()
-            experiencia -= 1000 // Reducir la experiencia en 1000 al subir de nivel
-        }
-    }
-    fun getNivel(): Int {
-        return nivel
-    }
-    fun subirNivel() {
-        if (nivel < 10) { // Limitar el nivel a 10
-            nivel++
-            calcularSalud() // Calcular el nuevo valor de salud al subir de nivel
-            calcularAtaque() // Calcular el nuevo valor de ataque al subir de nivel
-            calcularDefensa()
-        }
-    }
-    fun getDefensa(): Int {
-        return defensa
-    }
-    fun getSuerte(): Int {
-        return suerte
-    }
     private fun calcularSalud() {
         salud = when (nivel) {
             1 -> 100
