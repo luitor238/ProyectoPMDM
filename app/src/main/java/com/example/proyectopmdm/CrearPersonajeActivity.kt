@@ -33,7 +33,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private  var raza: String=""
     private  var estadoVital: String=""
     private val TAG = "LoginActivity"
-+
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
 

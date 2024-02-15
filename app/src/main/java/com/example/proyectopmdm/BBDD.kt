@@ -129,7 +129,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
     // Obtiene todos los artículos de la base de datos
     fun getArticulo(): ArrayList<Articulo> {
         val articulos = ArrayList<Articulo>()
-        val selectQuery = "SELECT * FROM $TABLA_ARTICULOS WHERE KEY_ID_USUARIO = 'globalInstance' "
+        val selectQuery = "SELECT * FROM $TABLA_ARTICULOS"
         val db= this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         if(cursor.moveToFirst()){
@@ -151,7 +151,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
     // Obtiene todos los personajes de la base de datos
     fun getPersonaje(): ArrayList<Personaje> {
         val personajes = ArrayList<Personaje>()
-        val selectQuery = "SELECT * FROM $TABLA_PERSONAJE WHERE KEY_ID_USUARIO = 'globalInstance' "
+        val selectQuery = "SELECT * FROM $TABLA_PERSONAJE"
         val db= this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         if(cursor.moveToFirst()){
