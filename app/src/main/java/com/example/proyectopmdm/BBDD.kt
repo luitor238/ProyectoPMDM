@@ -61,7 +61,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
 
 
         val PERSONAJE = "CREATE TABLE $TABLA_PERSONAJE(" +
-                "$KEY_ID_USUARIO INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "$KEY_ID_USUARIO TEXT PRIMARY KEY," +
                 "$COLUMN_NOMBRE_PERSONAJE TEXT," +
                 "$COLUMN_RAZA TEXT," +
                 "$COLUMN_CLASE TEXT," +
@@ -103,9 +103,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         val db =this.writableDatabase
         val values = ContentValues().apply{
 
-            if(personaje.getId()!=0){
-                put(KEY_ID_USUARIO, personaje.getId())
-            }
+            put(KEY_ID_USUARIO, personaje.getId())
             put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre().toString())
             put(COLUMN_RAZA, personaje.getRaza().toString())
             put(COLUMN_CLASE, personaje.getClase().toString())
@@ -158,7 +156,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         if(cursor.moveToFirst()){
 
             do{
-                val id = cursor.getInt(cursor.getColumnIndex(KEY_ID_USUARIO))
+                val id = cursor.getString(cursor.getColumnIndex(KEY_ID_USUARIO))
                 val nombre = cursor.getString(cursor.getColumnIndex(COLUMN_NOMBRE_PERSONAJE))
                 val raza = cursor.getString(cursor.getColumnIndex(COLUMN_RAZA))
                 val clase = cursor.getString(cursor.getColumnIndex(COLUMN_CLASE))

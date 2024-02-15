@@ -8,7 +8,7 @@ import java.io.Serializable
 
 class Personaje :Serializable {
 
-    private var id: Int = 0
+    private var id: String = ""
     private var nombre: String = ""
     private var raza: Raza = Raza.Humano
     private var clase: Clase = Clase.Brujo
@@ -27,7 +27,7 @@ class Personaje :Serializable {
         this.estadoVital = estadoVital
     }
 
-    constructor(id: Int, nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital, salud: Int, ataque: Int, experiencia: Int, nivel: Int, suerte: Int, defensa: Int) {
+    constructor(id: String, nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital, salud: Int, ataque: Int, experiencia: Int, nivel: Int, suerte: Int, defensa: Int) {
         this.id = id
         this.nombre = nombre
         this.raza = raza
@@ -64,7 +64,7 @@ class Personaje :Serializable {
         }
     }
 
-    fun getId(): Int{
+    fun getId(): String{
         return id
     }
     fun getNombre(): String {
