@@ -40,7 +40,6 @@ class MercaderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
 
-
         val dbHelper = DatabaseHelper(this)
         //Saca personaje
         var personaje: Personaje? = null
@@ -107,6 +106,7 @@ class MercaderActivity : AppCompatActivity() {
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo)
+
                         }
 
                         ContextCompat.getDrawable(this, R.drawable.articulo_pocion2)?.constantState -> {

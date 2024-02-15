@@ -89,18 +89,13 @@ class SingInActivity : AppCompatActivity() {
                 val userId = FirebaseAuth.getInstance().currentUser?.uid
                 if (userId != null) {
 
-
                     GlobalVariables.id = userId
                     Log.d(TAG, "El usuario creado correctamente")
 
                 } else {
                     Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")
                 }
-
-
                 val intent = Intent(this, CrearPersonajeActivity::class.java)
-                intent.putExtra("email", Email.text.toString())
-                intent.putExtra("password", Password.text.toString())
                 startActivity(intent)
             } else {
                 textViewWarning.text = "Usuario No Encontrado"

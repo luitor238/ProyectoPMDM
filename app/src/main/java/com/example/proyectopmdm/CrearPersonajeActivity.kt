@@ -114,7 +114,6 @@ class  CrearPersonajeActivity : AppCompatActivity() {
         btnCrear.setOnClickListener {
             val intent = Intent(this,VerPersonajeActivity::class.java)
 
-
             try{
                 val nombre = nickname.text.toString()
                 val razaElegida = if (raza.equals("")) Personaje.Raza.valueOf(Personaje.Raza.Humano.toString()) else Personaje.Raza.valueOf(raza)
