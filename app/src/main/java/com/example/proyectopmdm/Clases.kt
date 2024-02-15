@@ -815,31 +815,10 @@ class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) 
     }
 }
 
-class variableGlobal private constructor() {
-    // Variable global
-    var  idPersonaje:  String? = null
-
-    companion object {
-        // Referencia a la única instancia de la clase
-        @Volatile
-        private var instance: variableGlobal? = null
-
-        // Función para obtener la instancia de la clase
-        fun getInstance(): variableGlobal {
-            return instance ?: synchronized(this) { instance ?: variableGlobal().also { instance = it }
-            }
-        }
-    }
-
-    // Función para inicializar la variable global del personaje
-    fun initPersonaje(id: String?) {
-        idPersonaje = id
-    }
-
-}
 
 object GlobalVariables {
-    var  id: String = ""
+    var id: String = ""
+    var personaje: Personaje? = null
 }
 
 

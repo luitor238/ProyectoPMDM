@@ -39,15 +39,6 @@ class DadoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dado)
 
-        val dbHelper = DatabaseHelper(this)
-
-        var personaje: Personaje? = null
-        val personajes = dbHelper.getPersonaje()
-        for (e in personajes){
-            if(e.getId()==GlobalVariables.id){
-                personaje=e
-            }
-        }
 
         textViewExp = findViewById(R.id.textViewExperiencia)
         textViewMonedas = findViewById(R.id.textViewMonedas)
@@ -60,9 +51,9 @@ class DadoActivity : AppCompatActivity() {
         btnMochila = findViewById(R.id.btnMochila)
 
 
-        textViewExp.text = personaje?.getExperiencia().toString()
+        textViewExp.text = GlobalVariables.personaje?.getExperiencia().toString()
         //textViewMonedas.text =
-        textViewNombre.text = personaje?.getNombre()
+        textViewNombre.text = GlobalVariables.personaje?.getNombre()
 
 
         btnTirarDado.setOnClickListener {

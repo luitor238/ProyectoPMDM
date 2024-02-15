@@ -63,7 +63,16 @@ class LoginActivity : AppCompatActivity() {
                             val userId = FirebaseAuth.getInstance().currentUser?.uid
                             if (userId != null) {
 
-                                    GlobalVariables.id = userId
+                                GlobalVariables.id = userId
+
+                                val dbHelper = DatabaseHelper(this)
+
+                                val personajes = dbHelper.getPersonaje()
+                                for (e in personajes){
+                                    if(e.getId()==GlobalVariables.id){
+                                        GlobalVariables.personaje = e
+                                    }
+                                }
 
                             } else {
                                 Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")
