@@ -73,7 +73,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 "$COLUMN_EXPERIENCIA INTEGER," +
                 "$COLUMN_NIVEL INTEGER," +
                 "$COLUMN_SUERTE INTEGER," +
-                "$COLUMN_DEFENSA INTEGER)" +
+                "$COLUMN_DEFENSA INTEGER," +
                 "$COLUMN_MONEDERO INTEGER)"
 
         db.execSQL(PERSONAJE)
