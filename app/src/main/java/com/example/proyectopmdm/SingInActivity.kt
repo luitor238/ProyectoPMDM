@@ -89,8 +89,8 @@ class SingInActivity : AppCompatActivity() {
                 val userId = FirebaseAuth.getInstance().currentUser?.uid
                 if (userId != null) {
 
-                    val globalInstance = variableGlobal.getInstance()
-                    globalInstance.initPersonaje(userId)
+
+                    GlobalVariables.id = userId
                     Log.d(TAG, "El usuario creado correctamente")
 
                 } else {
