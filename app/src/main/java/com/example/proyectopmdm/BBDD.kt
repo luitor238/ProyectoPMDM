@@ -44,6 +44,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         private const val COLUMN_NIVEL = "nivel"
         private const val COLUMN_SUERTE = "suerte"
         private const val COLUMN_DEFENSA = "defensa"
+        private const val COLUMN_MONEDERO = "monedero"
 
 
     }
@@ -72,7 +73,8 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 "$COLUMN_EXPERIENCIA INTEGER," +
                 "$COLUMN_NIVEL INTEGER," +
                 "$COLUMN_SUERTE INTEGER," +
-                "$COLUMN_DEFENSA INTEGER)"
+                "$COLUMN_DEFENSA INTEGER)" +
+                "$COLUMN_MONEDERO INTEGER)"
 
         db.execSQL(PERSONAJE)
 
@@ -114,6 +116,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
             put(COLUMN_NIVEL, personaje.getNivel())
             put(COLUMN_SUERTE, personaje.getSuerte())
             put(COLUMN_DEFENSA, personaje.getDefensa())
+            put(COLUMN_MONEDERO, personaje.getMonedero())
 
         }
         db.insert(TABLA_PERSONAJE, null, values)
@@ -167,13 +170,15 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
                 val nivel = cursor.getInt(cursor.getColumnIndex(COLUMN_NIVEL))
                 val suerte = cursor.getInt(cursor.getColumnIndex(COLUMN_SUERTE))
                 val defensa = cursor.getInt(cursor.getColumnIndex(COLUMN_DEFENSA))
+                val monedero = cursor.getInt(cursor.getColumnIndex(COLUMN_MONEDERO))
                 val personaje: Personaje  = Personaje(id, nombre, raza.toRaza()!!, clase.toClase()!!, estadoVital.toEstadoVital()!!)
                 personaje.setExperienciaN(experiencia)
                 personaje.setSalud(salud)
                 personaje.setAtaque(ataque)
-                personaje.SetNivel(nivel)
-                personaje.SetSuerte(suerte)
-                personaje.SetDefensa(defensa)
+                personaje.setNivel(nivel)
+                personaje.setSuerte(suerte)
+                personaje.setDefensa(defensa)
+                personaje.setMonedero(monedero)
                 personajes.add(personaje)
             }while (cursor.moveToNext())
         }
