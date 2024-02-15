@@ -42,13 +42,11 @@ class MercaderActivity : AppCompatActivity() {
 
         val dbHelper = DatabaseHelper(this)
         //Saca personaje
-        var personaje: Personaje? = null
-        val personajes = dbHelper.getPersonaje()
-        for (e in personajes){
-            if(e.getId()== GlobalVariables.id){
-                personaje=e
-            }
-        }
+
+
+
+
+
 
         imagenes = Array(10) { index -> val imageButton = findViewById<ImageButton>(
             resources.getIdentifier("imagen${index + 1}", "id", packageName))
