@@ -14,6 +14,7 @@ class Personaje (private var id: String, private var nombre: String, private var
     private var nivel: Int = 0
     private var suerte: Int = 0
     private var defensa: Int = 0
+    private var monedero: Int = 50
 
 
     // Enumeración para el tipo de raza y clase
@@ -112,6 +113,12 @@ class Personaje (private var id: String, private var nombre: String, private var
     }
     fun setSuerte(suerteN: Int) {
         suerte = suerteN
+    }
+    fun getMonedero(): Int {
+        return monedero
+    }
+    fun setMonedero(monederoN: Int) {
+        monedero = monederoN
     }
 
 
