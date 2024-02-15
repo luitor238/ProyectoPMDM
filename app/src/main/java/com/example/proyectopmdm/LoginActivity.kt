@@ -53,7 +53,6 @@ class LoginActivity : AppCompatActivity() {
         try {
             btnIniciarSesion.setOnClickListener{
 
-                GlobalVariables.id=1 //Sacar el id del firebase y asignarlo a la variable global----------------------------------------------------------
                 if (Email.text.isNotEmpty() && Password.text.isNotEmpty()){
                     auth.signInWithEmailAndPassword(Email.text.toString(), Password.text.toString()).addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
@@ -64,12 +63,7 @@ class LoginActivity : AppCompatActivity() {
                             val userId = FirebaseAuth.getInstance().currentUser?.uid
                             if (userId != null) {
 
-
-                                val globalInstance = variableGlobal.getInstance()
-
-
-
-
+                                    GlobalVariables.id = userId
 
                             } else {
                                 Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")

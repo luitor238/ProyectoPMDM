@@ -17,7 +17,6 @@ class MochilaActivity : AppCompatActivity() {
     private lateinit var seleccionado: Articulo
     private lateinit var btnVolver: ImageButton
     private lateinit var articulos: ArrayList<Articulo>
-
     private lateinit var btnBorrar: Button
     private lateinit var btnVer: Button
     private lateinit var btnUsar: Button

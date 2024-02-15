@@ -858,7 +858,7 @@ class variableGlobal private constructor() {
 }
 
 object GlobalVariables {
-    var id: Int = 0
+    var  id: String = ""
 }
 
 
