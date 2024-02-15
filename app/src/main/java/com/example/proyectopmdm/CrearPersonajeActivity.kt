@@ -116,7 +116,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
 
             try{
-                nombre = nickname.text.toString()
+                val nombre = nickname.text.toString()
                 val razaElegida = if (raza.equals("")) Personaje.Raza.valueOf(Personaje.Raza.Humano.toString()) else Personaje.Raza.valueOf(raza)
                 val claseElegida = if (clase.equals("")) Personaje.Clase.valueOf(Personaje.Clase.Brujo.toString()) else Personaje.Clase.valueOf(clase)
                 val estadoVitalElegido = if (estadoVital.equals("")) Personaje.EstadoVital.valueOf(Personaje.EstadoVital.Joven.toString()) else Personaje.EstadoVital.valueOf(estadoVital)
@@ -129,7 +129,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                 Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
 
 
-                personaje = Personaje(
+                val personaje = Personaje(
                     id,
                     nombre,
                     razaElegida,
@@ -139,8 +139,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
 
                 val dbHelper = DatabaseHelper(this)
-                val globalInstance = variableGlobal.getInstance()
-                dbHelper.insertarPersonaje(personaje)
+                dbHelper.insertarPersonaje(id, personaje)
 
                 Log.d(TAG, "Usuario Creado")
 

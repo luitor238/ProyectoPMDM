@@ -99,11 +99,11 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE, null
         db.insert(TABLA_ARTICULOS, null, values)
         db.close()
     }
-    fun insertarPersonaje(personaje: Personaje){
+    fun insertarPersonaje(id: String, personaje: Personaje){
         val db =this.writableDatabase
         val values = ContentValues().apply{
 
-            put(KEY_ID_USUARIO, personaje.getId())
+            put(KEY_ID_USUARIO, id)
             put(COLUMN_NOMBRE_PERSONAJE, personaje.getNombre().toString())
             put(COLUMN_RAZA, personaje.getRaza().toString())
             put(COLUMN_CLASE, personaje.getClase().toString())
