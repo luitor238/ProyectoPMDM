@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class  CrearPersonajeActivity : AppCompatActivity() {
@@ -120,6 +121,8 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                 val claseElegida = if (clase.equals("")) Personaje.Clase.valueOf(Personaje.Clase.Brujo.toString()) else Personaje.Clase.valueOf(clase)
                 val estadoVitalElegido = if (estadoVital.equals("")) Personaje.EstadoVital.valueOf(Personaje.EstadoVital.Joven.toString()) else Personaje.EstadoVital.valueOf(estadoVital)
 
+                val id = GlobalVariables.id
+
                 Log.d(TAG," Nombre: ${nombre}")
                 Log.d(TAG, "Raza Intent: $razaElegida")
                 Log.d(TAG, "Clase Intent: $claseElegida")
@@ -127,6 +130,7 @@ class  CrearPersonajeActivity : AppCompatActivity() {
 
 
                 personaje = Personaje(
+                    id,
                     nombre,
                     razaElegida,
                     claseElegida,

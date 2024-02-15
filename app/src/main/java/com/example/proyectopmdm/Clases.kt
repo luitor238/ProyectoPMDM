@@ -20,7 +20,8 @@ class Personaje :Serializable {
     private var suerte: Int = 0
     private var defensa: Int = 0
 
-    constructor(nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital) {
+    constructor(id: String, nombre: String, raza: Raza, clase: Clase, estadoVital: EstadoVital) {
+        this.id = id
         this.nombre = nombre
         this.raza = raza
         this.clase = clase
