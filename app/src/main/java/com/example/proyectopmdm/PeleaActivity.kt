@@ -2,15 +2,16 @@ package com.example.proyectopmdm
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class PeleaActivity : AppCompatActivity() {
 
@@ -26,14 +27,15 @@ class PeleaActivity : AppCompatActivity() {
 
         var personaje: Personaje? = null
         val personajes = dbHelper.getPersonaje()
-        for (e in personajes){
-            if(e.getId()==GlobalVariables.id){
-                personaje=e
+        for (e in personajes) {
+            if (e.getId() == GlobalVariables.id) {
+                personaje = e
+                break
             }
         }
 
-        var monstruo = intent.getSerializableExtra("monstruo") as Monstruo
-        var drawableId = intent.getIntExtra("imagen", 0) as Int
+        val monstruo = intent.getSerializableExtra("monstruo") as? Monstruo
+        val drawableId = intent.getIntExtra("imagen", 0)
 
         imagen = findViewById(R.id.imageViewMonstruo)
         result = findViewById(R.id.textViewResultado)
@@ -54,9 +56,17 @@ class PeleaActivity : AppCompatActivity() {
         }
 
         result.text = "Luchando..."
-        Thread.sleep(3000)
-        result.text = personaje?.pelea(monstruo)
-
+        Thread {
+            Thread.sleep(3000)
+            val resultado = personaje!!.pelea(monstruo!!)
+            runOnUiThread {
+                result.text = resultado
+                btnSeguir.visibility = View.VISIBLE
+                if (resultado == "¡GANASTE!") {
+                    imagen.visibility = View.INVISIBLE
+                }
+            }
+        }.start()
 
         btnSeguir.setOnClickListener {
             val intent = Intent(this, DadoActivity::class.java)

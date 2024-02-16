@@ -273,23 +273,20 @@ class Personaje (private var id: String, private var nombre: String, private var
             else -> 4 // Valor por defecto si el nivel está fuera del rango especificado
         }
     }
-    fun pelea(monstruo: Monstruo): String {
-        var result=""
+    fun pelea(monstruo: Monstruo, habilidad: String): String {
+        var result="¡PERDISTE!"
         var vidaMonstruo = monstruo.getSalud()
         var expGanada =
             monstruo.getSalud() // La experiencia ganada es igual a la salud inicial del monstruo
         var vidaPersonaje = salud
         var contador = false
-        println("¡Un ${monstruo.getNombre()} se acerca!")
-
-
 
         while (vidaMonstruo > 0 && vidaPersonaje > 0) {
             // Preguntar al usuario si desea activar la habilidad
             println("¿Deseas activar la habilidad del personaje? (Sí/No)")
-            val respuesta = readLine()?.toLowerCase()
+            val respuesta = habilidad
 
-            if ((respuesta == "si" || respuesta == "sí") && contador == false) {
+            if ((respuesta == "si") && !contador) {
                 habilidad() // Activa la habilidad del personaje
                 contador = true
             }
@@ -316,8 +313,6 @@ class Personaje (private var id: String, private var nombre: String, private var
                     println("${nombre} ha derrotado al ${monstruo.getNombre()} y gana ${expGanada} de experiencia.")
                     result = "¡GANASTE!"
                     break
-                } else {
-                    result = "¡PERDISTE!"
                 }
 
                 // Monstruo ataca al personaje
