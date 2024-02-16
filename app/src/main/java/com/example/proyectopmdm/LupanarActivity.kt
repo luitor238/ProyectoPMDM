@@ -34,6 +34,7 @@ class LupanarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lupanar)
+
         btnSi = findViewById(R.id.btnSi)
         btnNo = findViewById(R.id.btnNo)
         recyclerView = findViewById(R.id.recyclerView)
@@ -41,6 +42,9 @@ class LupanarActivity : AppCompatActivity() {
 
         val images: MutableList<Int> = ArrayList()
         images.add(R.drawable.lupana1)
+        images.add(R.drawable.lupana2_jfif)
+        images.add(R.drawable.lupana3_jfif)
+        images.add(R.drawable.lupana4_jfif)
 
         Log.d(ContentValues.TAG, "Crea una instancia de tu adaptador y configúralo en el RecyclerView principal")
         recyclerView.layoutManager = LinearLayoutManager(this)
