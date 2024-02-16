@@ -27,13 +27,7 @@ class MochilaActivity : AppCompatActivity() {
 
         val dbHelper = DatabaseHelper(this)
 
-        var personaje: Personaje? = null
-        val personajes = dbHelper.getPersonaje()
-        for (e in personajes){
-            if(e.getId()==GlobalVariables.id){
-                personaje=e
-            }
-        }
+        var personaje = GlobalVariables.personaje
 
         btnVolver = findViewById(R.id.btnVolver)
         btnBorrar = findViewById(R.id.btnBorrar)
@@ -48,6 +42,7 @@ class MochilaActivity : AppCompatActivity() {
         if(!articulos.isEmpty()){
             //Agregar los articulos al scroll
             for(i in 0..(articulos.size-1)){
+                if(articulos[i].getIdUser() == GlobalVariables.personaje!!.getId())
                 agregarArticulo(articulos[i])
             }
         }

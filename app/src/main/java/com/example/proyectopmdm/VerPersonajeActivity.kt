@@ -20,16 +20,7 @@ class VerPersonajeActivity : AppCompatActivity() {
     @SuppressLint("DiscouragedApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val dbHelper = DatabaseHelper(this)
-
-        var personaje: Personaje? = null
-        val personajes = dbHelper.getPersonaje()
-        for (e in personajes){
-            if(e.getId()==GlobalVariables.id){
-                personaje=e
-            }
-        }
-
+        var personaje = GlobalVariables.personaje
 
         Log.d(TAG, "Cambio a Actividad {VerPersonajeactivity}")
         // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT

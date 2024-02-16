@@ -728,6 +728,7 @@ class Mochila(private var pesoMochila: Int):Serializable {
 
 class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) :Serializable {
 
+    private var idUser: String =""
     enum class TipoArticulo { ARMA, OBJETO, PROTECCION, ORO }
     enum class Nombre { BASTON, ESPADA, DAGA, MARTILLO, GARRAS, POCION, IRA, ESCUDO, ARMADURA, MONEDA }
 
@@ -770,7 +771,12 @@ class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) 
             peso=0
     }
 
-
+    fun getIdUser(): String {
+        return idUser
+    }
+    fun setIdUser(idUserNuevo: String) {
+        idUser = idUserNuevo
+    }
     fun getPeso(): Int {
         return peso
     }

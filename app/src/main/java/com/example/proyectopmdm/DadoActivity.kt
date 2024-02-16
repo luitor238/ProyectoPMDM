@@ -52,7 +52,7 @@ class DadoActivity : AppCompatActivity() {
 
 
         textViewExp.text = GlobalVariables.personaje?.getExperiencia().toString()
-        //textViewMonedas.text =
+        textViewMonedas.text = GlobalVariables.personaje?.getMonedero().toString()
         textViewNombre.text = GlobalVariables.personaje?.getNombre()
 
 
@@ -93,6 +93,16 @@ class DadoActivity : AppCompatActivity() {
                     startActivity(intent)}
                 else -> Log.d(TAG, "Error al cambiar de Actividad")
             }
+        }
+
+        if (GlobalVariables.personaje != null) {
+            btnverPersonaje.setImageResource(
+                resources.getIdentifier(
+                    GlobalVariables.personaje!!.getImagen(),
+                    "drawable",
+                    packageName
+                )
+            )
         }
 
         btnMenu.setOnClickListener {
