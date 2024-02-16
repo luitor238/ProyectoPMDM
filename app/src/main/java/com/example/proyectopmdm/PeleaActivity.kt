@@ -25,17 +25,11 @@ class PeleaActivity : AppCompatActivity() {
 
         val dbHelper = DatabaseHelper(this)
 
-        var personaje: Personaje? = null
-        val personajes = dbHelper.getPersonaje()
-        for (e in personajes) {
-            if (e.getId() == GlobalVariables.id) {
-                personaje = e
-                break
-            }
-        }
+        var personaje = GlobalVariables.personaje
 
         val monstruo = intent.getSerializableExtra("monstruo") as? Monstruo
         val drawableId = intent.getIntExtra("imagen", 0)
+        val habilidad = intent.getStringExtra("habilidad")
 
         imagen = findViewById(R.id.imageViewMonstruo)
         result = findViewById(R.id.textViewResultado)
@@ -58,12 +52,12 @@ class PeleaActivity : AppCompatActivity() {
         result.text = "Luchando..."
         Thread {
             Thread.sleep(3000)
-            val resultado = personaje!!.pelea(monstruo!!)
+            val resultado = personaje!!.pelea(monstruo!!,habilidad!!)
             runOnUiThread {
                 result.text = resultado
                 btnSeguir.visibility = View.VISIBLE
-                if (resultado == "¡GANASTE!") {
-                    imagen.visibility = View.INVISIBLE
+                if (result.text == "¡GANASTE!") {
+                    imagen.visibility = View.GONE
                 }
             }
         }.start()

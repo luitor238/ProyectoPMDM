@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -21,145 +22,95 @@ class MochilaActivity : AppCompatActivity() {
     private lateinit var btnVer: Button
     private lateinit var btnUsar: Button
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mochila)
 
         val dbHelper = DatabaseHelper(this)
 
-        var personaje = GlobalVariables.personaje
+        val personaje = GlobalVariables.personaje
 
         btnVolver = findViewById(R.id.btnVolver)
         btnBorrar = findViewById(R.id.btnBorrar)
         btnVer = findViewById(R.id.btnVer)
         btnUsar = findViewById(R.id.btnUsar)
 
-        articulos = dbHelper.getArticulo()
+        articulos = dbHelper.getArticulo().filter { it.getIdUser() == personaje?.getId() }.toMutableList() as ArrayList<Articulo>
 
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
-
-        if(!articulos.isEmpty()){
-            //Agregar los articulos al scroll
-            for(i in 0..(articulos.size-1)){
-                if(articulos[i].getIdUser() == GlobalVariables.personaje!!.getId())
-                agregarArticulo(articulos[i])
+        if (articulos.isEmpty()) {
+            Toast.makeText(this, "Mochila Vacia!", Toast.LENGTH_SHORT).show()
+        } else {
+            // Agregar los articulos al scroll
+            for (articulo in articulos) {
+                agregarArticulo(articulo)
             }
         }
-        else{
-            Toast.makeText(this,"Mochila Vacia!",Toast.LENGTH_SHORT).show()
-        }
 
-        //Boton volver al menu
-        btnVolver.setOnClickListener(){
-            val intent = Intent(this,DadoActivity::class.java)
+        // Boton volver al menu
+        btnVolver.setOnClickListener {
+            val intent = Intent(this, DadoActivity::class.java)
             startActivity(intent)
         }
 
-        //Borrar articulo
-        btnBorrar.setOnClickListener(){
-            articulos = dbHelper.getArticulo()
-
-            //Elimina registro en BBDD
+        // Borrar articulo
+        btnBorrar.setOnClickListener {
             dbHelper.eliminarRegistro(seleccionado.id)
+            actualizarMochila(linearLayout)
+        }
 
-            //Ocultamos botones
-            btnBorrar.visibility= View.INVISIBLE
-            btnVer.visibility= View.INVISIBLE
-            btnUsar.visibility= View.INVISIBLE
-
-            //Recargamos articulos en la mochila
-            var i = 0
-            while (i < linearLayout.childCount) {
-                val view = linearLayout.getChildAt(i)
-
-                // Verifica si el hijo es un ImageButton y elimínalo
-                if (view is ImageButton) {
-                    linearLayout.removeViewAt(i)
-                } else {
-                    i++
-                }
-            }
-
-            if(!articulos.isEmpty()){
-                //Agregar los articulos al scroll
-                for(i in 0..(articulos.size-1)){
-                    agregarArticulo(articulos[i])
-                }
-            }
-            else{
-                Toast.makeText(this,"Mochila Vacia!",Toast.LENGTH_SHORT).show()
-            }
-
-            val intent = Intent(this,MochilaActivity::class.java)
+        btnVer.setOnClickListener {
+            val intent = Intent(this, VerArticuloActivity::class.java)
+            intent.putExtra("articulo", seleccionado)
             startActivity(intent)
         }
 
-        btnVer.setOnClickListener(){
-            val intent = Intent(this,VerArticuloActivity::class.java)
-            intent.putExtra("articulo",seleccionado)
-            startActivity(intent)
-        }
-
-        btnUsar.setOnClickListener(){
+        btnUsar.setOnClickListener {
             personaje?.usarObjeto(seleccionado, this)
-            dbHelper.eliminarRegistro(seleccionado.id)
-
-            //Ocultamos botones
-            btnBorrar.visibility= View.INVISIBLE
-            btnVer.visibility= View.INVISIBLE
-            btnUsar.visibility= View.INVISIBLE
-
-            //Recargamos articulos en la mochila
-            var i = 0
-            while (i < linearLayout.childCount) {
-                val view = linearLayout.getChildAt(i)
-
-                // Verifica si el hijo es un ImageButton y elimínalo
-                if (view is ImageButton) {
-                    linearLayout.removeViewAt(i)
-                } else {
-                    i++
-                }
+            if(seleccionado.getTipoArticulo() != Articulo.TipoArticulo.ORO) {
+                dbHelper.eliminarRegistro(seleccionado.id)
+                actualizarMochila(linearLayout)
             }
-
-            val intent = Intent(this,MochilaActivity::class.java)
-            startActivity(intent)
+            btnBorrar.visibility = View.INVISIBLE
+            btnVer.visibility = View.INVISIBLE
+            btnUsar.visibility = View.INVISIBLE
         }
 
         dbHelper.close()
-
     }
 
+    private fun actualizarMochila(linearLayout: LinearLayout) {
+        // Recargamos articulos en la mochila
+        linearLayout.removeAllViews()
+        articulos = DatabaseHelper(this).getArticulo() as ArrayList<Articulo>
+        for (articulo in articulos) {
+            if (articulo.getIdUser() == GlobalVariables.personaje?.getId()) {
+                agregarArticulo(articulo)
+            }
+        }
+    }
 
     private fun agregarArticulo(articulo: Articulo) {
         val nuevoArticulo = ImageButton(this)
-        val alturaEnPx = resources.getDimensionPixelSize(
-            R.dimen.tu_altura_imagebutton
-        )
+        val alturaEnPx = resources.getDimensionPixelSize(R.dimen.tu_altura_imagebutton)
 
-        //ATRIBUTOS del imageButton
-        nuevoArticulo.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            alturaEnPx
-        )
+        // Atributos del imageButton
+        nuevoArticulo.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, alturaEnPx)
         nuevoArticulo.setImageResource(resources.getIdentifier(articulo.getImagen(), "drawable", packageName))
         nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER
         nuevoArticulo.setBackgroundColor(Color.TRANSPARENT)
 
-
-        //Funcion del boton articulo
+        // Funcion del boton articulo
         nuevoArticulo.setOnClickListener {
             seleccionado = articulo
-            if(btnBorrar.visibility==View.INVISIBLE || btnVer.visibility==View.INVISIBLE || btnUsar.visibility==View.INVISIBLE) {
-                btnBorrar.visibility= View.VISIBLE
-                btnVer.visibility= View.VISIBLE
-                btnUsar.visibility= View.VISIBLE
-            }
-            nuevoArticulo.tag = articulo.id//-----------------------------
+            btnBorrar.visibility = View.VISIBLE
+            btnVer.visibility = View.VISIBLE
+            btnUsar.visibility = View.VISIBLE
         }
 
-        //Añadir al linearLayout
+        // Añadir al linearLayout
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         linearLayout.addView(nuevoArticulo)
     }

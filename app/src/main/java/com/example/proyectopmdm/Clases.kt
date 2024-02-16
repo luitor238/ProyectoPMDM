@@ -541,6 +541,10 @@ class Personaje (private var id: String, private var nombre: String, private var
                 salud += articulo.getAumentoDefensa()
                 Toast.makeText(context, "Has usado un objeto de proteccion y aumentado tu defensa a $defensa.", Toast.LENGTH_SHORT).show()
             }
+            Articulo.TipoArticulo.ORO -> {
+                monedero += articulo.getPrecio()
+                Toast.makeText(context, "Has cargado tu monedero, ahora tienes $monedero.", Toast.LENGTH_SHORT).show()
+            }
             else -> {
                 Toast.makeText(context, "Este articulo no tiene uso.", Toast.LENGTH_SHORT).show()
             }

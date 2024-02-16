@@ -87,6 +87,9 @@
     <string name="guardar">GUARDAR</string>
     <string name="no_guardar">NO GUARDAR</string>
     <string name="guardar_cambios">¿Desea guardar los cambios antes de salir?</string>
+    <string name="no_activar">NO ACTIVAR</string>
+    <string name="activar">ACTIVAR</string>
+    <string name="quieres_activar_tu_habilidad">¿Quieres activar tu habilidad?</string>
 
 </resources>
 

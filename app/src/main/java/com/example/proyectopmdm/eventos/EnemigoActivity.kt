@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,8 +20,14 @@ class EnemigoActivity : AppCompatActivity() {
     private lateinit var imagen: ImageView
     private lateinit var Nombre: TextView
     private lateinit var Nivel: TextView
+    private lateinit var Ataque: TextView
+    private lateinit var Salud: TextView
     private lateinit var btnHuir: Button
     private lateinit var btnLuchar: Button
+    private lateinit var viewHabilidad: View
+    private lateinit var textViewPregunta: TextView
+    private lateinit var btnSi: Button
+    private lateinit var btnNo: Button
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +38,14 @@ class EnemigoActivity : AppCompatActivity() {
         imagen = findViewById(R.id.imageViewEnemigo)
         Nombre = findViewById(R.id.textViewNombre)
         Nivel = findViewById(R.id.textViewNivel)
+        Ataque = findViewById(R.id.textViewAtaque)
+        Salud = findViewById(R.id.textViewSalud)
         btnHuir = findViewById(R.id.btnHuir)
         btnLuchar = findViewById(R.id.btnLuchar)
+        viewHabilidad = findViewById(R.id.viewHabilidad)
+        textViewPregunta = findViewById(R.id.textViewPregunta)
+        btnSi = findViewById(R.id.btnSi)
+        btnNo = findViewById(R.id.btnNo)
 
         // Acceder al array de monstruos y elegir uno aleatorio
         val drawablesArray = resources.obtainTypedArray(R.array.monstruos)
@@ -41,6 +54,8 @@ class EnemigoActivity : AppCompatActivity() {
         imagen.setImageResource(drawableId)
         Nombre.text = monstruo.getNombre()
         Nivel.text = monstruo.getNivel().toString()
+        Ataque.text = monstruo.getAtaque().toString()
+        Salud.text = monstruo.getSalud().toString()
 
         drawablesArray.recycle()
 
@@ -50,9 +65,25 @@ class EnemigoActivity : AppCompatActivity() {
         }
 
         btnLuchar.setOnClickListener {
+            viewHabilidad.visibility = View.VISIBLE
+            textViewPregunta.visibility = View.VISIBLE
+            btnSi.visibility = View.VISIBLE
+            btnNo.visibility = View.VISIBLE
+        }
+
+        btnSi.setOnClickListener {
             val intent = Intent(this, PeleaActivity::class.java)
             intent.putExtra("monstruo",monstruo)
             intent.putExtra("imagen",drawableId)
+            intent.putExtra("habilidad","si")
+            startActivity(intent)
+        }
+
+        btnNo.setOnClickListener {
+            val intent = Intent(this, PeleaActivity::class.java)
+            intent.putExtra("monstruo",monstruo)
+            intent.putExtra("imagen",drawableId)
+            intent.putExtra("habilidad","no")
             startActivity(intent)
         }
     }

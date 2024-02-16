@@ -67,8 +67,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
                 "FOREIGN KEY($ID_USUARIO) REFERENCES $TABLA_PERSONAJE($KEY_ID_USUARIO))"
         db.execSQL(ARTICULOS)
 
-        val sql = "CREATE UNIQUE INDEX KEY_ID_USUARIO ON $TABLA_ARTICULOS($ID_USUARIO)"
-        db.execSQL(sql)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
