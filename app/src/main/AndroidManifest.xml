@@ -53,6 +53,10 @@
         <activity
             android:name=".VerPersonajeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".LupanarActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
