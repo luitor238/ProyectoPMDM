@@ -65,8 +65,7 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="342dp"
-                android:layout_marginTop="32dp"
-                />
+                android:layout_marginTop="32dp" />
 
         </FrameLayout>
 
@@ -95,7 +94,7 @@
                 android:layout_margin="14dp"
                 android:background="@color/transparent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/like_green_24dp"
+                android:src="@drawable/navaja"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </androidx.cardview.widget.CardView>
@@ -115,7 +114,7 @@
                 android:layout_margin="14dp"
                 android:background="@color/transparent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/skip_red_24dp"
+                android:src="@drawable/articulo_martillo"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </androidx.cardview.widget.CardView>

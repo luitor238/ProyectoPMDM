@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
@@ -30,6 +31,7 @@ class LupanarActivity : AppCompatActivity() {
     private lateinit var btnNo: ImageButton
     private lateinit var adapter: CustomAdapter
     private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
+    private var currentImageIndex = 0
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,22 +55,35 @@ class LupanarActivity : AppCompatActivity() {
 
 
         btnSi.setOnClickListener {
-            // Obtener la primera vista visible en el RecyclerView
             val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
 
-            // Aplicar animación de caída hacia la derecha al ImageView
             viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_derecha))
+
+            val animationDuration = 500 // Duración de la animación en milisegundos
+
+            // Retrasar el desplazamiento del RecyclerView hasta que la animación haya finalizado
+            Handler().postDelayed({
+                currentImageIndex = (currentImageIndex + 1) % images.size
+                recyclerView.smoothScrollToPosition(currentImageIndex)
+            }, animationDuration.toLong())
         }
 
         btnNo.setOnClickListener {
-            // Obtener la primera vista visible en el RecyclerView
             val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
 
-            // Aplicar animación de caída hacia la izquierda al ImageView
             viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_izquierda))
+
+            val animationDuration = 500 // Duración de la animación en milisegundos
+
+            // Retrasar el desplazamiento del RecyclerView hasta que la animación haya finalizado
+            Handler().postDelayed({
+                currentImageIndex = if (currentImageIndex > 0) currentImageIndex - 1 else images.size - 1
+                recyclerView.smoothScrollToPosition(currentImageIndex)
+            }, animationDuration.toLong())
         }
+
 
 
 
