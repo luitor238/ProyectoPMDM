@@ -26,7 +26,7 @@
             android:backgroundTint="@color/primaryColor"
             android:elevation="2dp"
             android:shadowColor="#5C5C5C"
-            android:text="@string/verPersonaje"
+            android:text="Lupanar"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"

@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class PeleaActivity : AppCompatActivity() {
-
+/*
     private lateinit var imagen: ImageView
     private lateinit var result: TextView
     private lateinit var btnSeguir: Button
@@ -72,5 +72,5 @@ class PeleaActivity : AppCompatActivity() {
             val intent = Intent(this, DadoActivity::class.java)
             startActivity(intent)
         }
-    }
+    }*/
 }

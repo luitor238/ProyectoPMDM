@@ -21,15 +21,16 @@ class CustomAdapter(private val context: Context, private val images: List<Int>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //ASIGNACION DE LOS RECURSOS DE LA LISTA
         val currentImage = images[position]
         holder.imageView1.setImageResource(currentImage)
 
-
-
-
-
+        // Aplicar animación de cambio de color al ImageView
+        holder.imageView1.setOnClickListener {
+            val cambioColorAnimation = AnimationUtils.loadAnimation(context, R.anim.cambio_de_color)
+            holder.imageView1.startAnimation(cambioColorAnimation)
+        }
     }
+
 
 
     override fun getItemCount(): Int {

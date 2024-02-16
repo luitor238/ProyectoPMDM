@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
+import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.Button
@@ -47,14 +48,24 @@ class LupanarActivity : AppCompatActivity() {
         recyclerView.setAdapter(adapter)
 
 
-        btnSi.setOnClickListener{
-            val intent = Intent(this, LupanarActivity::class.java)
-            startActivity(intent)
+        btnSi.setOnClickListener {
+            // Obtener la primera vista visible en el RecyclerView
+            val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+            val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
+
+            // Aplicar animación de caída hacia la derecha al ImageView
+            viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_derecha))
         }
-        btnNo.setOnClickListener{
-            val intent = Intent(this,LupanarActivity::class.java)
-            startActivity(intent)
+
+        btnNo.setOnClickListener {
+            // Obtener la primera vista visible en el RecyclerView
+            val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+            val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
+
+            // Aplicar animación de caída hacia la izquierda al ImageView
+            viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_izquierda))
         }
+
 
 
 
