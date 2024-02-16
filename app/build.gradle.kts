@@ -47,6 +47,15 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore:24.10.2")
     testImplementation("junit:junit:4.13.2")
+    // Image Loading
+    implementation ("com.github.bumptech.glide:glide:4.13.2")
+
+    // Support Library
+    implementation ("androidx.appcompat:appcompat:1.5.1")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.google.android.material:material:1.6.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 }

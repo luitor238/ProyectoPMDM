@@ -1,5 +1,6 @@
 package com.example.proyectopmdm
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +10,7 @@ import com.example.proyectopmdm.eventos.EnemigoActivity
 import com.example.proyectopmdm.eventos.MercaderActivity
 import com.example.proyectopmdm.eventos.ObjetoActivity
 
-private lateinit var btnverPersonaje: Button
+private lateinit var btnLupanar: Button
 private lateinit var btnenemigo: Button
 private lateinit var btnciudad: Button
 private lateinit var btnmercader: Button
@@ -17,21 +18,22 @@ private lateinit var btnobjeto: Button
 private lateinit var btnMochila: Button
 
 class MenuOpcionesActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         // CREACION DE LA VISTA Y ASIGNACION DEL LAYOUT
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_opciones)
 
-        btnverPersonaje = findViewById(R.id.btnVerPersonaje)
+        btnLupanar = findViewById(R.id.btnLupanar)
         btnenemigo = findViewById(R.id.btnEnemigo)
         btnciudad = findViewById(R.id.btnCiudad)
         btnmercader = findViewById(R.id.btnMercader)
         btnobjeto = findViewById(R.id.btnObjeto)
         btnMochila = findViewById(R.id.btnMochila)
 
-        btnverPersonaje.setOnClickListener{
-            val intent = Intent(this,VerPersonajeActivity::class.java)
+        btnLupanar.setOnClickListener{
+            val intent = Intent(this,LupanarActivity::class.java)
             startActivity(intent)
         }
         btnenemigo.setOnClickListener{
