@@ -12,7 +12,7 @@ import com.example.proyectopmdm.Personaje.*
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         private const val DATABASE = "BBDD.db"
 
         // Constantes de la tabla ARTICULOS
@@ -77,9 +77,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
         onCreate(db)
     }
 
-    fun insertarArticulo(articulo: Articulo) {
+    fun insertarArticulo(articulo: Articulo, idUser: String) {
         val db = writableDatabase
         val values = ContentValues().apply {
+            put(ID_USUARIO, idUser)
             put(COLUMN_NOMBRE_ARTICULO, articulo.getNombre().toString())
             put(COLUMN_PESO, articulo.getPeso())
         }
@@ -117,9 +118,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
             if (it.moveToFirst()) {
                 do {
                     val id = it.getInt(it.getColumnIndex(KEY_ID))
-                    val nombre = it.getString(it.getColumnIndex(COLUMN_NOMBRE_ARTICULO))
+                    val nombre = it.getString(it.getColumnIndex(COLUMN_NOMBRE_ARTICULO)).toNombre()!!
                     val peso = it.getInt(it.getColumnIndex(COLUMN_PESO))
-                    articulos.add(Articulo(id, nombre.toNombre()!!, peso))
+                    val idUser = it.getString(it.getColumnIndex(ID_USUARIO))
+                    val articulo = Articulo(id, nombre, peso)
+                    articulo.apply {
+                        setIdUser(idUser)
+                    }
+                    articulos.add(articulo)
                 } while (it.moveToNext())
             }
         }

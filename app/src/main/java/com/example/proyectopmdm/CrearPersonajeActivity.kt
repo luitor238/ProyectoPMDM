@@ -26,9 +26,6 @@ class  CrearPersonajeActivity : AppCompatActivity() {
     private lateinit var imagen: ImageView
     private lateinit var btnCrear: Button
     private lateinit var btnVolver: ImageButton
-    private lateinit var textViewError: TextView
-    private lateinit var personaje: Personaje
-    private lateinit var nombre: String
     private  var clase: String=""
     private  var raza: String=""
     private  var estadoVital: String=""
@@ -128,15 +125,13 @@ class  CrearPersonajeActivity : AppCompatActivity() {
                 Log.d(TAG, "Estado Vital Intent: $estadoVitalElegido")
 
 
-                val personaje = Personaje(
+                GlobalVariables.personaje = Personaje(
                     id,
                     nombre,
                     razaElegida,
                     claseElegida,
                     estadoVitalElegido
                 )
-
-                GlobalVariables.personaje=personaje
 
                 Log.d(TAG, "Usuario Creado")
 

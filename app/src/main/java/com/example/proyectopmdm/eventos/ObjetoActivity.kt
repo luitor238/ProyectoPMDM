@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.proyectopmdm.Articulo
 import com.example.proyectopmdm.DadoActivity
 import com.example.proyectopmdm.DatabaseHelper
+import com.example.proyectopmdm.GlobalVariables
 import com.example.proyectopmdm.R
 import kotlin.random.Random
 
@@ -32,6 +33,8 @@ class ObjetoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_objeto)
+
+        val personaje = GlobalVariables.personaje
 
         //TextView's
         nombre1 = findViewById(R.id.textViewNombre)
@@ -68,7 +71,7 @@ class ObjetoActivity : AppCompatActivity() {
 
         //Boton recoger articulo
         btnRecoger.setOnClickListener {
-            dbHelper.insertarArticulo(articulo)
+            dbHelper.insertarArticulo(articulo, personaje!!.getId())
             Toast.makeText(this, "Articulo añadido!", Toast.LENGTH_SHORT).show()
             Thread.sleep(2000)
             val intent = Intent(this, DadoActivity::class.java)

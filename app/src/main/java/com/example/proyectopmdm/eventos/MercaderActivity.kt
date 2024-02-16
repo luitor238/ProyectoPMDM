@@ -103,7 +103,7 @@ class MercaderActivity : AppCompatActivity() {
                             val nombre = Articulo.Nombre.IRA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
 
                         }
 
@@ -111,49 +111,49 @@ class MercaderActivity : AppCompatActivity() {
                             val nombre = Articulo.Nombre.POCION
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_garras2)?.constantState -> {
                             val nombre = Articulo.Nombre.GARRAS
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.navaja)?.constantState -> {
                             val nombre = Articulo.Nombre.DAGA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_escudo)?.constantState -> {
                             val nombre = Articulo.Nombre.ESCUDO
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_espada)?.constantState -> {
                             val nombre = Articulo.Nombre.ESPADA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_armadura)?.constantState ->{
                             val nombre = Articulo.Nombre.ARMADURA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_martillo)?.constantState ->{
                             val nombre = Articulo.Nombre.MARTILLO
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_baston)?.constantState ->{
                             val nombre = Articulo.Nombre.BASTON
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
-                            dbHelper.insertarArticulo(articulo)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
                         }
                     }
                     Toast.makeText(this, "Articulos añadidos!", Toast.LENGTH_SHORT).show()
