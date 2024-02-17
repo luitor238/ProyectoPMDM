@@ -37,6 +37,7 @@ class SingInActivity : AppCompatActivity() {
         btnVolver = findViewById(R.id.imageBtnGoBack)
         auth= Firebase.auth
 
+
         try {
             btnCrearCuenta.setOnClickListener{
 

@@ -1,6 +1,5 @@
 package com.example.proyectopmdm
 
-
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -10,107 +9,62 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.auth.auth
 
 class LoginActivity : AppCompatActivity() {
-
-    //VARIABLES
-    private lateinit var Email : EditText
-    private lateinit var Password : EditText
+    // VARIABLES
+    private lateinit var email: EditText
+    private lateinit var password: EditText
     private lateinit var btnIniciarSesion: Button
     private lateinit var btnCrearCuenta: Button
     private lateinit var textViewWarning: TextView
     private lateinit var auth: FirebaseAuth
-    //VARIABLE SISTEMA LOG
+    // VARIABLE PARA LOG
     private val TAG = "LoginActivity"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        Log.d(TAG, "onCreate: La actividad está siendo creada")
-        //CREACION DE LA VISTA
-
-        auth = Firebase.auth
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        Log.d(TAG, "onCreate: La actividad está siendo creada")
+        // Inicializar FirebaseAuth
+        auth = FirebaseAuth.getInstance()
 
-        //ASIGNACION DE VARIABLES CON ELEMENTOS LAYOUT
-        Log.d(TAG, "ASIGNACION DE VARIABLES CON ELEMENTOS LAYOUT")
-
-
-        Email = findViewById(R.id.editTextEmail)
-        Password = findViewById(R.id.editTextPassword)
+        // Asignar variables a los elementos del layout
+        email = findViewById(R.id.editTextEmail)
+        password = findViewById(R.id.editTextPassword)
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
         btnCrearCuenta = findViewById(R.id.btnCrearCuenta)
         textViewWarning = findViewById(R.id.textViewWarning)
 
+        // Configurar el clic del botón de inicio de sesión
+        btnIniciarSesion.setOnClickListener {
+            var emailStr: String = email.text.toString()
+            var passwordStr: String = password.text.toString()
 
-
-        try {
-            btnIniciarSesion.setOnClickListener{
-
-                if (Email.text.isNotEmpty() && Password.text.isNotEmpty()){
-                    auth.signInWithEmailAndPassword(Email.text.toString(), Password.text.toString()).addOnCompleteListener(this) { task ->
+            if (emailStr.isNotEmpty() && passwordStr.isNotEmpty()){
+                auth.signInWithEmailAndPassword(emailStr, passwordStr)
+                    .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-
-                            Log.d(TAG, "Autenticacion del ususario Correcta")
-
-
-                            val userId = FirebaseAuth.getInstance().currentUser?.uid
-                            if (userId != null) {
-
-                                GlobalVariables.id = userId
-
-                                val dbHelper = DatabaseHelper(this)
-
-                                val personajes = dbHelper.getPersonaje()
-                                for (e in personajes){
-                                    if(e.getId()==GlobalVariables.id){
-                                        GlobalVariables.personaje = e
-                                    }
-                                }
-
-                            } else {
-                                Log.d(TAG, "El usuario no está autenticado. Manejar el error apropiadamente")
-                            }
-
-                        }
-                        else {
+                            Log.d(TAG, "Autenticación del usuario correcta")
+                            // Aquí puedes realizar acciones adicionales después de iniciar sesión correctamente
+                        } else {
+                            Log.w(TAG, "Error en la autenticación", task.exception)
                             val builder = AlertDialog.Builder(this)
-                            builder.setTitle("Error")
-                            builder.setMessage("Se ha producido un error en la autenticacion del ususario")
-                            builder.setPositiveButton("Aceptar",null)
+                            builder.setPositiveButton("Aceptar", null)
                             val dialog: AlertDialog = builder.create()
                             dialog.show()
                         }
                     }
-
-                }else{ Log.d(TAG, "Debes rellenar los campos") }
-
+            } else {
+                Log.d(TAG, "Debes rellenar los campos")
             }
-        } catch (e: Exception) {
-            Log.d(TAG, "Error en la autentificacion del usuario")
         }
 
-
-        try {
-            btnCrearCuenta.setOnClickListener(View.OnClickListener {
-                val intent = Intent(this, SingInActivity::class.java)
-                startActivity(intent)
-            })
-
-        } catch (e: Exception) {
-            Log.d(TAG, "Usuario No Creado Correctamente")
+        // Configurar el clic del botón de crear cuenta
+        btnCrearCuenta.setOnClickListener {
+            val intent = Intent(this, SingInActivity::class.java)
+            startActivity(intent)
         }
     }
+
 }
-
-
-
-
-
-
