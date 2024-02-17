@@ -52,9 +52,11 @@ class LoginActivity : AppCompatActivity() {
                             val userId = FirebaseAuth.getInstance().currentUser?.uid
                             if (userId != null) {
                                 GlobalVariables.id = userId
-                                val personajes = dbHelper.getPersonaje().filter { it.getId() == userId } as ArrayList<Personaje>
+                                val personajes = dbHelper.getPersonaje()
                                 for (e in personajes){
-                                    GlobalVariables.personaje = e
+                                    if(e.getId()==userId){
+                                        GlobalVariables.personaje = e
+                                    }
                                 }
 
                                 val intent = Intent(this, VerPersonajeActivity::class.java)
