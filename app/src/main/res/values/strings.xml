@@ -91,6 +91,7 @@
     <string name="activar">ACTIVAR</string>
     <string name="quieres_activar_tu_habilidad">¿Quieres activar tu habilidad?</string>
     <string name="volver_al_juego">Volver al juego</string>
+    <string name="escribe_un_mensaje">Escribe un mensaje</string>
 
 </resources>
 
