@@ -199,23 +199,23 @@ fun String.toNombre(): Articulo.Nombre? {
         null
     }
 }
-fun String.toRaza(): Raza? {
+fun String.toRaza(): Personaje.Raza? {
     return try {
-        return Raza.valueOf(this.toUpperCase())
+        return Personaje.Raza.valueOf(this.toUpperCase())
     } catch (e: IllegalArgumentException) {
         null
     }
 }
-fun String.toClase(): Clase? {
+fun String.toClase(): Personaje.Clase? {
     return try {
-        return Clase.valueOf(this.toUpperCase())
+        return Personaje.Clase.valueOf(this.toUpperCase())
     } catch (e: IllegalArgumentException) {
         null
     }
 }
-fun String.toEstadoVital(): EstadoVital? {
+fun String.toEstadoVital(): Personaje.EstadoVital? {
     return try {
-        return EstadoVital.valueOf(this.toUpperCase())
+        return Personaje.EstadoVital.valueOf(this.toUpperCase())
     } catch (e: IllegalArgumentException) {
         null
     }
