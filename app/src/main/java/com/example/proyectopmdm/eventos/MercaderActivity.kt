@@ -43,8 +43,6 @@ class MercaderActivity : AppCompatActivity() {
         val dbHelper = DatabaseHelper(this)
 
 
-
-
         imagenes = Array(10) { index -> val imageButton = findViewById<ImageButton>(
             resources.getIdentifier("imagen${index + 1}", "id", packageName))
             Pair(imageButton, 0)
