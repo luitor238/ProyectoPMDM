@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         btnCrearCuenta = findViewById(R.id.btnCrearCuenta)
         textViewWarning = findViewById(R.id.textViewWarning)
 
+
         // Configurar el clic del botón de inicio de sesión
         btnIniciarSesion.setOnClickListener {
             var emailStr: String = email.text.toString()
@@ -46,6 +47,12 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Log.d(TAG, "Autenticación del usuario correcta")
+
+                            val userId = FirebaseAuth.getInstance().currentUser?.uid
+                            if (userId != null) {
+                                GlobalVariables.id = userId
+                            val intent = Intent(this, VerPersonajeActivity::class.java)
+                            startActivity(intent)
                             // Aquí puedes realizar acciones adicionales después de iniciar sesión correctamente
                         } else {
                             Log.w(TAG, "Error en la autenticación", task.exception)
@@ -53,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                             builder.setPositiveButton("Aceptar", null)
                             val dialog: AlertDialog = builder.create()
                             dialog.show()
-                        }
+
                     }
             } else {
                 Log.d(TAG, "Debes rellenar los campos")
