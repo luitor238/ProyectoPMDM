@@ -55,19 +55,9 @@ class LupanarActivity : AppCompatActivity() {
 
 
         btnSi.setOnClickListener {
-            val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-            val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
 
-            viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_derecha))
+            }
 
-            val animationDuration = 500 // Duración de la animación en milisegundos
-
-            // Retrasar el desplazamiento del RecyclerView hasta que la animación haya finalizado
-            Handler().postDelayed({
-                currentImageIndex = (currentImageIndex + 1) % images.size
-                recyclerView.smoothScrollToPosition(currentImageIndex)
-            }, animationDuration.toLong())
-        }
 
         btnNo.setOnClickListener {
             val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
