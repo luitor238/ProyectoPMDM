@@ -41,9 +41,6 @@ class MercaderActivity : AppCompatActivity() {
         setContentView(R.layout.activity_mercader)
 
         val dbHelper = DatabaseHelper(this)
-        //Saca personaje
-
-
 
 
 
@@ -64,7 +61,7 @@ class MercaderActivity : AppCompatActivity() {
 
         Log.d(TAG, "Inicializacion de los elementos")
 
-        //textos[0].text = personaje?.getDinero().toString()
+        textos[0].text = GlobalVariables.personaje?.getMonedero().toString()
 
 
 

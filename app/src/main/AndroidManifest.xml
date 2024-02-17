@@ -17,9 +17,9 @@
         <activity
             android:name=".MapaActivity"
             android:exported="false" />
-        <activity
+        <!--<activity
             android:name=".ComunicacionActivity"
-            android:exported="false" />
+            android:exported="false" />-->
         <activity
             android:name=".PeleaActivity"
             android:exported="false" />
