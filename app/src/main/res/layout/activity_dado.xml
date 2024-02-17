@@ -23,12 +23,32 @@
             android:layout_height="300dp"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="75dp"
+                    android:layout_height="65dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_save"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+
             <ImageButton
                 android:id="@+id/btnTirarDado"
                 android:layout_width="260dp"
                 android:layout_height="258dp"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="0dp"
                 android:background="@color/transparent"
                 android:scaleType="fitCenter"
@@ -46,23 +66,13 @@
                     android:layout_height="65dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="15dp"
                     android:backgroundTint="@color/transparent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/icon_comunicacion"
                     tools:ignore="SpeakableTextPresentCheck" />
 
-                <ImageButton
-                    android:id="@+id/btnGuardar"
-                    android:layout_width="85dp"
-                    android:layout_height="65dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="30dp"
-                    android:backgroundTint="@color/transparent"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_comunicacion"
-                    tools:ignore="SpeakableTextPresentCheck" />
+
 
             </LinearLayout>
         </LinearLayout>
