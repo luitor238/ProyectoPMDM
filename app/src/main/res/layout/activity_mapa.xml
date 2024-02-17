@@ -52,7 +52,9 @@
                     android:layout_height="65dp"
                     android:layout_marginStart="10dp"
                     android:background="@color/transparent"
-                    android:src="@drawable/icon_transparent" />
+                    android:src="@drawable/icon_transparent"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <ImageButton
                     android:id="@+id/level10"
@@ -61,7 +63,9 @@
                     android:layout_marginStart="75dp"
                     android:layout_marginTop="5dp"
                     android:background="@color/transparent"
-                    android:src="@drawable/icon_transparent" />
+                    android:src="@drawable/icon_transparent"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <ImageButton
                     android:id="@+id/level9"
@@ -70,7 +74,9 @@
                     android:layout_marginStart="155dp"
                     android:layout_marginTop="15dp"
                     android:background="@color/transparent"
-                    android:src="@drawable/icon_transparent" />
+                    android:src="@drawable/icon_transparent"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <ImageButton
                     android:id="@+id/level8"
@@ -79,7 +85,9 @@
                     android:layout_marginStart="205dp"
                     android:layout_marginTop="32dp"
                     android:background="@color/transparent"
-                    android:src="@drawable/icon_transparent" />
+                    android:src="@drawable/icon_transparent"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <ImageButton
                     android:id="@+id/entrenar4"
@@ -89,7 +97,8 @@
                     android:layout_marginTop="72dp"
                     android:background="@color/transparent"
                     android:src="@drawable/icon_transparent"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:scaleType="centerCrop" />
 
                 <ImageButton
                     android:id="@+id/level7"
@@ -99,7 +108,9 @@
                     android:layout_marginTop="7dp"
                     android:background="@color/transparent"
                     android:src="@drawable/icon_transparent"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -114,7 +125,8 @@
                         android:layout_marginTop="77dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"/>
 
                     <ImageButton
                         android:id="@+id/level6"
@@ -124,7 +136,9 @@
                         android:layout_marginTop="77dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"
+                        android:visibility="invisible"/>
 
                 </LinearLayout>
 
@@ -136,7 +150,9 @@
                     android:layout_marginTop="18dp"
                     android:background="@color/transparent"
                     android:src="@drawable/icon_transparent"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -151,7 +167,8 @@
                         android:layout_marginTop="77dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop" />
 
                     <ImageButton
                         android:id="@+id/level4"
@@ -161,7 +178,9 @@
                         android:layout_marginTop="77dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"
+                        android:visibility="invisible"/>
 
                     <ImageButton
                         android:id="@+id/lupanar"
@@ -171,7 +190,8 @@
                         android:layout_marginTop="47dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop" />
 
                 </LinearLayout>
 
@@ -188,7 +208,8 @@
                         android:layout_marginTop="52dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop" />
 
                     <ImageButton
                         android:id="@+id/level3"
@@ -198,7 +219,9 @@
                         android:layout_marginTop="17dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop"
+                        android:visibility="invisible"/>
 
                     <ImageButton
                         android:id="@+id/entrenar2"
@@ -208,7 +231,8 @@
                         android:layout_marginTop="5dp"
                         android:background="@color/transparent"
                         android:src="@drawable/icon_transparent"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:scaleType="centerCrop" />
 
                 </LinearLayout>
 
@@ -220,7 +244,9 @@
                     android:layout_marginTop="0dp"
                     android:background="@color/transparent"
                     android:src="@drawable/icon_transparent"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
                 <ImageButton
                     android:id="@+id/level1"
@@ -230,7 +256,9 @@
                     android:layout_marginTop="7dp"
                     android:background="@color/transparent"
                     android:src="@drawable/icon_transparent"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible"/>
 
             </LinearLayout>
 

@@ -347,7 +347,7 @@ class Personaje (private var id: String, private var nombre: String, private var
 
         return "$nombre ha entrenado durante $tiempoDeEntrenamiento segundos y ha ganado $experienciaGanada de experiencia."
     }
-    fun realizarMision(tipoMision: String, dificultad: String) {
+    fun realizarMision(tipoMision: String, dificultad: String): String{
         val probabilidadExito = when (dificultad) {
             "Fácil" -> if (nivel >= 5) 8 else 6
             "Normal" -> if (nivel >= 3) 6 else 4
@@ -375,9 +375,9 @@ class Personaje (private var id: String, private var nombre: String, private var
 
             val experienciaFinal = (experienciaGanada * multiplicadorExperiencia).toInt()
             setExperiencia(experienciaFinal)
-            println("$nombre ha completado la misión de $tipoMision ($dificultad) con éxito y gana $experienciaFinal de experiencia.")
+            return "$nombre ha completado la misión de $tipoMision ($dificultad) con éxito y gana $experienciaFinal de experiencia."
         } else {
-            println("$nombre ha fracasado en la misión de $tipoMision ($dificultad) y no recibe ninguna recompensa.")
+            return "$nombre ha fracasado en la misión de $tipoMision ($dificultad) y no recibe ninguna recompensa."
         }
     }
     fun cifrado(mensaje : String, ROT : Int) : String{
