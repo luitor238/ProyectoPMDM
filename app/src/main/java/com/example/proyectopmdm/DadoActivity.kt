@@ -131,8 +131,8 @@ class DadoActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnComunicacion.setOnClickListener {
-            //val intent = Intent(this, ComunicacionActivity::class.java)
-            //startActivity(intent)
+            val intent = Intent(this, ComunicacionActivity::class.java)
+            startActivity(intent)
         }
         btnMapa.setOnClickListener {
             val intent = Intent(this, MapaActivity::class.java)

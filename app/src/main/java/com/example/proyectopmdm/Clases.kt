@@ -402,7 +402,7 @@ class Personaje (private var id: String, private var nombre: String, private var
         }
         return stringInv.filter { !it.isWhitespace() && it.isLetter() }
     }
-    fun comunicacion(mensaje:String){
+    fun comunicacion(mensaje:String) : String{
         var respuesta=""
         when(estadoVital){
             EstadoVital.Adulto->{
@@ -479,11 +479,11 @@ class Personaje (private var id: String, private var nombre: String, private var
                                     respuesta="En mis tiempos esto no pasaba"
             }
         }
-        when(raza){
-            Raza.Elfo-> println(cifrado(respuesta, 1))
-            Raza.Enano-> println(respuesta.uppercase())
-            Raza.Maldito-> println(cifrado(respuesta, 1))
-            else -> println(respuesta)
+        return when(raza){
+            Raza.Elfo-> cifrado(respuesta, 1)
+            Raza.Enano-> respuesta.uppercase()
+            Raza.Maldito-> cifrado(respuesta, 1)
+            else -> respuesta
         }
     }
     fun equipar(articulo: Articulo) {
@@ -727,6 +727,10 @@ class Mochila(private var pesoMochila: Int):Serializable {
     }
 }
 
+class Mensajes(
+    val content : String,
+    val sender : String
+)
 
 class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) :Serializable {
 
