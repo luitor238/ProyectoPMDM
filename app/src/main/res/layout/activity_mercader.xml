@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -654,5 +654,144 @@
 
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#edeee9"
+        android:visibility="visible">
+
+
+
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="82dp"
+            android:layout_height="71dp"
+            android:backgroundTint="#edeee9"
+            android:src="@drawable/icon_arrow_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="450dp"
+            android:layout_height="440sp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/mochilabeige"
+            android:elevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/view3"
+            android:layout_width="0dp"
+            android:layout_height="80sp"
+            android:paddingTop="35sp"
+            android:text="@string/mochila"
+            android:textAlignment="center"
+            android:textColor="@color/primaryColor"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="190dp"
+            android:layout_height="474dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.541"
+            app:layout_constraintStart_toStartOf="@+id/view7"
+            app:layout_constraintTop_toTopOf="@+id/view3"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#002196F3"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="480dp" />
+
+
+                <!--Aqui se ñaden los objetos-->
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnVer"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="80sp"
+            android:layout_height="60dp"
+            android:layout_marginTop="-30dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:text="@string/ver"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:layout_constraintStart_toEndOf="@+id/btnBorrar"
+            app:layout_constraintTop_toBottomOf="@+id/view7"
+            app:strokeColor="#FFFFFF"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnBorrar"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="-30dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view7"
+            app:strokeColor="#FFFFFF"
+            android:drawableLeft="@drawable/icon_delete"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnUsar"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="-30dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:text="@string/usar"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            app:layout_constraintStart_toEndOf="@+id/btnVer"
+            app:layout_constraintTop_toBottomOf="@+id/view7"
+            app:strokeColor="#FFFFFF"
+            android:visibility="invisible"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
