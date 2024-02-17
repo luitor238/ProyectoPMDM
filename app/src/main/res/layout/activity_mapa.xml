@@ -257,8 +257,7 @@
                     android:background="@color/transparent"
                     android:src="@drawable/icon_transparent"
                     tools:ignore="SpeakableTextPresentCheck"
-                    android:scaleType="centerCrop"
-                    android:visibility="invisible"/>
+                    android:scaleType="centerCrop"/>
 
             </LinearLayout>
 
