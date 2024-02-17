@@ -320,6 +320,9 @@ class Personaje (private var id: String, private var nombre: String, private var
                 println("${monstruo.getNombre()} ataca a ${nombre}. Salud de ${nombre}: ${vidaPersonaje}")
             }
         }
+        if(vidaPersonaje<=0){
+            salud=0
+        }
         return result
     }
 
