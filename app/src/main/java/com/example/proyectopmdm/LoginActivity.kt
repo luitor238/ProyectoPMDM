@@ -4,12 +4,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.proyectopmdm.GlobalVariables.personaje
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -27,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         Log.d(TAG, "onCreate: La actividad está siendo creada")
+
         // Inicializar FirebaseAuth
         auth = FirebaseAuth.getInstance()
         val dbHelper = DatabaseHelper(this)
@@ -38,11 +37,10 @@ class LoginActivity : AppCompatActivity() {
         btnCrearCuenta = findViewById(R.id.btnCrearCuenta)
         textViewWarning = findViewById(R.id.textViewWarning)
 
-
         // Configurar el clic del botón de inicio de sesión
         btnIniciarSesion.setOnClickListener {
-            var emailStr: String = email.text.toString()
-            var passwordStr: String = password.text.toString()
+            val emailStr: String = email.text.toString()
+            val passwordStr: String = password.text.toString()
 
             if (emailStr.isNotEmpty() && passwordStr.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(emailStr, passwordStr)
@@ -54,36 +52,36 @@ class LoginActivity : AppCompatActivity() {
 
                             if (userId != null) {
                                 GlobalVariables.id = userId
+                                val personajes = dbHelper.getPersonaje()
 
-                                val personajes = dbHelper.getPersonaje().filter { it.getId() == userId }.toMutableList() as ArrayList<Personaje>
-                                GlobalVariables.personaje = personajes[0]
-                                /*
-                                for (e in personajes){
-                                    Log.d(TAG, "Id: "+ userId)
-                                    Log.d(TAG, "Id: "+ e.getId())
-                                    if(e.getId().equals(userId)){
+                                for (e in personajes) {
+                                    Log.d(TAG, "Id: ${e.getId()}")
+                                    if (e.getId() == userId) {
                                         GlobalVariables.personaje = e
                                     }
                                 }
-                                */
 
                                 val intent = Intent(this, VerPersonajeActivity::class.java)
                                 startActivity(intent)
-
                             } else {
                                 Log.w(TAG, "Error en la autenticación", task.exception)
-                                val builder = AlertDialog.Builder(this)
-                                builder.setPositiveButton("Aceptar", null)
-                                val dialog: AlertDialog = builder.create()
-                                dialog.show()
-
+                                AlertDialog.Builder(this)
+                                    .setMessage("Error en la autenticación")
+                                    .setPositiveButton("Aceptar", null)
+                                    .create()
+                                    .show()
                             }
                         } else {
-                            Log.d(TAG, "Debes rellenar los campos")
+                            Log.w(TAG, "Error en la autenticación", task.exception)
+                            AlertDialog.Builder(this)
+                                .setMessage("Error en la autenticación")
+                                .setPositiveButton("Aceptar", null)
+                                .create()
+                                .show()
                         }
                     }
-
-
+            } else {
+                Log.d(TAG, "Debes rellenar los campos")
             }
         }
 
@@ -92,6 +90,5 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SingInActivity::class.java)
             startActivity(intent)
         }
-
     }
 }
