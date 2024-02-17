@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -58,39 +59,57 @@ class DadoActivity : AppCompatActivity() {
 
         btnTirarDado.setOnClickListener {
 
-            var dado = Random.nextInt(1,4)
+            var dado = Random.nextInt(1, 4)
 
-            when (dado){
-                1-> {btnTirarDado.setImageResource(R.drawable.dado1)
+            when (dado) {
+                1 -> {
+                    btnTirarDado.setImageResource(R.drawable.dado1)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, ObjetoActivity::class.java)
-                    startActivity(intent)}
-                2-> {btnTirarDado.setImageResource(R.drawable.dado2)
+                    startActivity(intent)
+                }
+
+                2 -> {
+                    btnTirarDado.setImageResource(R.drawable.dado2)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, CiudadActivity::class.java)
-                    startActivity(intent)}
-                3-> {btnTirarDado.setImageResource(R.drawable.dado3)
+                    startActivity(intent)
+                }
+
+                3 -> {
+                    btnTirarDado.setImageResource(R.drawable.dado3)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, MercaderActivity::class.java)
-                    startActivity(intent)}
-                4-> {btnTirarDado.setImageResource(R.drawable.dado4)
+                    startActivity(intent)
+                }
+
+                4 -> {
+                    btnTirarDado.setImageResource(R.drawable.dado4)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, EnemigoActivity::class.java)
-                    startActivity(intent)}
-                5-> {btnTirarDado.setImageResource(R.drawable.dado5)
+                    startActivity(intent)
+                }
+
+                5 -> {
+                    btnTirarDado.setImageResource(R.drawable.dado5)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, MenuOpcionesActivity::class.java)
-                    startActivity(intent)}
-                6-> {btnTirarDado.setImageResource(R.drawable.dado6)
+                    startActivity(intent)
+                }
+
+                6 -> {
+                    btnTirarDado.setImageResource(R.drawable.dado6)
                     // Esperar 2 segundos
                     Thread.sleep(2000)
                     val intent = Intent(this, MenuOpcionesActivity::class.java)
-                    startActivity(intent)}
+                    startActivity(intent)
+                }
+
                 else -> Log.d(TAG, "Error al cambiar de Actividad")
             }
         }
@@ -130,12 +149,18 @@ class DadoActivity : AppCompatActivity() {
 
 
 
-    override fun onBackPressed() {
-        super.onBackPressed()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            showExitConfirmationDialog()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onUserLeaveHint() {
         showExitConfirmationDialog()
     }
 
-    @SuppressLint("MissingInflatedId")
     private fun showExitConfirmationDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_exit, null)
         val builder = AlertDialog.Builder(this)
@@ -144,14 +169,13 @@ class DadoActivity : AppCompatActivity() {
 
         val alertDialog = builder.create()
 
-        dialogView.findViewById<Button>(R.id.btnGuardar).setOnClickListener {
-            // Lógica para guardar en la base de datos SQLite
+        dialogView.findViewById<Button>(R.id.btnGuardar)?.setOnClickListener {
             saveToDatabase()
             alertDialog.dismiss()
             finish()
         }
 
-        dialogView.findViewById<Button>(R.id.btnNoGuardar).setOnClickListener {
+        dialogView.findViewById<Button>(R.id.btnNoGuardar)?.setOnClickListener {
             alertDialog.dismiss()
             finish()
         }
@@ -160,6 +184,7 @@ class DadoActivity : AppCompatActivity() {
     }
 
     private fun saveToDatabase() {
-        // Lógica para guardar los cambios en la base de datos SQLite
+        // Aquí va la lógica para guardar en la base de datos SQLite
     }
+
 }

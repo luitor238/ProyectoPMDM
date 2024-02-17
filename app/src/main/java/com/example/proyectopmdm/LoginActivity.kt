@@ -80,12 +80,15 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
 
-                // Configurar el clic del botón de crear cuenta
-                btnCrearCuenta.setOnClickListener {
-                    val intent = Intent(this, SingInActivity::class.java)
-                    startActivity(intent)
-                }
+
             }
         }
+
+        // Configurar el clic del botón de crear cuenta
+        btnCrearCuenta.setOnClickListener {
+            val intent = Intent(this, SingInActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
