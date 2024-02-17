@@ -54,7 +54,8 @@ class LoginActivity : AppCompatActivity() {
                             if (userId != null) {
                                 GlobalVariables.id = userId
                                 Log.d(TAG, "Id2: ${GlobalVariables.id}")
-                                val personajes = dbHelper.getPersonaje()
+
+                                val personajes = dbHelper.getPersonaje()//----------------------------aqui falla
 
                                 for (e in personajes) {
                                     Log.d(TAG, "Id3: ${e.getId()}")
