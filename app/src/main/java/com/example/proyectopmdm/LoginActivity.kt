@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proyectopmdm.GlobalVariables.personaje
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -53,20 +54,22 @@ class LoginActivity : AppCompatActivity() {
 
                             if (userId != null) {
                                 GlobalVariables.id = userId
-                                val personajes = dbHelper.getPersonaje()
 
+                                val personajes = dbHelper.getPersonaje().filter { it.getId() == userId }.toMutableList() as ArrayList<Personaje>
+                                GlobalVariables.personaje = personajes[0]
+                                /*
                                 for (e in personajes){
                                     Log.d(TAG, "Id: "+ userId)
                                     Log.d(TAG, "Id: "+ e.getId())
-                                    if(e.getId()==userId){
-
+                                    if(e.getId().equals(userId)){
                                         GlobalVariables.personaje = e
                                     }
                                 }
+                                */
 
                                 val intent = Intent(this, VerPersonajeActivity::class.java)
                                 startActivity(intent)
-                                // Aquí puedes realizar acciones adicionales después de iniciar sesión correctamente
+
                             } else {
                                 Log.w(TAG, "Error en la autenticación", task.exception)
                                 val builder = AlertDialog.Builder(this)
