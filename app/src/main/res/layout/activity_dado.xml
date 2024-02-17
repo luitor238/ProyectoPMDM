@@ -52,6 +52,18 @@
                     android:src="@drawable/icon_comunicacion"
                     tools:ignore="SpeakableTextPresentCheck" />
 
+                <ImageButton
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="85dp"
+                    android:layout_height="65dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/transparent"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_comunicacion"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
             </LinearLayout>
         </LinearLayout>
 

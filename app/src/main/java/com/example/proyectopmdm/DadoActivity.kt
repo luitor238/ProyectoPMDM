@@ -30,6 +30,7 @@ class DadoActivity : AppCompatActivity() {
     private lateinit var btnComunicacion: ImageButton
     private lateinit var btnverPersonaje: ImageButton
     private lateinit var btnMochila: ImageButton
+    private lateinit var btnGuardar: ImageButton
 
 
     private val TAG = "LoginActivity"
@@ -50,6 +51,7 @@ class DadoActivity : AppCompatActivity() {
         btnMapa = findViewById(R.id.btnMapa)
         btnverPersonaje = findViewById(R.id.btnPerfil)
         btnMochila = findViewById(R.id.btnMochila)
+        btnGuardar = findViewById(R.id.btnGuardar)
 
 
         textViewExp.text = GlobalVariables.personaje?.getExperiencia().toString()
@@ -143,6 +145,10 @@ class DadoActivity : AppCompatActivity() {
         btnMochila.setOnClickListener {
             val intent = Intent(this, MochilaActivity::class.java)
             startActivity(intent)
+        }
+        btnGuardar.setOnClickListener{
+            val dbHelper = DatabaseHelper(this)
+            dbHelper.insertarPersonaje(GlobalVariables.personaje!!)
         }
 
     }
