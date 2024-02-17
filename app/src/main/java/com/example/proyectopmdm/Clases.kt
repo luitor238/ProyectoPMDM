@@ -339,13 +339,13 @@ class Personaje (private var id: String, private var nombre: String, private var
             }
         }
     }
-    fun entrenar(tiempoDeEntrenamiento: Int) {
+    fun entrenar(tiempoDeEntrenamiento: Int): String {
         val factorExperienciaPorHora = 5
         val experienciaGanada = tiempoDeEntrenamiento * factorExperienciaPorHora
 
         setExperiencia(experienciaGanada)
 
-        println("$nombre ha entrenado durante $tiempoDeEntrenamiento horas y ha ganado $experienciaGanada de experiencia.")
+        return "$nombre ha entrenado durante $tiempoDeEntrenamiento segundos y ha ganado $experienciaGanada de experiencia."
     }
     fun realizarMision(tipoMision: String, dificultad: String) {
         val probabilidadExito = when (dificultad) {
