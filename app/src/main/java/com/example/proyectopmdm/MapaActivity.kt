@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ScrollView
 import android.widget.Toast
 import com.example.proyectopmdm.databinding.ActivityMapaBinding
 import com.example.proyectopmdm.eventos.EnemigoActivity
@@ -22,6 +23,11 @@ class MapaActivity : AppCompatActivity() {
         setContentView(view)
 
         var texto = ""
+
+        binding.scroll.post {
+            // Desplaza el ScrollView hasta el final
+            binding.scroll.fullScroll(ScrollView.FOCUS_DOWN)
+        }
 
         binding.level1.setOnClickListener{
             texto = GlobalVariables.personaje!!.realizarMision("Búsqueda","Fácil")
