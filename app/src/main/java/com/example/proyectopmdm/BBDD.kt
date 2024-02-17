@@ -154,11 +154,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
                     val id = it.getString(it.getColumnIndex(KEY_ID_USUARIO)) ?: ""
                     val nombre = it.getString(it.getColumnIndex(COLUMN_NOMBRE_PERSONAJE)) ?: ""
                     val razaString = it.getString(it.getColumnIndex(COLUMN_RAZA))
-                    val raza = razaString?.toRaza() ?: Raza.Elfo
+                    val raza = razaString?.toRaza()!! ?: Raza.Elfo
                     val claseString = it.getString(it.getColumnIndex(COLUMN_CLASE))
-                    val clase = claseString?.toClase() ?: Clase.Brujo
+                    val clase = claseString?.toClase()!! ?: Clase.Brujo
                     val estadoVitalString = it.getString(it.getColumnIndex(COLUMN_ESTADO_VITAL))
-                    val estadoVital = estadoVitalString?.toEstadoVital() ?: EstadoVital.Joven
+                    val estadoVital = estadoVitalString?.toEstadoVital()!! ?: EstadoVital.Joven
                     val salud = it.getInt(it.getColumnIndex(COLUMN_SALUD))
                     val ataque = it.getInt(it.getColumnIndex(COLUMN_ATAQUE))
                     val experiencia = it.getInt(it.getColumnIndex(COLUMN_EXPERIENCIA))
