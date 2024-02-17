@@ -50,11 +50,16 @@ class LoginActivity : AppCompatActivity() {
                             Log.d(TAG, "Autenticación del usuario correcta")
 
                             val userId = FirebaseAuth.getInstance().currentUser?.uid
+
                             if (userId != null) {
                                 GlobalVariables.id = userId
                                 val personajes = dbHelper.getPersonaje()
+
                                 for (e in personajes){
+                                    Log.d(TAG, "Id: "+ userId)
+                                    Log.d(TAG, "Id: "+ e.getId())
                                     if(e.getId()==userId){
+
                                         GlobalVariables.personaje = e
                                     }
                                 }
