@@ -184,7 +184,7 @@ class DadoActivity : AppCompatActivity() {
     }
 
     private fun saveToDatabase() {
-        // Aquí va la lógica para guardar en la base de datos SQLite
+        val dbHelper = DatabaseHelper(this)
+        dbHelper.insertarPersonaje(GlobalVariables.personaje!!)
     }
-
 }
