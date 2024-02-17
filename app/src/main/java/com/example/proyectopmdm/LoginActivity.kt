@@ -28,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate: La actividad está siendo creada")
         // Inicializar FirebaseAuth
         auth = FirebaseAuth.getInstance()
+        val dbHelper = DatabaseHelper(this)
 
         // Asignar variables a los elementos del layout
         email = findViewById(R.id.editTextEmail)
@@ -42,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             var emailStr: String = email.text.toString()
             var passwordStr: String = password.text.toString()
 
-            if (emailStr.isNotEmpty() && passwordStr.isNotEmpty()){
+            if (emailStr.isNotEmpty() && passwordStr.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(emailStr, passwordStr)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
@@ -51,27 +52,30 @@ class LoginActivity : AppCompatActivity() {
                             val userId = FirebaseAuth.getInstance().currentUser?.uid
                             if (userId != null) {
                                 GlobalVariables.id = userId
-                            val intent = Intent(this, VerPersonajeActivity::class.java)
-                            startActivity(intent)
-                            // Aquí puedes realizar acciones adicionales después de iniciar sesión correctamente
-                        } else {
-                            Log.w(TAG, "Error en la autenticación", task.exception)
-                            val builder = AlertDialog.Builder(this)
-                            builder.setPositiveButton("Aceptar", null)
-                            val dialog: AlertDialog = builder.create()
-                            dialog.show()
+                                GlobalVariables.personaje = dbHelper.getPersonaje().filter { it.getId() == userId } as Personaje
 
+                                val intent = Intent(this, VerPersonajeActivity::class.java)
+                                startActivity(intent)
+                                // Aquí puedes realizar acciones adicionales después de iniciar sesión correctamente
+                            } else {
+                                Log.w(TAG, "Error en la autenticación", task.exception)
+                                val builder = AlertDialog.Builder(this)
+                                builder.setPositiveButton("Aceptar", null)
+                                val dialog: AlertDialog = builder.create()
+                                dialog.show()
+
+                            }
+                        } else {
+                            Log.d(TAG, "Debes rellenar los campos")
+                        }
                     }
-            } else {
-                Log.d(TAG, "Debes rellenar los campos")
+
+                // Configurar el clic del botón de crear cuenta
+                btnCrearCuenta.setOnClickListener {
+                    val intent = Intent(this, SingInActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
-
-        // Configurar el clic del botón de crear cuenta
-        btnCrearCuenta.setOnClickListener {
-            val intent = Intent(this, SingInActivity::class.java)
-            startActivity(intent)
-        }
     }
-
 }
