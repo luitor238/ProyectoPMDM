@@ -2,9 +2,11 @@ package com.example.proyectopmdm
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.proyectopmdm.Articulo
 import com.example.proyectopmdm.Personaje
 import com.example.proyectopmdm.Personaje.*
@@ -87,6 +89,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
     }
 
     fun insertarPersonaje(personaje: Personaje) {
+
         val db = writableDatabase
         val values = ContentValues().apply {
             put(KEY_ID_USUARIO, personaje.getId())
@@ -102,7 +105,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
             put(COLUMN_DEFENSA, personaje.getDefensa())
             put(COLUMN_MONEDERO, personaje.getMonedero())
         }
-        db.insert(TABLA_PERSONAJE, null, values)
+
+        // Inserta el personaje con posible reemplazo si ya existe
+        val resultado = db.insertWithOnConflict(TABLA_PERSONAJE, null, values, SQLiteDatabase.CONFLICT_REPLACE)
+
+        if (resultado == -1L) {
+            Log.e(TAG, "Error al insertar o reemplazar el personaje en la base de datos")
+        } else {
+            Log.d(TAG, "Personaje insertado o reemplazado exitosamente")
+        }
+
         db.close()
     }
 
