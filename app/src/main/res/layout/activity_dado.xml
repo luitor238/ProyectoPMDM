@@ -45,14 +45,15 @@
 
             <ImageButton
                 android:id="@+id/btnTirarDado"
-                android:layout_width="260dp"
+                android:layout_width="255dp"
                 android:layout_height="258dp"
+                android:padding="50dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginEnd="0dp"
                 android:background="@color/transparent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/dadoblancosinfondo"
+                android:src="@drawable/dadogif"
                 tools:ignore="ImageContrastCheck,SpeakableTextPresentCheck" />
 
             <LinearLayout
@@ -73,7 +74,6 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
 
-
             </LinearLayout>
         </LinearLayout>
 
@@ -84,7 +84,8 @@
             android:paddingEnd="40dp"
             android:text="@string/comienza_la_aventura_pulsa_el_dado_para_avanzar_cuidado_puedes_encontrarte_enemigos"
             android:textAlignment="center"
-            android:textSize="17sp" />
+            android:textSize="17sp"
+            android:textColor="@color/primaryColor"/>
 
 
 

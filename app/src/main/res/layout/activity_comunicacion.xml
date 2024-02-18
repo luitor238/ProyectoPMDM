@@ -8,35 +8,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="381dp"
-        android:layout_height="556dp"
+        android:layout_width="382dp"
+        android:layout_height="631dp"
         android:layout_above="@+id/messageInputLayout"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="95dp" />
+        android:layout_marginBottom="20dp" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="69dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/opcion1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="¿Como estas?" />
-
-        <Button
-            android:id="@+id/opcion2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="¿Tienes algo equipado?" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/messageInputLayout"
@@ -50,14 +27,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Escribe un mensaje"
+            android:hint="@string/escribe_un_mensaje"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/btnEnviar"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enviar"/>
+            android:text="@string/enviar"
+            android:backgroundTint="@color/primaryColor"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
 
     </LinearLayout>
 
