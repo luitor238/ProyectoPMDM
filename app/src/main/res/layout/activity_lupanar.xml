@@ -96,7 +96,7 @@
                     android:layout_margin="14dp"
                     android:background="@color/transparent"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_lock"
+                    android:src="@drawable/nolupana"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </androidx.cardview.widget.CardView>
@@ -118,7 +118,7 @@
                     android:layout_margin="14dp"
                     android:background="@color/transparent"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_circle"
+                    android:src="@drawable/silupana"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </androidx.cardview.widget.CardView>
