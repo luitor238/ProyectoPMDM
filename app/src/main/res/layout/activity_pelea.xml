@@ -7,6 +7,19 @@
     tools:context=".PeleaActivity"
     >
 
+    <ImageView
+        android:id="@+id/trofeo"
+        android:layout_width="0dp"
+        android:layout_height="529dp"
+        android:paddingTop="190dp"
+        android:src="@drawable/trofeo"
+        android:elevation="10dp"
+        android:scaleType="centerCrop"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView3"

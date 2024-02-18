@@ -58,6 +58,16 @@ class PeleaActivity : AppCompatActivity() {
                 btnSeguir.visibility = View.VISIBLE
                 if (result.text == "¡GANASTE!") {
                     imagen.visibility = View.GONE
+
+                    val trofeo: ImageView = findViewById(R.id.trofeo)
+
+                    trofeo.visibility = View.VISIBLE
+
+                    // Cargar la animación de escala desde el archivo XML
+                    val animScale = AnimationUtils.loadAnimation(this, R.anim.scale_animation)
+
+                    // Asignar la animación al ImageView
+                    trofeo.startAnimation(animScale)
                 }
             }
         }.start()
