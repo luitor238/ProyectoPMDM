@@ -55,7 +55,18 @@ class LoginActivity : AppCompatActivity() {
                                 GlobalVariables.id = userId
                                 Log.d(TAG, "Id2: ${GlobalVariables.id}")
 
-                                val personajes = dbHelper.getPersonaje()//----------------------------aqui falla
+                                val personajes = dbHelper.getPersonaje()
+                                Log.d(TAG, "prueba")
+
+                                if (personajes != null && personajes.isNotEmpty()) {
+                                    // Aquí dentro puedes ejecutar el código que deseas cuando la lista no esté vacía
+                                    Log.d(TAG, "La lista de personajes no está vacía y contiene elementos.")
+
+                                } else {
+                                    // Aquí dentro puedes manejar el caso en que la lista esté vacía o sea nula
+                                    Log.d(TAG, "La lista de personajes está vacía o es nula.")
+                                }
+
 
                                 for (e in personajes) {
                                     Log.d(TAG, "Id3: ${e.getId()}")
