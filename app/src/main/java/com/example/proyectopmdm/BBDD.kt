@@ -7,6 +7,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import android.widget.Toast
 import com.example.proyectopmdm.Articulo
 import com.example.proyectopmdm.Personaje
 import com.example.proyectopmdm.Personaje.*
@@ -14,7 +15,7 @@ import com.example.proyectopmdm.Personaje.*
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
         private const val DATABASE = "BBDD.db"
 
         // Constantes de la tabla ARTICULOS
@@ -144,42 +145,51 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
 
     @SuppressLint("Range")
     fun getPersonaje(): ArrayList<Personaje> {
+        Log.d(TAG, "Devolver Personaje")
         val personajes = ArrayList<Personaje>()
         val selectQuery = "SELECT * FROM $TABLA_PERSONAJE"
         val db = readableDatabase
+        Log.d(TAG, "Devolver Personaje2")
         val cursor = db.rawQuery(selectQuery, null)
-        cursor.use {
-            if (it.moveToFirst()) {
-                do {
-                    val id = it.getString(it.getColumnIndex(KEY_ID_USUARIO)) ?: ""
-                    val nombre = it.getString(it.getColumnIndex(COLUMN_NOMBRE_PERSONAJE)) ?: ""
-                    val razaString = it.getString(it.getColumnIndex(COLUMN_RAZA))
-                    val raza = razaString.toRaza()!! //?: Raza.Elfo
-                    val claseString = it.getString(it.getColumnIndex(COLUMN_CLASE))
-                    val clase = claseString.toClase()!! //?: Clase.Brujo
-                    val estadoVitalString = it.getString(it.getColumnIndex(COLUMN_ESTADO_VITAL))
-                    val estadoVital = estadoVitalString.toEstadoVital()!! //?: EstadoVital.Joven
-                    val salud = it.getInt(it.getColumnIndex(COLUMN_SALUD))
-                    val ataque = it.getInt(it.getColumnIndex(COLUMN_ATAQUE))
-                    val experiencia = it.getInt(it.getColumnIndex(COLUMN_EXPERIENCIA))
-                    val nivel = it.getInt(it.getColumnIndex(COLUMN_NIVEL))
-                    val suerte = it.getInt(it.getColumnIndex(COLUMN_SUERTE))
-                    val defensa = it.getInt(it.getColumnIndex(COLUMN_DEFENSA))
-                    val monedero = it.getInt(it.getColumnIndex(COLUMN_MONEDERO))
-                    val personaje = Personaje(id, nombre, raza, clase, estadoVital)
-                    personaje.apply {
-                        setExperienciaN(experiencia)
-                        setSalud(salud)
-                        setAtaque(ataque)
-                        setNivel(nivel)
-                        setSuerte(suerte)
-                        setDefensa(defensa)
-                        setMonedero(monedero)
-                    }
-                    personajes.add(personaje)
-                } while (it.moveToNext())
-            }
-        }
+
+
+         cursor.use {
+             if (it.moveToFirst()) {
+
+                 do {
+                     val id = it.getString(it.getColumnIndex(KEY_ID_USUARIO)) ?: ""
+                     val nombre = it.getString(it.getColumnIndex(COLUMN_NOMBRE_PERSONAJE)) ?: ""
+                     val razaString = it.getString(it.getColumnIndex(COLUMN_RAZA))
+                     val raza = razaString.toRaza()!! //?: Raza.Elfo
+                     val claseString = it.getString(it.getColumnIndex(COLUMN_CLASE))
+                     val clase = claseString.toClase()!! //?: Clase.Brujo
+                     val estadoVitalString = it.getString(it.getColumnIndex(COLUMN_ESTADO_VITAL))
+                     val estadoVital = estadoVitalString.toEstadoVital()!! //?: EstadoVital.Joven
+                     val salud = it.getInt(it.getColumnIndex(COLUMN_SALUD))
+                     val ataque = it.getInt(it.getColumnIndex(COLUMN_ATAQUE))
+                     val experiencia = it.getInt(it.getColumnIndex(COLUMN_EXPERIENCIA))
+                     val nivel = it.getInt(it.getColumnIndex(COLUMN_NIVEL))
+                     val suerte = it.getInt(it.getColumnIndex(COLUMN_SUERTE))
+                     val defensa = it.getInt(it.getColumnIndex(COLUMN_DEFENSA))
+                     val monedero = it.getInt(it.getColumnIndex(COLUMN_MONEDERO))
+                     val personaje = Personaje(id, nombre, raza, clase, estadoVital)
+
+                     personaje.apply {
+                         setExperienciaN(experiencia)
+                         setSalud(salud)
+                         setAtaque(ataque)
+                         setNivel(nivel)
+                         setSuerte(suerte)
+                         setDefensa(defensa)
+                         setMonedero(monedero)
+                     }
+                     personajes.add(personaje)
+
+                     } while (it.moveToNext())
+             }
+         }
+
+
         return personajes
     }
 
