@@ -205,7 +205,7 @@
     <Button
         android:id="@+id/btnContinuar"
         style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="145dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="40dp"
