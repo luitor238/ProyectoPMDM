@@ -17,6 +17,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.proyectopmdm.eventos.CiudadActivity
 import com.example.proyectopmdm.eventos.EnemigoActivity
 import com.example.proyectopmdm.eventos.MercaderActivity
@@ -30,6 +31,7 @@ class DadoActivity : AppCompatActivity() {
     private lateinit var textViewMonedas: TextView
     private lateinit var textViewNombre: TextView
     private lateinit var btnTirarDado: ImageButton
+    private lateinit var tirarDado: ConstraintLayout
     private lateinit var btnMenu: Button
     private lateinit var btnMapa: ImageButton
     private lateinit var btnComunicacion: ImageButton
@@ -51,6 +53,7 @@ class DadoActivity : AppCompatActivity() {
         textViewMonedas = findViewById(R.id.textViewMonedas)
         textViewNombre = findViewById(R.id.textViewNombre)
         btnTirarDado = findViewById(R.id.btnTirarDado)
+        tirarDado = findViewById(R.id.tirarDado)
         btnMenu = findViewById(R.id.btnMenu)
         btnComunicacion = findViewById(R.id.btnComunicacion)
         btnMapa = findViewById(R.id.btnMapa)
@@ -67,7 +70,7 @@ class DadoActivity : AppCompatActivity() {
         btnTirarDado.setOnClickListener {
 
             val shakeAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.shake_animation)
-            btnTirarDado.startAnimation(shakeAnimation)
+            tirarDado.startAnimation(shakeAnimation)
 
             // Vibrar el dispositivo durante 2 segundos
             val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
