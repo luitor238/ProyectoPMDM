@@ -36,7 +36,6 @@ class MercaderActivity : AppCompatActivity() {
     private lateinit var btnComerciar: Button
     private lateinit var vistas:  Array<View>
     private lateinit var seleccionado: Articulo
-    private lateinit var btnVolver2: ImageButton
     private lateinit var articulos: ArrayList<Articulo>
     private lateinit var btnVer: Button
 
@@ -55,6 +54,7 @@ class MercaderActivity : AppCompatActivity() {
             resources.getIdentifier("imagen${index + 1}", "id", packageName))
             Pair(imageButton, 0)
         }
+
         btnVolver = Array(4) { index -> findViewById<ImageButton>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
         Log.d(TAG, "Inicializacion de los volver")
         views = Array(10) { index -> findViewById<View>(resources.getIdentifier("my_view${index + 1}", "id", packageName)) }
@@ -65,7 +65,7 @@ class MercaderActivity : AppCompatActivity() {
         vistas = Array(4) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
         Log.d(TAG, "Inicializacion de las Vistas")
         btnComerciar = findViewById(R.id.btnComerciar)
-        btnVolver2 = findViewById(R.id.btnVolver2)
+
 
         btnVer = findViewById(R.id.btnVer)
 
@@ -81,7 +81,7 @@ class MercaderActivity : AppCompatActivity() {
         Log.d(TAG, "Inicializacion de los elementos")
 
         textos[0].text = GlobalVariables.personaje?.getMonedero().toString()
-
+        textos[1].text = "0"
 
 
         btnComerciar.setOnClickListener {
@@ -97,6 +97,24 @@ class MercaderActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+        btnVolver[1].setOnClickListener {
+            if (vistas[1].visibility == View.VISIBLE) {
+                vistas[1].visibility = View.GONE
+                vistas[0].visibility = View.VISIBLE
+            }
+        }
+        btnVolver[2].setOnClickListener {
+            if (vistas[2].visibility == View.VISIBLE) {
+                vistas[2].visibility = View.GONE
+                vistas[1].visibility = View.VISIBLE
+            }
+        }
+        btnVolver[3].setOnClickListener {
+            if (vistas[3].visibility == View.VISIBLE) {
+                vistas[3].visibility = View.GONE
+                vistas[1].visibility = View.VISIBLE
+            }
+        }
 
         btnComprar[0].setOnClickListener {
             // Cambiar la visibilidad de las vistas
@@ -105,24 +123,38 @@ class MercaderActivity : AppCompatActivity() {
                 vistas[2].visibility = View.VISIBLE
             }
         }
+
         btnVender[0].setOnClickListener {
+            if (articulos.isEmpty()) {
+                Toast.makeText(this, "Mochila Vacia!", Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "No hy Mochila")
+            } else {
+                // Agregar los articulos al scroll
+                for (articulo in articulos) {
+                    agregarArticulo(articulo)
+                    Log.d(TAG, "Hay mochila")
+                }
+            }
             // Cambiar la visibilidad de las vistas
             if (vistas[1].visibility == View.VISIBLE) {
                 vistas[1].visibility = View.GONE
                 vistas[3].visibility = View.VISIBLE
             }
         }
+
         btnVender[1].setOnClickListener {
-            // Cambiar la visibilidad de las vistas
-            if (articulos.isEmpty()) {
-                Toast.makeText(this, "Mochila Vacia!", Toast.LENGTH_SHORT).show()
-            } else {
-                // Agregar los articulos al scroll
-                for (articulo in articulos) {
+            Log.d(TAG, "Mochilon")
+            dbHelper.eliminarRegistro(seleccionado.id)
+            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()+seleccionado.getPrecio())
+            linearLayout.removeAllViews()
+            articulos = DatabaseHelper(this).getArticulo() as ArrayList<Articulo>
+            for (articulo in articulos) {
+                if (articulo.getIdUser() == GlobalVariables.personaje?.getId()) {
                     agregarArticulo(articulo)
                 }
             }
         }
+
         btnVer.setOnClickListener {
             val intent = Intent(this, VerArticuloActivity::class.java)
             intent.putExtra("articulo", seleccionado)
@@ -143,6 +175,8 @@ class MercaderActivity : AppCompatActivity() {
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
 
                         }
 
@@ -151,48 +185,72 @@ class MercaderActivity : AppCompatActivity() {
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_garras2)?.constantState -> {
                             val nombre = Articulo.Nombre.GARRAS
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.navaja)?.constantState -> {
                             val nombre = Articulo.Nombre.DAGA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_escudo)?.constantState -> {
                             val nombre = Articulo.Nombre.ESCUDO
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_espada)?.constantState -> {
                             val nombre = Articulo.Nombre.ESPADA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_armadura)?.constantState ->{
                             val nombre = Articulo.Nombre.ARMADURA
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_martillo)?.constantState ->{
                             val nombre = Articulo.Nombre.MARTILLO
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                         ContextCompat.getDrawable(this, R.drawable.articulo_baston)?.constantState ->{
                             val nombre = Articulo.Nombre.BASTON
                             val peso = Random.nextInt(1, 5)
                             val articulo = Articulo(0,nombre,peso)
                             dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+
+
                         }
                     }
                     Toast.makeText(this, "Articulos añadidos!", Toast.LENGTH_SHORT).show()
@@ -208,21 +266,311 @@ class MercaderActivity : AppCompatActivity() {
             // Asignar OnClickListener a cada ImageButton
             imageButton.setOnClickListener {
                 if (imagenes[index].second == 0) {
-                    val nuevoValor = imagenes[index].second + 1
-                    imagenes[index] = Pair(imagenes[index].first, nuevoValor)
-                    views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
-                    cont = cont+1
-                    textos[2].text = "${cont}"
-                    Log.d(TAG, "Valor Sumado")
+
+                    when (imagenes[index].first.drawable.constantState) {
+                        ContextCompat.getDrawable(this, R.drawable.articulo_ira2)?.constantState -> {
+
+                            Log.d(TAG, "IRA")
+                            val nombre = Articulo.Nombre.IRA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+
+                        ContextCompat.getDrawable(this, R.drawable.articulo_pocion2)?.constantState -> {
+                            val nombre = Articulo.Nombre.POCION
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_garras2)?.constantState -> {
+                            val nombre = Articulo.Nombre.GARRAS
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.navaja)?.constantState -> {
+                            val nombre = Articulo.Nombre.DAGA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_escudo)?.constantState -> {
+                            val nombre = Articulo.Nombre.ESCUDO
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_espada)?.constantState -> {
+                            val nombre = Articulo.Nombre.ESPADA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_armadura)?.constantState ->{
+                            val nombre = Articulo.Nombre.ARMADURA
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_martillo)?.constantState ->{
+                            val nombre = Articulo.Nombre.MARTILLO
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                        ContextCompat.getDrawable(this, R.drawable.articulo_baston)?.constantState ->{
+                            val nombre = Articulo.Nombre.BASTON
+                            val peso = Random.nextInt(1, 5)
+                            val articulo = Articulo(0,nombre,peso)
+                            dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                            GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                            val nuevoValor = imagenes[index].second + 1
+                            imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                            views[index].setBackgroundColor( getResources().getColor(R.color.primaryColor));
+                            cont = cont+1
+                            textos[2].text = "${cont}"
+                            Log.d(TAG, "Valor Sumado")
+                            textos[1].text =   ((textos[1].text.toString().toInt())+(articulo.getPrecio())).toString()
+
+
+                        }
+                    }
+
+
 
                 }else {
                     if (imagenes[index].second == 1) {
-                        val nuevoValor = imagenes[index].second - 1
-                        imagenes[index] = Pair(imagenes[index].first, nuevoValor)
-                        views[index].setBackgroundColor(Color.WHITE);
-                        cont = cont-1
-                        textos[2].text = "${cont}"
-                        Log.d(TAG, "Valor Restado")
+
+                        when (imagenes[index].first.drawable.constantState) {
+                            ContextCompat.getDrawable(this, R.drawable.articulo_ira2)?.constantState -> {
+
+                                Log.d(TAG, "IRA")
+                                val nombre = Articulo.Nombre.IRA
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+
+                            ContextCompat.getDrawable(this, R.drawable.articulo_pocion2)?.constantState -> {
+                                val nombre = Articulo.Nombre.POCION
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.articulo_garras2)?.constantState -> {
+                                val nombre = Articulo.Nombre.GARRAS
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.navaja)?.constantState -> {
+                                val nombre = Articulo.Nombre.DAGA
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.articulo_escudo)?.constantState -> {
+                                val nombre = Articulo.Nombre.ESCUDO
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.articulo_espada)?.constantState -> {
+                                val nombre = Articulo.Nombre.ESPADA
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.articulo_armadura)?.constantState ->{
+                                val nombre = Articulo.Nombre.ARMADURA
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.articulo_martillo)?.constantState ->{
+                                val nombre = Articulo.Nombre.MARTILLO
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                            ContextCompat.getDrawable(this, R.drawable.articulo_baston)?.constantState ->{
+                                val nombre = Articulo.Nombre.BASTON
+                                val peso = Random.nextInt(1, 5)
+                                val articulo = Articulo(0,nombre,peso)
+                                dbHelper.insertarArticulo(articulo, GlobalVariables.personaje!!.getId())
+                                GlobalVariables.personaje!!.setMonedero(GlobalVariables.personaje!!.getMonedero()-articulo.getPrecio())
+                                val nuevoValor = imagenes[index].second - 1
+                                imagenes[index] = Pair(imagenes[index].first, nuevoValor)
+                                views[index].setBackgroundColor( getResources().getColor(R.color.white));
+                                cont = cont-1
+                                textos[2].text = "${cont}"
+                                Log.d(TAG, "Valor Sumado")
+                                textos[1].text =   ((textos[1].text.toString().toInt())-(articulo.getPrecio())).toString()
+
+
+                            }
+                        }
                     }
                 }
 
@@ -249,6 +597,8 @@ class MercaderActivity : AppCompatActivity() {
         nuevoArticulo.setOnClickListener {
             seleccionado = articulo
             btnVer.visibility = View.VISIBLE
+            btnVender[1].visibility = View.VISIBLE
+
         }
 
 
