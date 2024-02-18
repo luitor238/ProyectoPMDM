@@ -72,11 +72,6 @@ class DadoActivity : AppCompatActivity() {
         textViewMonedas.text = GlobalVariables.personaje?.getMonedero().toString()
         textViewNombre.text = GlobalVariables.personaje?.getNombre()
 
-        Thread.sleep(1000)
-        instrucciones.visibility = View.VISIBLE
-
-        Thread.sleep(3000)
-        instrucciones.visibility = View.GONE
 
         Thread {
             Thread.sleep(1000)
