@@ -73,6 +73,9 @@ class DadoActivity : AppCompatActivity() {
         textViewNombre.text = GlobalVariables.personaje?.getNombre()
 
         Thread.sleep(1000)
+        instrucciones.visibility = View.VISIBLE
+
+        Thread.sleep(3000)
         instrucciones.visibility = View.GONE
 
         btnTirarDado.setOnClickListener {
