@@ -30,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val dbHelper = DatabaseHelper(this)
 
+        GlobalVariables.personaje = Personaje(GlobalVariables.id, "Luisito",Personaje.Raza.Elfo, Personaje.Clase.Guerrero, Personaje.EstadoVital.Joven)
+
         // Asignar variables a los elementos del layout
         email = findViewById(R.id.editTextEmail)
         password = findViewById(R.id.editTextPassword)
@@ -60,12 +62,12 @@ class LoginActivity : AppCompatActivity() {
 
                                 if (personajes.isNotEmpty()) {
                                     Log.d(TAG, "La lista de personajes no está vacía y contiene elementos.")
-                                    for (e in personajes) {
+                                    /*for (e in personajes) {
                                         Log.d(TAG, "Id3: ${e.getId()}")
                                         if (e.getId() == userId) {
                                             GlobalVariables.personaje = e
                                         }
-                                    }
+                                    }*/
                                 } else {
                                     Log.d(TAG, "La lista de personajes está vacía o es nula.")
                                 }

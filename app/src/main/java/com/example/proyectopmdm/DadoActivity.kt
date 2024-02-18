@@ -102,7 +102,7 @@ class DadoActivity : AppCompatActivity() {
                 vibrator.vibrate(1000)
             }
 
-            var dado = Random.nextInt(1, 5)
+            var dado = Random.nextInt(1, 3)
 
             when (dado) {
                 1 -> {
@@ -111,7 +111,7 @@ class DadoActivity : AppCompatActivity() {
                 }
 
                 2 -> {
-                    val intent = Intent(this, CiudadActivity::class.java)
+                    val intent = Intent(this, EnemigoActivity::class.java)
                     startActivity(intent)
                 }
 
@@ -121,7 +121,7 @@ class DadoActivity : AppCompatActivity() {
                 }
 
                 4 -> {
-                    val intent = Intent(this, EnemigoActivity::class.java)
+                    val intent = Intent(this, CiudadActivity::class.java)
                     startActivity(intent)
                 }
 
