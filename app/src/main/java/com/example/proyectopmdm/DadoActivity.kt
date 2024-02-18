@@ -65,7 +65,7 @@ class DadoActivity : AppCompatActivity() {
         btnverPersonaje = findViewById(R.id.btnPerfil)
         btnMochila = findViewById(R.id.btnMochila)
         btnGuardar = findViewById(R.id.btnGuardar)
-        instrucciones = findViewById(R.id.instrucciones)
+
 
 
         textViewExp.text = GlobalVariables.personaje?.getExperiencia().toString()
@@ -77,6 +77,19 @@ class DadoActivity : AppCompatActivity() {
 
         Thread.sleep(3000)
         instrucciones.visibility = View.GONE
+
+        Thread {
+            Thread.sleep(1000)
+            instrucciones = findViewById(R.id.instrucciones)
+
+            instrucciones.visibility = View.VISIBLE
+            val animScale = AnimationUtils.loadAnimation(this, R.anim.scale_animation)
+            instrucciones.startAnimation(animScale)
+
+            Thread.sleep(3000)
+            instrucciones.visibility = View.INVISIBLE
+
+        }.start()
 
         btnTirarDado.setOnClickListener {
 
