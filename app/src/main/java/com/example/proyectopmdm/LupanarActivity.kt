@@ -15,6 +15,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -81,6 +82,8 @@ class LupanarActivity : AppCompatActivity() {
                 lupanar.visibility = View.GONE
                 habitacion.visibility = View.VISIBLE
             }
+            GlobalVariables.personaje!!.setSalud( GlobalVariables.personaje!!.getSalud()*2)
+            Toast.makeText(this, "Salud Subida!", Toast.LENGTH_SHORT).show()
 
         }
 
