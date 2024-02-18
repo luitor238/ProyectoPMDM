@@ -15,7 +15,7 @@ import com.example.proyectopmdm.Personaje.*
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 4
+        private const val DATABASE_VERSION = 5
         private const val DATABASE = "BBDD.db"
 
         // Constantes de la tabla ARTICULOS

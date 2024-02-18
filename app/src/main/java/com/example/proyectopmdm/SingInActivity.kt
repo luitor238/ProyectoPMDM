@@ -99,7 +99,7 @@ class SingInActivity : AppCompatActivity() {
                 val intent = Intent(this, CrearPersonajeActivity::class.java)
                 startActivity(intent)
             } else {
-                textViewWarning.text = "Usuario No Encontrado"
+                textViewWarning.text = "Usuario Ya existe"
                 textViewWarning.visibility = View.VISIBLE
                 Log.d(TAG, "Usuario No Creado Correctamente")
             }
