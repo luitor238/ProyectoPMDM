@@ -38,7 +38,6 @@ class MercaderActivity : AppCompatActivity() {
     private lateinit var seleccionado: Articulo
     private lateinit var articulos: ArrayList<Articulo>
     private lateinit var btnVer: Button
-
     private var cont: Int= 0
     private val TAG = "LoginActivity"
 
