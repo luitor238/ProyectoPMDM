@@ -115,11 +115,11 @@
 
         <ImageView
             android:id="@+id/imageViewEnemigo"
-            android:layout_width="271dp"
+            android:layout_width="wrap_content"
             android:layout_height="209dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="19dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="50dp"
             android:src="@drawable/mounstro_ardilla" />
 
         <LinearLayout
@@ -151,9 +151,10 @@
 
             <TextView
                 android:id="@+id/textViewNivel"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
+                android:layout_marginEnd="50dp"
                 android:text=""
                 android:textAlignment="viewEnd" />
 
@@ -183,9 +184,10 @@
 
             <TextView
                 android:id="@+id/textViewSalud"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
+                android:layout_marginEnd="50dp"
                 android:text=""
                 android:textAlignment="viewEnd" />
         </LinearLayout>
@@ -214,9 +216,10 @@
 
             <TextView
                 android:id="@+id/textViewAtaque"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
+                android:layout_marginEnd="50dp"
                 android:text=""
                 android:textAlignment="viewEnd" />
         </LinearLayout>

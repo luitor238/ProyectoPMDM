@@ -10,6 +10,7 @@ import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -24,6 +25,7 @@ import com.example.proyectopmdm.eventos.MercaderActivity
 import com.example.proyectopmdm.eventos.ObjetoActivity
 import pl.droidsonroids.gif.GifAnimationMetaData
 import pl.droidsonroids.gif.GifImageView
+import kotlin.concurrent.thread
 import kotlin.random.Random
 
 
@@ -40,6 +42,7 @@ class DadoActivity : AppCompatActivity() {
     private lateinit var btnverPersonaje: ImageButton
     private lateinit var btnMochila: ImageButton
     private lateinit var btnGuardar: ImageButton
+    private lateinit var instrucciones: TextView
 
 
     private val TAG = "LoginActivity"
@@ -62,12 +65,15 @@ class DadoActivity : AppCompatActivity() {
         btnverPersonaje = findViewById(R.id.btnPerfil)
         btnMochila = findViewById(R.id.btnMochila)
         btnGuardar = findViewById(R.id.btnGuardar)
+        instrucciones = findViewById(R.id.instrucciones)
 
 
         textViewExp.text = GlobalVariables.personaje?.getExperiencia().toString()
         textViewMonedas.text = GlobalVariables.personaje?.getMonedero().toString()
         textViewNombre.text = GlobalVariables.personaje?.getNombre()
 
+        Thread.sleep(1000)
+        instrucciones.visibility = View.GONE
 
         btnTirarDado.setOnClickListener {
 
@@ -77,10 +83,10 @@ class DadoActivity : AppCompatActivity() {
             // Vibrar el dispositivo durante 2 segundos
             val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                vibrator.vibrate(VibrationEffect.createOneShot(2000, VibrationEffect.DEFAULT_AMPLITUDE))
+                vibrator.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
                 @Suppress("DEPRECATION")
-                vibrator.vibrate(2000)
+                vibrator.vibrate(1000)
             }
 
             var dado = Random.nextInt(1, 5)

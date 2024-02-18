@@ -73,7 +73,7 @@ class ObjetoActivity : AppCompatActivity() {
         btnRecoger.setOnClickListener {
             dbHelper.insertarArticulo(articulo, personaje!!.getId())
             Toast.makeText(this, "Articulo añadido!", Toast.LENGTH_SHORT).show()
-            Thread.sleep(2000)
+            Thread.sleep(1000)
             val intent = Intent(this, DadoActivity::class.java)
             startActivity(intent)
         }
