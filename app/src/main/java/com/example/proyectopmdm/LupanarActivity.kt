@@ -13,6 +13,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +31,8 @@ class LupanarActivity : AppCompatActivity() {
     private lateinit var btnSi: ImageButton
     private lateinit var btnNo: ImageButton
     private lateinit var adapter: CustomAdapter
+    private lateinit var lupanar: LinearLayout
+    private lateinit var habitacion: LinearLayout
     private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
     private var currentImageIndex = 0
     @SuppressLint("MissingInflatedId")
@@ -40,6 +43,8 @@ class LupanarActivity : AppCompatActivity() {
         btnSi = findViewById(R.id.btnSi)
         btnNo = findViewById(R.id.btnNo)
         recyclerView = findViewById(R.id.recyclerView)
+        lupanar = findViewById(R.id.lupanar)
+        habitacion = findViewById(R.id.habitacion)
 
 
         val images: MutableList<Int> = ArrayList()
@@ -55,23 +60,28 @@ class LupanarActivity : AppCompatActivity() {
 
 
         btnSi.setOnClickListener {
-
-            }
-
-
-        btnNo.setOnClickListener {
             val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
 
             viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_izquierda))
 
-            val animationDuration = 500 // Duración de la animación en milisegundos
+            val animationDuration = 600 // Duración de la animación en milisegundos
 
             // Retrasar el desplazamiento del RecyclerView hasta que la animación haya finalizado
             Handler().postDelayed({
                 currentImageIndex = if (currentImageIndex > 0) currentImageIndex - 1 else images.size - 1
                 recyclerView.smoothScrollToPosition(currentImageIndex)
             }, animationDuration.toLong())
+
+            }
+
+
+        btnNo.setOnClickListener {
+            if (lupanar.visibility == View.VISIBLE) {
+                lupanar.visibility = View.GONE
+                habitacion.visibility = View.VISIBLE
+            }
+
         }
 
 
