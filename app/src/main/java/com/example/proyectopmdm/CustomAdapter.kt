@@ -40,9 +40,6 @@ class CustomAdapter(private val context: Context, private val images: List<Int>)
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //var linearLayout: LinearLayout = itemView.findViewById(R.id.Linnear01)
         var imageView1: ImageView = itemView.findViewById(R.id.imageView)
-
-
-
     }
 
 }

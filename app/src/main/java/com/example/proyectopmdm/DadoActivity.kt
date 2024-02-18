@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.util.Log
@@ -73,18 +74,19 @@ class DadoActivity : AppCompatActivity() {
         textViewNombre.text = GlobalVariables.personaje?.getNombre()
 
 
-        Thread {
-            Thread.sleep(1000)
-            instrucciones = findViewById(R.id.instrucciones)
+        instrucciones = findViewById(R.id.instrucciones)
+        instrucciones.visibility = View.VISIBLE
+        val animScale = AnimationUtils.loadAnimation(this, R.anim.scale_animation)
+        instrucciones.startAnimation(animScale)
 
-            instrucciones.visibility = View.VISIBLE
-            val animScale = AnimationUtils.loadAnimation(this, R.anim.scale_animation)
-            instrucciones.startAnimation(animScale)
+        // Mostrar el TextView al inicio
+        instrucciones.alpha = 1.0f
 
-            Thread.sleep(3000)
-            instrucciones.visibility = View.INVISIBLE
-
-        }.start()
+        // Programar la desaparición del TextView después de 3 segundos
+        Handler().postDelayed({
+            // Hacer que el TextView desaparezca después de 3 segundos
+            instrucciones.animate().alpha(0.0f).duration = 1000
+        }, 3000)
 
         btnTirarDado.setOnClickListener {
 
@@ -171,7 +173,6 @@ class DadoActivity : AppCompatActivity() {
             val dbHelper = DatabaseHelper(this)
             dbHelper.insertarPersonaje(GlobalVariables.personaje!!)
         }
-
     }
 
 

@@ -92,8 +92,7 @@ class MercaderActivity : AppCompatActivity() {
                 }
         }
         btnVolver[0].setOnClickListener {
-            val intent = Intent(this, MenuOpcionesActivity::class.java)
-
+            val intent = Intent(this, DadoActivity::class.java)
             startActivity(intent)
         }
         btnVolver[1].setOnClickListener {

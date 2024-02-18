@@ -13,15 +13,18 @@
         android:layout_height="51dp"
         android:backgroundTint="#00000000"
         android:src="@drawable/icon_arrow_primary"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:outlineAmbientShadowColor="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="381dp"
-        android:layout_height="556dp"
+        android:layout_width="380dp"
+        android:layout_height="521dp"
         android:layout_above="@+id/messageInputLayout"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="95dp" />
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="95dp"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -35,17 +38,30 @@
 
         <Button
             android:id="@+id/opcion1"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="¿Como estas?" />
+            android:layout_margin="1dp"
+            android:text="¿Como estas?"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:shadowColor="#5C5C5C"
+            android:textColor="@color/grey"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/opcion2"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="¿Tienes algo equipado?" />
+            android:layout_margin="1dp"
+            android:text="¿Tienes algo equipado?"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            android:shadowColor="#5C5C5C"
+            android:textColor="@color/grey"
+            android:textSize="16sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +81,6 @@
 
         <Button
             android:id="@+id/btnEnviar"
-            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar"

@@ -1,5 +1,4 @@
 package com.example.proyectopmdm
-
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +6,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import com.example.proyectopmdm.GlobalVariables.personaje
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,9 +25,10 @@ class ComunicacionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comunicacion)
 
-
         EditTextInput = findViewById(R.id.EditTextInput)
         btnEnviar = findViewById(R.id.btnEnviar)
+        opcion1 = findViewById(R.id.opcion1)
+        opcion2 = findViewById(R.id.opcion2)
         recyclerView = findViewById(R.id.recyclerView)
         btnVolver = findViewById(R.id.btnVolver)
 
@@ -37,7 +36,7 @@ class ComunicacionActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val instancia = MessageAdapter()
+
 
         // Boton volver al menu
         btnVolver.setOnClickListener {
@@ -48,7 +47,7 @@ class ComunicacionActivity : AppCompatActivity() {
         btnEnviar.setOnClickListener {
             val message = EditTextInput.text.toString().trim()
             if (message.isNotEmpty()) {
-                instancia.sendMessage(message)
+                adapter.sendMessage(message) // Cambia 'instancia' por 'adapter'
                 EditTextInput.text.clear()
             }
         }
@@ -56,7 +55,7 @@ class ComunicacionActivity : AppCompatActivity() {
         opcion1.setOnClickListener {
             val message = "¿Como estas?"
             if (message.isNotEmpty()) {
-                instancia.sendMessage(message)
+                adapter.sendMessage(message) // Cambia 'instancia' por 'adapter'
                 EditTextInput.text.clear()
             }
         }
@@ -64,13 +63,9 @@ class ComunicacionActivity : AppCompatActivity() {
         opcion2.setOnClickListener {
             val message = "¿Tienes algo equipado?"
             if (message.isNotEmpty()) {
-                instancia.sendMessage(message)
+                adapter.sendMessage(message) // Cambia 'instancia' por 'adapter'
                 EditTextInput.text.clear()
             }
         }
     }
-
 }
-
-
-
