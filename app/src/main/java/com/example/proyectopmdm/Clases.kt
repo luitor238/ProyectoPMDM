@@ -16,7 +16,6 @@ class Personaje (private var id: String, private var nombre: String, private var
     private var defensa: Int = 0
     private var monedero: Int = 50
 
-
     // Enumeración para el tipo de raza y clase
     enum class Raza { Humano, Elfo, Enano, Maldito }
     enum class Clase { Brujo, Mago, Guerrero }
@@ -120,10 +119,6 @@ class Personaje (private var id: String, private var nombre: String, private var
     fun setMonedero(monederoN: Int) {
         monedero = monederoN
     }
-
-
-
-
     fun getImagen(): String{
         when(this.clase){
             Clase.Brujo -> {
@@ -226,7 +221,6 @@ class Personaje (private var id: String, private var nombre: String, private var
 
     }
 
-
     private fun calcularSalud() {
         salud = when (nivel) {
             1 -> 100
@@ -273,6 +267,7 @@ class Personaje (private var id: String, private var nombre: String, private var
             else -> 4 // Valor por defecto si el nivel está fuera del rango especificado
         }
     }
+
     fun pelea(monstruo: Monstruo, habilidad: String): String {
         var result="¡PERDISTE!"
         var vidaMonstruo = monstruo.getSalud()
@@ -342,6 +337,7 @@ class Personaje (private var id: String, private var nombre: String, private var
             }
         }
     }
+
     fun entrenar(tiempoDeEntrenamiento: Int): String {
         val factorExperienciaPorHora = 5
         val experienciaGanada = tiempoDeEntrenamiento * factorExperienciaPorHora
@@ -350,6 +346,7 @@ class Personaje (private var id: String, private var nombre: String, private var
 
         return "$nombre ha entrenado durante $tiempoDeEntrenamiento segundos y ha ganado $experienciaGanada de experiencia."
     }
+
     fun realizarMision(tipoMision: String, dificultad: String): String{
         val probabilidadExito = when (dificultad) {
             "Fácil" -> if (nivel >= 5) 8 else 6
@@ -383,6 +380,7 @@ class Personaje (private var id: String, private var nombre: String, private var
             return "$nombre ha fracasado en la misión de $tipoMision ($dificultad) y no recibe ninguna recompensa."
         }
     }
+
     fun cifrado(mensaje : String, ROT : Int) : String{
         val abecedario : ArrayList<Char> = "abcdefghijklmnñopqrstuvwxyz".toList() as ArrayList<Char>
         var stringInv = ""
@@ -402,7 +400,8 @@ class Personaje (private var id: String, private var nombre: String, private var
         }
         return stringInv.filter { !it.isWhitespace() && it.isLetter() }
     }
-    fun comunicacion(mensaje:String) : String{
+
+    fun comunicacion(mensaje:String): String{
         var respuesta=""
         when(estadoVital){
             EstadoVital.Adulto->{
@@ -418,7 +417,7 @@ class Personaje (private var id: String, private var nombre: String, private var
                             if (mensaje == nombre)
                                 respuesta="¿Necesitas algo?"
                             else
-                                if(mensaje == "Tienes algo equipado?"){
+                                if(mensaje == "¿Tienes algo equipado?"){
                                     if (arma != null || proteccion != null) {
                                         val equipamiento = mutableListOf<String>()
                                         if (arma != null) {
@@ -427,9 +426,9 @@ class Personaje (private var id: String, private var nombre: String, private var
                                         if (proteccion != null) {
                                             equipamiento.add(proteccion!!.getNombre().name)
                                         }
-                                        println("Tengo equipado: ${equipamiento.joinToString(", ")}")
+                                        respuesta="Tengo equipado: ${equipamiento.joinToString(", ")}"
                                     } else {
-                                        println("Ligero como una pluma.")
+                                        respuesta="Ligero como una pluma."
                                     }
                                 }
                                 else
@@ -448,11 +447,11 @@ class Personaje (private var id: String, private var nombre: String, private var
                             if (mensaje == nombre)
                                 respuesta="Qué pasa?"
                             else
-                                if(mensaje == "Tienes algo equipado?"){
+                                if(mensaje == "¿Tienes algo equipado?"){
                                     if (arma != null || proteccion != null) {
-                                        println("No llevo nada, agente, se lo juro.")
+                                        respuesta="No llevo nada, agente, se lo juro."
                                     } else {
-                                        println("Regístrame si quieres.")
+                                        respuesta="Regístrame si quieres."
                                     }
                                 }
                                 else
@@ -472,21 +471,22 @@ class Personaje (private var id: String, private var nombre: String, private var
                             if (mensaje == nombre)
                                 respuesta="Las 5 de la tarde"
                             else
-                                if(mensaje == "Tienes algo equipado?"){
-                                    println("A ti que te importa nini!")
+                                if(mensaje == "¿Tienes algo equipado?"){
+                                    respuesta="A ti que te importa nini!"
                                 }
                                 else
                                     respuesta="En mis tiempos esto no pasaba"
             }
         }
-        return when(raza){
-            Raza.Elfo-> cifrado(respuesta, 1)
-            Raza.Enano-> respuesta.uppercase()
-            Raza.Maldito-> cifrado(respuesta, 1)
-            else -> respuesta
+        when(raza){
+            Raza.Elfo-> return(cifrado(respuesta, 1))
+            Raza.Enano-> return(respuesta.uppercase())
+            Raza.Maldito-> return(cifrado(respuesta, 1))
+            else -> return(respuesta)
         }
     }
-    fun equipar(articulo: Articulo) {
+
+   /* fun equipar(articulo: Articulo) {
         when (articulo.getTipoArticulo()) {
             Articulo.TipoArticulo.ARMA -> {
                 if (articulo.getNombre() in Articulo.Nombre.BASTON..Articulo.Nombre.GARRAS) {
@@ -517,7 +517,8 @@ class Personaje (private var id: String, private var nombre: String, private var
                 println("No se puede equipar el artículo. Tipo de artículo no válido.")
             }
         }
-    }
+    }*/
+
     fun usarObjeto(articulo: Articulo, context: Context) {
         when (articulo.getTipoArticulo()) {
             Articulo.TipoArticulo.OBJETO -> {
@@ -552,9 +553,6 @@ class Personaje (private var id: String, private var nombre: String, private var
                 Toast.makeText(context, "Este articulo no tiene uso.", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-    fun getMochila(): Mochila {
-        return this.mochila
     }
 
     fun getImage(): ImageView {
@@ -663,7 +661,6 @@ class Personaje (private var id: String, private var nombre: String, private var
     override fun toString(): String {
         return "Personaje: Nombre: $nombre, Nivel: $nivel, Salud: $salud, Ataque: $ataque, Defensa: $defensa, Suerte: $suerte, Raza: $raza, Clase: $clase, Estado Vital: $estadoVital Mochila: $mochila"
     }
-
 }
 
 class Mochila(private var pesoMochila: Int):Serializable {
@@ -727,10 +724,6 @@ class Mochila(private var pesoMochila: Int):Serializable {
     }
 }
 
-class Mensajes(
-    val content : String,
-    val sender : String
-)
 
 class Articulo( var id: Int, private var nombre: Nombre, private var peso: Int) :Serializable {
 
