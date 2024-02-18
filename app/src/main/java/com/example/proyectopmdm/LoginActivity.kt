@@ -30,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val dbHelper = DatabaseHelper(this)
 
+        GlobalVariables.personaje = Personaje(GlobalVariables.id, "Luisito",Personaje.Raza.Elfo, Personaje.Clase.Guerrero, Personaje.EstadoVital.Joven)
+
         // Asignar variables a los elementos del layout
         email = findViewById(R.id.editTextEmail)
         password = findViewById(R.id.editTextPassword)
@@ -58,21 +60,16 @@ class LoginActivity : AppCompatActivity() {
                                 val personajes = dbHelper.getPersonaje()
                                 Log.d(TAG, "prueba")
 
-                                if (personajes != null && personajes.isNotEmpty()) {
-                                    // Aquí dentro puedes ejecutar el código que deseas cuando la lista no esté vacía
+                                if (personajes.isNotEmpty()) {
                                     Log.d(TAG, "La lista de personajes no está vacía y contiene elementos.")
-
+                                    /*for (e in personajes) {
+                                        Log.d(TAG, "Id3: ${e.getId()}")
+                                        if (e.getId() == userId) {
+                                            GlobalVariables.personaje = e
+                                        }
+                                    }*/
                                 } else {
-                                    // Aquí dentro puedes manejar el caso en que la lista esté vacía o sea nula
                                     Log.d(TAG, "La lista de personajes está vacía o es nula.")
-                                }
-
-
-                                for (e in personajes) {
-                                    Log.d(TAG, "Id3: ${e.getId()}")
-                                    if (e.getId() == userId) {
-                                        GlobalVariables.personaje = e
-                                    }
                                 }
 
                                 val intent = Intent(this, VerPersonajeActivity::class.java)

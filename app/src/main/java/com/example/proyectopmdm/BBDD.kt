@@ -189,7 +189,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
              }
          }
 
-
         return personajes
     }
 
