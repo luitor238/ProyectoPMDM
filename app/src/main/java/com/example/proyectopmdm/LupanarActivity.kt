@@ -8,6 +8,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
@@ -61,20 +62,31 @@ class LupanarActivity : AppCompatActivity() {
 
 
         btnSi.setOnClickListener {
+            // Obtener el primer ítem visible en el RecyclerView
             val firstVisibleItemPosition = (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             val viewHolder = recyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition) as CustomAdapter.ViewHolder?
 
-            viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_izquierda))
+            // Iniciar la animación en el ViewHolder si está disponible
+            viewHolder?.imageView1?.startAnimation(AnimationUtils.loadAnimation(this, R.anim.caida_izquierda).apply {
+                setAnimationListener(object : Animation.AnimationListener {
+                    override fun onAnimationStart(animation: Animation?) {}
 
-            val animationDuration = 600 // Duración de la animación en milisegundos
+                    override fun onAnimationEnd(animation: Animation?) {
 
-            // Retrasar el desplazamiento del RecyclerView hasta que la animación haya finalizado
-            Handler().postDelayed({
-                currentImageIndex = if (currentImageIndex > 0) currentImageIndex - 1 else images.size - 1
-                recyclerView.smoothScrollToPosition(currentImageIndex)
-            }, animationDuration.toLong())
+                        val nextImageIndex = (firstVisibleItemPosition + 1) % images.size
 
-            }
+
+                        Handler().postDelayed({
+
+                            recyclerView.smoothScrollToPosition(nextImageIndex)
+                        }, 50)
+                    }
+
+                    override fun onAnimationRepeat(animation: Animation?) {}
+                })
+            })
+        }
+
 
 
         btnNo.setOnClickListener {
@@ -82,7 +94,7 @@ class LupanarActivity : AppCompatActivity() {
                 lupanar.visibility = View.GONE
                 habitacion.visibility = View.VISIBLE
             }
-            GlobalVariables.personaje!!.setSalud( GlobalVariables.personaje!!.getSalud()*2)
+            GlobalVariables.personaje!!.setSalud( GlobalVariables.personaje!!.getSalud()+100)
             Toast.makeText(this, "Salud Subida!", Toast.LENGTH_SHORT).show()
 
         }
