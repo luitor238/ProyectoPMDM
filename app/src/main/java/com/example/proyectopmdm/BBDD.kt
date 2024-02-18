@@ -155,7 +155,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
 
          cursor.use {
              if (it.moveToFirst()) {
-                 Log.d(TAG,"Id:"+ it.getString(it.getColumnIndex(KEY_ID_USUARIO)))
 
                  do {
                      val id = it.getString(it.getColumnIndex(KEY_ID_USUARIO)) ?: ""
@@ -174,9 +173,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
                      val defensa = it.getInt(it.getColumnIndex(COLUMN_DEFENSA))
                      val monedero = it.getInt(it.getColumnIndex(COLUMN_MONEDERO))
                      val personaje = Personaje(id, nombre, raza, clase, estadoVital)
-                     //val personaje = Personaje("id", "marco", Raza.Humano, Clase.Brujo, EstadoVital.Adulto)
-
-                     Log.d(TAG, "el nombre del personaje es: "+personaje.getNombre())
 
                      personaje.apply {
                          setExperienciaN(experiencia)
