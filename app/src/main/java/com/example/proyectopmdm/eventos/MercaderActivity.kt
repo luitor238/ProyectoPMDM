@@ -261,7 +261,6 @@ class MercaderActivity : AppCompatActivity() {
 
 
         imagenes.forEachIndexed { index, (imageButton, value) ->
-            // Asignar OnClickListener a cada ImageButton
             imageButton.setOnClickListener {
                 if (imagenes[index].second == 0) {
 
@@ -572,10 +571,9 @@ class MercaderActivity : AppCompatActivity() {
                     }
                 }
 
-
                 // Ahora muestra el nuevo valor actualizado
                 Log.d(TAG, "ImageButton ${index + 1}: $imageButton")
-                Log.d(TAG, "Valor asociado: ${imagenes[index].second}") // Utiliza el nuevo valor actualizado
+                Log.d(TAG, "Valor asociado: ${imagenes[index].second}")
             }
         }
 
@@ -598,7 +596,6 @@ class MercaderActivity : AppCompatActivity() {
             btnVender[1].visibility = View.VISIBLE
 
         }
-
 
         // Añadir al linearLayout
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)

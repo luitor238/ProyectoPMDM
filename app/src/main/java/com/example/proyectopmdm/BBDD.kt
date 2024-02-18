@@ -156,7 +156,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
          cursor.use {
              if (it.moveToFirst()) {
 
-                 do {
+                 /*do {
                      val id = it.getString(it.getColumnIndex(KEY_ID_USUARIO)) ?: ""
                      val nombre = it.getString(it.getColumnIndex(COLUMN_NOMBRE_PERSONAJE)) ?: ""
                      val razaString = it.getString(it.getColumnIndex(COLUMN_RAZA))
@@ -185,10 +185,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE, nul
                      }
                      personajes.add(personaje)
 
-                     } while (it.moveToNext())
+                     } while (it.moveToNext())*/
+
+                 val personaje1 = Personaje(GlobalVariables.id, "Luisito",Personaje.Raza.Elfo, Clase.Guerrero, EstadoVital.Joven)
+                 personajes.add(personaje1)
              }
          }
-
 
         return personajes
     }

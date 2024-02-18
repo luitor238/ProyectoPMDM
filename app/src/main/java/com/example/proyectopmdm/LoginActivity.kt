@@ -58,21 +58,16 @@ class LoginActivity : AppCompatActivity() {
                                 val personajes = dbHelper.getPersonaje()
                                 Log.d(TAG, "prueba")
 
-                                if (personajes != null && personajes.isNotEmpty()) {
-                                    // Aquí dentro puedes ejecutar el código que deseas cuando la lista no esté vacía
+                                if (personajes.isNotEmpty()) {
                                     Log.d(TAG, "La lista de personajes no está vacía y contiene elementos.")
-
-                                } else {
-                                    // Aquí dentro puedes manejar el caso en que la lista esté vacía o sea nula
-                                    Log.d(TAG, "La lista de personajes está vacía o es nula.")
-                                }
-
-
-                                for (e in personajes) {
-                                    Log.d(TAG, "Id3: ${e.getId()}")
-                                    if (e.getId() == userId) {
-                                        GlobalVariables.personaje = e
+                                    for (e in personajes) {
+                                        Log.d(TAG, "Id3: ${e.getId()}")
+                                        if (e.getId() == userId) {
+                                            GlobalVariables.personaje = e
+                                        }
                                     }
+                                } else {
+                                    Log.d(TAG, "La lista de personajes está vacía o es nula.")
                                 }
 
                                 val intent = Intent(this, VerPersonajeActivity::class.java)
