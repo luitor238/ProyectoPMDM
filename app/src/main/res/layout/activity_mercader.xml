@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -656,15 +656,14 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/vista4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#edeee9"
-        android:visibility="visible">
-
-
+        android:visibility="gone">
 
         <ImageButton
-            android:id="@+id/btnVolver"
+            android:id="@+id/btnVolver4"
             android:layout_width="82dp"
             android:layout_height="71dp"
             android:backgroundTint="#edeee9"
@@ -729,7 +728,7 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/btnVer"
+            android:id="@+id/btnVender2"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="80sp"
             android:layout_height="60dp"
@@ -744,13 +743,12 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="5dp"
-            app:layout_constraintStart_toEndOf="@+id/btnBorrar"
             app:layout_constraintTop_toBottomOf="@+id/view7"
             app:strokeColor="#FFFFFF"
             android:visibility="invisible"/>
 
         <Button
-            android:id="@+id/btnBorrar"
+            android:id="@+id/btnVer"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="70dp"
             android:layout_height="60dp"
@@ -770,26 +768,7 @@
             android:drawableLeft="@drawable/icon_delete"
             android:visibility="invisible"/>
 
-        <Button
-            android:id="@+id/btnUsar"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="-30dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="0.5"
-            android:backgroundTint="@color/primaryColor"
-            android:elevation="2dp"
-            android:shadowColor="#5C5C5C"
-            android:text="@string/usar"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="5dp"
-            app:layout_constraintStart_toEndOf="@+id/btnVer"
-            app:layout_constraintTop_toBottomOf="@+id/view7"
-            app:strokeColor="#FFFFFF"
-            android:visibility="invisible"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

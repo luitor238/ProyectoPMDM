@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -20,6 +22,7 @@ import com.example.proyectopmdm.GlobalVariables
 import com.example.proyectopmdm.MenuOpcionesActivity
 import com.example.proyectopmdm.Personaje
 import com.example.proyectopmdm.R
+import com.example.proyectopmdm.VerArticuloActivity
 import com.example.proyectopmdm.VerPersonajeActivity
 import kotlin.random.Random
 
@@ -32,10 +35,15 @@ class MercaderActivity : AppCompatActivity() {
     private lateinit var textos: Array<TextView>
     private lateinit var btnComerciar: Button
     private lateinit var vistas:  Array<View>
+    private lateinit var seleccionado: Articulo
+    private lateinit var btnVolver2: ImageButton
+    private lateinit var articulos: ArrayList<Articulo>
+    private lateinit var btnVer: Button
+
     private var cont: Int= 0
     private val TAG = "LoginActivity"
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mercader)
@@ -47,15 +55,28 @@ class MercaderActivity : AppCompatActivity() {
             resources.getIdentifier("imagen${index + 1}", "id", packageName))
             Pair(imageButton, 0)
         }
-        btnVolver = Array(3) { index -> findViewById<ImageButton>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
+        btnVolver = Array(4) { index -> findViewById<ImageButton>(resources.getIdentifier("btnVolver${index + 1}", "id", packageName)) }
         Log.d(TAG, "Inicializacion de los volver")
         views = Array(10) { index -> findViewById<View>(resources.getIdentifier("my_view${index + 1}", "id", packageName)) }
         Log.d(TAG, "Inicializacion de las Views")
         textos = Array(3) { index -> findViewById<TextView>(resources.getIdentifier("texto${index + 1}", "id", packageName)) }
         btnComprar = Array(2) { index -> findViewById<Button>(resources.getIdentifier("btnComprar${index + 1}", "id", packageName)) }
-        btnVender = Array(1) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
-        vistas = Array(3) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
+        btnVender = Array(2) { index -> findViewById<Button>(resources.getIdentifier("btnVender${index + 1}", "id", packageName)) }
+        vistas = Array(4) { index -> findViewById<View>(resources.getIdentifier("vista${index + 1}", "id", packageName)) }
+        Log.d(TAG, "Inicializacion de las Vistas")
         btnComerciar = findViewById(R.id.btnComerciar)
+        btnVolver2 = findViewById(R.id.btnVolver2)
+
+        btnVer = findViewById(R.id.btnVer)
+
+
+
+        val personaje = GlobalVariables.personaje
+
+        articulos = dbHelper.getArticulo().filter { it.getIdUser() == personaje?.getId() }.toMutableList() as ArrayList<Articulo>
+
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+
 
         Log.d(TAG, "Inicializacion de los elementos")
 
@@ -83,6 +104,29 @@ class MercaderActivity : AppCompatActivity() {
                 vistas[1].visibility = View.GONE
                 vistas[2].visibility = View.VISIBLE
             }
+        }
+        btnVender[0].setOnClickListener {
+            // Cambiar la visibilidad de las vistas
+            if (vistas[1].visibility == View.VISIBLE) {
+                vistas[1].visibility = View.GONE
+                vistas[3].visibility = View.VISIBLE
+            }
+        }
+        btnVender[1].setOnClickListener {
+            // Cambiar la visibilidad de las vistas
+            if (articulos.isEmpty()) {
+                Toast.makeText(this, "Mochila Vacia!", Toast.LENGTH_SHORT).show()
+            } else {
+                // Agregar los articulos al scroll
+                for (articulo in articulos) {
+                    agregarArticulo(articulo)
+                }
+            }
+        }
+        btnVer.setOnClickListener {
+            val intent = Intent(this, VerArticuloActivity::class.java)
+            intent.putExtra("articulo", seleccionado)
+            startActivity(intent)
         }
 
 
@@ -190,5 +234,26 @@ class MercaderActivity : AppCompatActivity() {
         }
 
 
+    }
+    private fun agregarArticulo(articulo: Articulo) {
+        val nuevoArticulo = ImageButton(this)
+        val alturaEnPx = resources.getDimensionPixelSize(R.dimen.tu_altura_imagebutton)
+
+        // Atributos del imageButton
+        nuevoArticulo.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, alturaEnPx)
+        nuevoArticulo.setImageResource(resources.getIdentifier(articulo.getImagen(), "drawable", packageName))
+        nuevoArticulo.scaleType = ImageView.ScaleType.FIT_CENTER
+        nuevoArticulo.setBackgroundColor(Color.TRANSPARENT)
+
+        // Funcion del boton articulo
+        nuevoArticulo.setOnClickListener {
+            seleccionado = articulo
+            btnVer.visibility = View.VISIBLE
+        }
+
+
+        // Añadir al linearLayout
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+        linearLayout.addView(nuevoArticulo)
     }
 }
